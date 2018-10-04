@@ -61,11 +61,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Observable.cs" />
     <Compile Include="Assets\Scripts\AgentBehavior.cs" />
     <Compile Include="Assets\Scripts\Controller\GameController.cs" />
     <Compile Include="Assets\Scripts\FieldOfView.cs" />
     <Compile Include="Assets\Scripts\KnowledgeBase.cs" />
+    <Compile Include="Assets\Scripts\MoveRandomly.cs" />
+    <Compile Include="Assets\Scripts\Observable.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/User/Documents/Unity Projects/StateRepresentation/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
@@ -309,6 +310,16 @@
     <Reference Include="Boo.Lang">
       <HintPath>C:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/unity/Boo.Lang.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="NavMeshComponentsEditor.csproj">
+      <Project>{726B7EBD-9E27-ACFE-3A67-BDB6E815F11D}</Project>
+      <Name>NavMeshComponentsEditor</Name>
+    </ProjectReference>
+    <ProjectReference Include="NavMeshComponents.csproj">
+      <Project>{B0FD6D02-2D8D-4F38-39D3-8DEEEDFBB364}</Project>
+      <Name>NavMeshComponents</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
