@@ -11,9 +11,14 @@ public class FieldOfView:MonoBehaviour {
     public LayerMask obstacleMask;
 
     public List<Transform> visibleTargets = new List<Transform>();
+    public List<GameObject> observables = new List<GameObject>();
+    private List<GameObject> seenObservables = new List<GameObject>();
+    //have a closed set for observables
+
 
     void Start()
     {
+        seenObservables.Add(gameObject);
         Debug.Log("STARTING");
         StartCoroutine("FindTargetsWithDelay", .2f);
     }
@@ -23,10 +28,10 @@ public class FieldOfView:MonoBehaviour {
         while (true)
         {
             yield return new WaitForSeconds(delay);
-            Debug.Log("Looking");
             FindVisibleTargets();
         }
     }
+    
 
     public void FindVisibleTargets()
     {
@@ -35,6 +40,7 @@ public class FieldOfView:MonoBehaviour {
         for(int i = 0; i<targetsInViewRadius.Length; i++)
         {
             Transform target = targetsInViewRadius[i].transform;
+            GameObject obj = targetsInViewRadius[i].gameObject;
             Vector3 dirToTarget = (target.position - transform.position).normalized;
             if(Vector3.Angle(transform.forward,dirToTarget) < viewAngle / 2)
             {
@@ -42,7 +48,14 @@ public class FieldOfView:MonoBehaviour {
 
                 if (!Physics.Raycast(transform.position, dirToTarget, dstToTarget, obstacleMask))
                 {
+                    //make sure to check that your observable is not yourself
                     visibleTargets.Add(target);
+                    if (!seenObservables.Contains(obj))
+                    {
+                        Debug.Log("Found gameobject");
+                        observables.Add(obj);
+                        seenObservables.Add(obj);
+                    }
                 }
             }
         }

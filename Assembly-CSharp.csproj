@@ -61,9 +61,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Observable.cs" />
     <Compile Include="Assets\Scripts\AgentBehavior.cs" />
     <Compile Include="Assets\Scripts\Controller\GameController.cs" />
     <Compile Include="Assets\Scripts\FieldOfView.cs" />
+    <Compile Include="Assets\Scripts\KnowledgeBase.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/User/Documents/Unity Projects/StateRepresentation/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
