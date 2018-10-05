@@ -36,7 +36,7 @@ public class FieldOfView:MonoBehaviour {
     public void FindVisibleTargets()
     {
         visibleTargets.Clear();
-        Collider[] targetsInViewRadius = Physics.OverlapSphere(transform.position, viewRadius);
+        Collider[] targetsInViewRadius = Physics.OverlapSphere(transform.position, viewRadius, targetMask);
         for(int i = 0; i<targetsInViewRadius.Length; i++)
         {
             Transform target = targetsInViewRadius[i].transform;
@@ -49,10 +49,11 @@ public class FieldOfView:MonoBehaviour {
                 if (!Physics.Raycast(transform.position, dirToTarget, dstToTarget, obstacleMask))
                 {
                     //make sure to check that your observable is not yourself
+
                     visibleTargets.Add(target);
                     if (!seenObservables.Contains(obj))
                     {
-                        Debug.Log("Found gameobject");
+                        Debug.Log("Found gameobject:"+obj.name);
                         observables.Add(obj);
                         seenObservables.Add(obj);
                     }

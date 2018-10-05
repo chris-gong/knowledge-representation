@@ -5,30 +5,34 @@ using UnityEngine.AI;
 
 public class MoveRandomly : MonoBehaviour {
 
-    public float timer;
-
+    public float delay;
+    public Transform runTarget;
     public int timeAvailable;
+    KnowledgeBase knowledgeBase;
 
     public float speed; 
 
-    public NavMeshAgent agent;
+    private NavMeshAgent agent;
 	// Use this for initialization
 	void Start () {
         agent = gameObject.GetComponent<NavMeshAgent>();
+        knowledgeBase = gameObject.GetComponent<KnowledgeBase>();
         agent.speed = speed;
         setNewTarget();
+        StartCoroutine("WalkRoutine");
 
     }
 	
-	// Update is called once per frame
-	void Update () {
-        timer += Time.deltaTime;
-        if(timer > timeAvailable)
+    IEnumerator WalkRoutine()
+    {
+        while (knowledgeBase.facts.Find(x=> x.Contains("dead"))==null)
         {
+            yield return new WaitForSeconds(delay);
             setNewTarget();
-            timer = 0;
         }
-	}
+        agent.speed *= 2;
+        agent.SetDestination(runTarget.position);
+    }
 
     void setNewTarget()
     {

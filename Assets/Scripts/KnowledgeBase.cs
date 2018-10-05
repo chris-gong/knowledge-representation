@@ -27,6 +27,7 @@ public class KnowledgeBase : MonoBehaviour {
         foreach (GameObject obj in fow.observables)
         {
             Observable obs = obj.GetComponent<Observable>();
+            Debug.Log("NAME: "+obj.name);
             facts.AddRange(obs.GetFacts());
         }
 
