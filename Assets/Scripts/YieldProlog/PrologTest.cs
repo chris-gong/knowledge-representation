@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using YieldProlog;
 
-public class Prolog : MonoBehaviour {
+public class PrologTest : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {

@@ -1,5 +1,0 @@
-C:\work\YieldProlog\YieldProlog\source\csharp\examples\YPShell\bin\Debug\YPShell.exe
-C:\work\YieldProlog\YieldProlog\source\csharp\examples\YPShell\bin\Debug\YPShell.pdb
-C:\work\YieldProlog\YieldProlog\source\csharp\examples\YPShell\obj\Debug\YPShell.csprojResolveAssemblyReference.cache
-C:\work\YieldProlog\YieldProlog\source\csharp\examples\YPShell\obj\Debug\YPShell.exe
-C:\work\YieldProlog\YieldProlog\source\csharp\examples\YPShell\obj\Debug\YPShell.pdb
