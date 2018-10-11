@@ -339,6 +339,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 4504f7659b22c0043b4460f0d287642c, type: 2}
+    - target: {fileID: 1318336147173714, guid: b0ac17fb7044dc34fbb1699af2a7ac17, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0ac17fb7044dc34fbb1699af2a7ac17, type: 2}
   m_IsPrefabAsset: 0
@@ -586,19 +590,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 23102848145200734, guid: a91f78fb8c2669f42aa246caafbc7765,
+    - target: {fileID: 114051676588541166, guid: a91f78fb8c2669f42aa246caafbc7765,
         type: 2}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: runTarget
       value: 
-      objectReference: {fileID: 2100000, guid: 256a36da32a9bca438fdb3dda0ce35b3, type: 2}
-    - target: {fileID: 1059738877113718, guid: a91f78fb8c2669f42aa246caafbc7765, type: 2}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1059738877113718, guid: a91f78fb8c2669f42aa246caafbc7765, type: 2}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 659798399}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a91f78fb8c2669f42aa246caafbc7765, type: 2}
   m_IsPrefabAsset: 0
@@ -687,39 +683,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.22700001}
---- !u!1 &1688733586 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1059738877113718, guid: a91f78fb8c2669f42aa246caafbc7765,
-    type: 2}
-  m_PrefabInternal: {fileID: 684940096}
---- !u!114 &1688733587
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1688733586}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aeb6cf4222df2cc499a4c6ce49b3c79e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  facts:
-  - person(alice)
---- !u!114 &1688733588
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1688733586}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 808f608e08ac832408a83eb8a4b98ad1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  delay: 1
-  runTarget: {fileID: 659798399}
-  timeAvailable: 5
-  speed: 5
 --- !u!1 &1779929426 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1318336147173714, guid: b0ac17fb7044dc34fbb1699af2a7ac17,
