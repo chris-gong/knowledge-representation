@@ -96,9 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f6263c271ddd9f40abf5fb56014a4bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  facts:
-  - person(bob)
-  - located(bob,floor1,time1)
+  facts: []
 --- !u!135 &135000699338088616
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -11,4 +11,8 @@ public class Observable : MonoBehaviour {
         Debug.Log("Getting Facts");
         return facts;
     }
+    public void addFact(string fact)
+    {
+        facts.Add(fact);
+    }
 }

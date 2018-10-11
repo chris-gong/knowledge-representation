@@ -20,7 +20,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 2}
-  m_MinSize: {x: 950, y: 300}
+  m_MinSize: {x: 950, y: 542}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &2
 MonoBehaviour:
@@ -176,8 +176,8 @@ MonoBehaviour:
     y: 0
     width: 240
     height: 357
-  m_MinSize: {x: 202, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 13}
   m_Panes:
   - {fileID: 13}
@@ -254,8 +254,8 @@ MonoBehaviour:
     y: 0
     width: 362
     height: 635
-  m_MinSize: {x: 277, y: 71}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 18}
   m_Panes:
   - {fileID: 18}
@@ -263,7 +263,7 @@ MonoBehaviour:
   - {fileID: 20}
   - {fileID: 21}
   m_Selected: 0
-  m_LastSelected: 3
+  m_LastSelected: 1
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -370,9 +370,9 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 96330000
-    m_LastClickedID: 13206
-    m_ExpandedIDs: d0a1feffbab5feff18dcfeff5c0cffff6a12ffff8619ffffc433ffffe455ffffe6fbffff00000000
+    m_SelectedIDs: e4fbffff
+    m_LastClickedID: -1052
+    m_ExpandedIDs: e6fbffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -459,11 +459,11 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: -0.37557298, y: 0.587555, z: -0.3541159, w: -0.62315804}
     speed: 2
-    m_Value: {x: -0.375573, y: 0.58755505, z: -0.35411593, w: -0.6231581}
+    m_Value: {x: -0.37557298, y: 0.58755493, z: -0.35411587, w: -0.62315804}
   m_Size:
-    m_Target: 10.346926
+    m_Target: 17.547155
     speed: 2
-    m_Value: 10.346926
+    m_Value: 17.547155
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -579,20 +579,20 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts
+    - Assets
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scripts
+  - Assets
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\User\Documents\Unity Projects\StateRepresentation
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: b62c0000
-    m_LastClickedID: 11446
-    m_ExpandedIDs: 00000000262a0000b62c0000c82c00005a2d00005c2d00005e2d0000602d0000622d0000642d000000ca9a3b
+    m_SelectedIDs: 2a2a0000
+    m_LastClickedID: 10794
+    m_ExpandedIDs: 000000002a2a0000c22c0000d42c00008e2d0000902d0000922d0000942d0000962d0000982d000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -620,7 +620,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000262a0000b62c0000c82c00005a2d00005c2d00005e2d0000602d0000622d0000642d0000
+    m_ExpandedIDs: 000000002a2a0000c22c0000d42c00008e2d0000902d0000922d0000942d0000962d0000982d0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
