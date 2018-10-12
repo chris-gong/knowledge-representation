@@ -10,9 +10,10 @@ public class AgentBehavior : MonoBehaviour {
     public float behaviorDelay;
     public Transform runTarget;
     KnowledgeBase knowledgeBase;
-    private string currentBehavior;
-    private int myId;
-
+    private AgentInfo info;
+    private GameObject levelController;
+    private Coroutine currentBehavior;
+    private Coroutine thinkingBehavior;
     public float speed;
 
     private NavMeshAgent agent;
@@ -22,17 +23,17 @@ public class AgentBehavior : MonoBehaviour {
         agent = gameObject.GetComponent<NavMeshAgent>();
         knowledgeBase = gameObject.GetComponent<KnowledgeBase>();
         agent.speed = speed;
-        myId = gameObject.GetComponent<AgentInfo>().agentId;
-        currentBehavior = "RandomWalkBehavior";
-        StartCoroutine("RandomwWalkBehavior");
-        StartCoroutine("ChooseBehavior");
+        info = gameObject.GetComponent<AgentInfo>();
+        levelController = GameObject.Find("LevelController");
+        currentBehavior = StartCoroutine("RandomwWalkBehavior");
+        thinkingBehavior = StartCoroutine("ChooseBehavior");
 
     }
 
     void StartNewBehavior(string newBehavior)
     {
         StopCoroutine(currentBehavior);
-        StartCoroutine(newBehavior);
+        currentBehavior = StartCoroutine(newBehavior);
     }
 
     IEnumerator ChooseBehavior()
@@ -40,17 +41,23 @@ public class AgentBehavior : MonoBehaviour {
         while (true)
         {
             yield return new WaitForSeconds(behaviorDelay);
+            //Debug.Log("Choosing behavior");
             Variable deadAgent = new Variable();
             Variable whenVar = new Variable();
             Variable whereVar = new Variable();
+            //Debug.Log("AgentBehavior" + info.agentName);
+            int deadCount = 0;
+            bool killerFound = false;
             try {
-                foreach (bool l1 in YP.matchDynamic(myId, Atom.a("dead"),
+                foreach (bool l1 in YP.matchDynamic(info.agentId, Atom.a("dead"),
                     new object[] { deadAgent, whenVar, whereVar }))
                 {
-                    Debug.Log(string.Format("{0} HAS DIED IN {1} at {2}",
+                    Debug.Log(string.Format("{0} KNOWS {1} HAS DIED IN {2} at {3}",
+                        info.agentName,
                         deadAgent.getValue(),
                         whereVar.getValue(),
                         whenVar.getValue()));
+                    deadCount++;
                 }
             }
             catch(System.Exception e)
@@ -58,24 +65,28 @@ public class AgentBehavior : MonoBehaviour {
                 Debug.Log(e);
             }
 
-            Variable killedAgent = new Variable();
-            Variable deadAgent = new Variable();
+            Variable killerAgent = new Variable();
             try
             {
-                foreach (bool l1 in YP.matchDynamic(myId, Atom.a("dead"),
-                    new object[] { deadAgent, whenVar, whereVar }))
+                foreach (bool l1 in YP.matchDynamic(info.agentId, Atom.a("killed"),
+                    new object[] { killerAgent, deadAgent}))
                 {
-                    Debug.Log(string.Format("{0} HAS DIED IN {1} at {2}",
-                        deadAgent.getValue(),
-                        whereVar.getValue(),
-                        whenVar.getValue()));
+                    Debug.Log(string.Format("{0} KNOWS {1} HAS KILLED {2}",
+                        info.agentName,
+                        killerAgent.getValue(),
+                        deadAgent.getValue()));
+                    killerFound = true;
                 }
             }
             catch (System.Exception e)
             {
                 Debug.Log(e);
             }
-
+            if(deadCount == 3 || killerFound)
+            {
+                StartNewBehavior("RunAwayBehavior");
+                StopCoroutine(thinkingBehavior);
+            }
         }
     }
 
@@ -85,12 +96,15 @@ public class AgentBehavior : MonoBehaviour {
         while (true)
         {
             yield return new WaitForSeconds(retargetDelay);
+            //Debug.Log("setting new target");
             SetNewTarget();
+            //StopCoroutine("RunAwayBehavior");
         }
     }
 
     IEnumerator RunAwayBehavior()
     {
+        SetHidingSpot();
         yield return false;
     }
 
@@ -104,7 +118,16 @@ public class AgentBehavior : MonoBehaviour {
         float newZ = z + Random.Range(-9 - z, 9 - z);
 
         Vector3 targetLoc = new Vector3(newX, gameObject.transform.position.y, newZ);
-
         agent.SetDestination(targetLoc);
+    }
+    void SetHidingSpot()
+    {
+        List<Transform> hidingSpots = levelController.GetComponent<LevelController>().getHidingSpots();
+        System.Random rand = new System.Random();
+        int index = rand.Next(hidingSpots.Count);
+        //Debug.Log(hidingSpots[index].position);
+        agent.SetDestination(hidingSpots[index].position);
+        agent.speed = agent.speed * 3;
+
     }
 }

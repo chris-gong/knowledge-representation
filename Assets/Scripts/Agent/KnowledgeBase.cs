@@ -7,13 +7,13 @@ public class KnowledgeBase : MonoBehaviour {
 
     public List<string> facts;
     private FieldOfView fow;
-    public int myId;
+    public AgentInfo info;
 
 	// Use this for initialization
 	void Start () {
         fow = gameObject.GetComponent<FieldOfView>();
         StartCoroutine("RetrieveFactsWithDelay", .2f);
-        myId = gameObject.GetComponent<AgentInfo>().agentId;
+        info = gameObject.GetComponent<AgentInfo>();
     }
 	
     IEnumerator RetrieveFactsWithDelay(float delay)
@@ -37,7 +37,7 @@ public class KnowledgeBase : MonoBehaviour {
             List< ObservableFact> factList = obs.GetFacts();
             foreach(ObservableFact fact in factList)
             {
-                YP.assertFact(myId, fact.getLabel(), fact.getValues());
+                YP.assertFact(info.agentId, fact.getLabel(), fact.getValues());
             }
         }
 

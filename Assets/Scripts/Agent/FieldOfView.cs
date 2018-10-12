@@ -19,7 +19,7 @@ public class FieldOfView:MonoBehaviour {
     void Start()
     {
         seenObservables.Add(gameObject);
-        Debug.Log("STARTING");
+        //Debug.Log("STARTING");
         StartCoroutine("FindTargetsWithDelay", .2f);
     }
 
@@ -53,7 +53,7 @@ public class FieldOfView:MonoBehaviour {
                     visibleTargets.Add(target);
                     if (!seenObservables.Contains(obj))
                     {
-                        Debug.Log("Found gameobject:"+obj.name);
+                        //Debug.Log("Found gameobject:"+obj.name);
                         observables.Add(obj);
                         seenObservables.Add(obj);
                     }

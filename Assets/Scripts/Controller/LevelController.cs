@@ -12,6 +12,7 @@ public class LevelController : MonoBehaviour {
 		if(instance == null)
         {
             LevelController.instance = this;
+            hidingSpots = new List<Transform>();
             GameObject[] spotObjects = GameObject.FindGameObjectsWithTag("Hiding Spot");
             for (int i = 0; i < spotObjects.Length; i++)
             {
@@ -30,4 +31,9 @@ public class LevelController : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    public List<Transform> getHidingSpots()
+    {
+        return this.hidingSpots;
+    }
 }
