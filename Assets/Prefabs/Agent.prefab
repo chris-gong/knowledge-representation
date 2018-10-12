@@ -21,19 +21,20 @@ GameObject:
   - component: {fileID: 4693141773918864}
   - component: {fileID: 33828314063411666}
   - component: {fileID: 23102848145200734}
-  - component: {fileID: 114766465318538262}
-  - component: {fileID: 114970618099026514}
-  - component: {fileID: 195023342490665238}
-  - component: {fileID: 65722168666527320}
-  - component: {fileID: 114417635499963654}
-  - component: {fileID: 114051676588541166}
   - component: {fileID: 54082883632207718}
+  - component: {fileID: 195023342490665238}
+  - component: {fileID: 208856419356141406}
+  - component: {fileID: 114766465318538262}
+  - component: {fileID: 114417635499963654}
+  - component: {fileID: 114593240910664776}
+  - component: {fileID: 114362630812401726}
+  - component: {fileID: 136275799765548518}
   m_Layer: 11
   m_Name: Agent
   m_TagString: Agent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
-  m_StaticEditorFlags: 8
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &4693141773918864
 Transform:
@@ -42,7 +43,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1059738877113718}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 1, z: 6.8}
+  m_LocalPosition: {x: -2.6964705, y: 1.0669279, z: -3.6494503}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -89,7 +90,7 @@ MeshFilter:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1059738877113718}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!54 &54082883632207718
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -105,19 +106,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &65722168666527320
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1059738877113718}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114051676588541166
+--- !u!114 &114362630812401726
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -125,13 +114,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1059738877113718}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 808f608e08ac832408a83eb8a4b98ad1, type: 3}
+  m_Script: {fileID: 11500000, guid: a52050da32cb06a47be47c5db53a25cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 1
+  retargetDelay: 3
+  behaviorDelay: 1
   runTarget: {fileID: 0}
-  timeAvailable: 5
-  speed: 5
+  speed: 4
 --- !u!114 &114417635499963654
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -145,6 +134,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   facts:
   - person(alice)
+  myId: 0
+--- !u!114 &114593240910664776
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1059738877113718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa324bfc2d8640340ab3b7c2b38099c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agentId: 0
+  agentName: 
 --- !u!114 &114766465318538262
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -156,8 +159,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76b38eef7e37ffb408657992ac277ebe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  viewRadius: 5
-  viewAngle: 76
+  viewRadius: 10
+  viewAngle: 100
   targetMask:
     serializedVersion: 2
     m_Bits: 512
@@ -166,17 +169,19 @@ MonoBehaviour:
     m_Bits: 1024
   visibleTargets: []
   observables: []
---- !u!114 &114970618099026514
-MonoBehaviour:
+--- !u!136 &136275799765548518
+CapsuleCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1059738877113718}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a52050da32cb06a47be47c5db53a25cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Radius: 0.5000001
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!195 &195023342490665238
 NavMeshAgent:
   m_ObjectHideFlags: 1
@@ -198,3 +203,18 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!208 &208856419356141406
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1059738877113718}
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 1, y: 0.5, z: 1}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5

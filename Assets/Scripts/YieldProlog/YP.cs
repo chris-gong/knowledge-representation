@@ -43,6 +43,7 @@ namespace YieldProlog
     {
         private static Fail _fail = new Fail();
         private static Repeat _repeat = new Repeat();
+        private static Dictionary<NameArity, List<IClause>>[] predicateStoreList = new Dictionary<NameArity, List<IClause>>[4];
         private static Dictionary<NameArity, List<IClause>> _predicatesStore =
             new Dictionary<NameArity, List<IClause>>();
         private static TextWriter _outputStream = System.Console.Out;
@@ -1803,6 +1804,33 @@ namespace YieldProlog
             indexedAnswers.addAnswer(values);
         }
 
+        public static void assertFact(int id, Atom name, object[] values)
+        {
+            if (predicateStoreList[id] == null)
+            {
+                predicateStoreList[id] = new Dictionary<NameArity, List<IClause>>();
+            }
+            NameArity nameArity = new NameArity(name, values.Length);
+            List<IClause> clauses;
+            IndexedAnswers indexedAnswers;
+            if (!predicateStoreList[id].TryGetValue(nameArity, out clauses))
+            {
+                // Create an IndexedAnswers as the only clause of the predicate.                
+                predicateStoreList[id][nameArity] = (clauses = new List<IClause>());
+                clauses.Add(indexedAnswers = new IndexedAnswers(values.Length));
+            }
+            else
+            {
+                indexedAnswers = null;
+                if (clauses.Count >= 1)
+                    indexedAnswers = clauses[clauses.Count - 1] as IndexedAnswers;
+                if (indexedAnswers == null)
+                    // The latest clause is not an IndexedAnswers, so add one.
+                    clauses.Add(indexedAnswers = new IndexedAnswers(values.Length));
+            }
+
+            indexedAnswers.addAnswer(values);
+        }
         /// <summary>
         /// Assert values, prepending to the front of the set of facts for the predicate with the
         /// name and with arity values.Length.
@@ -1847,6 +1875,24 @@ namespace YieldProlog
             List<IClause> clauses;
             if (!_predicatesStore.TryGetValue(new NameArity(name, arguments.Length), out clauses))
                 return unknownPredicate(name, arguments.Length, 
+                     "Undefined dynamic predicate: " + name + "/" + arguments.Length);
+
+            if (clauses.Count == 1)
+                // Usually there is only one clause, so return it without needing to wrap it in an iterator.
+                return clauses[0].match(arguments);
+            else
+                return matchAllClauses(clauses, arguments);
+        }
+
+        public static IEnumerable<bool> matchDynamic(int id, Atom name, object[] arguments)
+        {
+            if(predicateStoreList[id] == null)
+            {
+                predicateStoreList[id] = new Dictionary<NameArity, List<IClause>>();
+            }
+            List<IClause> clauses;
+            if (!predicateStoreList[id].TryGetValue(new NameArity(name, arguments.Length), out clauses))
+                return unknownPredicate(name, arguments.Length,
                      "Undefined dynamic predicate: " + name + "/" + arguments.Length);
 
             if (clauses.Count == 1)

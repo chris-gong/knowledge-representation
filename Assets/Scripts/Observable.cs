@@ -1,18 +1,54 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using YieldProlog;
+public class ObservableFact
+{
+    private Atom label;
+    private Atom[] values;
+
+    public Atom getLabel()
+    {  
+        return label;
+    }
+
+    public Atom[] getValues()
+    {
+        return values; 
+    }
+
+
+    public void SetLabel(string str)
+    {
+        this.label = Atom.a(str);
+    }
+
+    public void SetValues(string[] val)
+    {
+        Atom[] newAtoms = new Atom[val.Length];
+        for(int i = 0; i < val.Length; i++)
+        {
+            newAtoms[i] = Atom.a(val[i]);
+        }
+        values = newAtoms;
+    }
+}
 
 public class Observable : MonoBehaviour {
+    
+    private List<ObservableFact> facts = new List<ObservableFact>();
 
-    public List<string> facts;
-
-	public List<string> GetFacts()
+    public void AddFact(string label, string[] values)
     {
-        Debug.Log("Getting Facts");
-        return facts;
+        ObservableFact newFact = new ObservableFact();
+        newFact.SetLabel(label);
+        newFact.SetValues(values);
+
+        facts.Add(newFact);
     }
-    public void addFact(string fact)
+
+    public List<ObservableFact> GetFacts()
     {
-        facts.Add(fact);
+        return facts;
     }
 }

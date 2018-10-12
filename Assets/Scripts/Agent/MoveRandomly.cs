@@ -30,8 +30,8 @@ public class MoveRandomly : MonoBehaviour {
             yield return new WaitForSeconds(delay);
             setNewTarget();
         }
-        agent.speed *= 2;
-        agent.SetDestination(runTarget.position);
+        //agent.speed *= 2;
+        //agent.SetDestination(runTarget.position);
     }
 
     void setNewTarget()

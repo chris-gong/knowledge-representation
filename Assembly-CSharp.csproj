@@ -61,14 +61,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\AgentBehavior.cs" />
+    <Compile Include="Assets\Scripts\Agent\AgentBehavior.cs" />
+    <Compile Include="Assets\Scripts\Agent\AgentInfo.cs" />
+    <Compile Include="Assets\Scripts\Agent\FieldOfView.cs" />
+    <Compile Include="Assets\Scripts\Agent\KnowledgeBase.cs" />
+    <Compile Include="Assets\Scripts\Agent\MoveRandomly.cs" />
     <Compile Include="Assets\Scripts\Controller\GameController.cs" />
-    <Compile Include="Assets\Scripts\FieldOfView.cs" />
-    <Compile Include="Assets\Scripts\KillAgent.cs" />
-    <Compile Include="Assets\Scripts\KnowledgeBase.cs" />
-    <Compile Include="Assets\Scripts\MovePlayer.cs" />
-    <Compile Include="Assets\Scripts\MoveRandomly.cs" />
+    <Compile Include="Assets\Scripts\Controller\LevelController.cs" />
     <Compile Include="Assets\Scripts\Observable.cs" />
+    <Compile Include="Assets\Scripts\Player\KillAgent.cs" />
+    <Compile Include="Assets\Scripts\Player\MovePlayer.cs" />
     <Compile Include="Assets\Scripts\YieldProlog\Atom.cs" />
     <Compile Include="Assets\Scripts\YieldProlog\BagofAnswers.cs" />
     <Compile Include="Assets\Scripts\YieldProlog\Compiler.cs" />
