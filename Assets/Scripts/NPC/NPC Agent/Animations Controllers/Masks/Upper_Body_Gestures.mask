@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &101100000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Upper_Body_Gestures
+  m_Mask: 00000000010000000000000000000000000000000100000001000000010000000100000000000000000000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Character_2_geometry1
+    m_Weight: 1
+  - m_Path: Root2
+    m_Weight: 1
+  - m_Path: Root2/l_hip
+    m_Weight: 1
+  - m_Path: Root2/l_hip/l_knee
+    m_Weight: 1
+  - m_Path: Root2/l_hip/l_knee/l_foot
+    m_Weight: 1
+  - m_Path: Root2/l_hip/l_knee/l_foot/l_toe
+    m_Weight: 1
+  - m_Path: Root2/r_hip
+    m_Weight: 1
+  - m_Path: Root2/r_hip/r_knee
+    m_Weight: 1
+  - m_Path: Root2/r_hip/r_knee/r_foot
+    m_Weight: 1
+  - m_Path: Root2/r_hip/r_knee/r_foot/r_toe
+    m_Weight: 1
+  - m_Path: Root2/Spine
+    m_Weight: 1
+  - m_Path: Root2/Spine/Chest
+    m_Weight: 1
+  - m_Path: Root2/Spine/Chest/l_clavicle
+    m_Weight: 1
+  - m_Path: Root2/Spine/Chest/l_clavicle/l_shoulder
+    m_Weight: 1
+  - m_Path: Root2/Spine/Chest/l_clavicle/l_shoulder/l_elbow
+    m_Weight: 1
+  - m_Path: Root2/Spine/Chest/l_clavicle/l_shoulder/l_elbow/l_wrist
+    m_Weight: 1
+  - m_Path: Root2/Spine/Chest/l_clavicle/l_shoulder/l_elbow/l_wrist/l_hand
+    m_Weight: 1
+  - m_Path: Root2/Spine/Chest/Neck
+    m_Weight: 1
+  - m_Path: Root2/Spine/Chest/Neck/Head
+    m_Weight: 1
+  - m_Path: Root2/Spine/Chest/r_clavicle
+    m_Weight: 1
+  - m_Path: Root2/Spine/Chest/r_clavicle/r_shoulder
+    m_Weight: 1
+  - m_Path: Root2/Spine/Chest/r_clavicle/r_shoulder/r_elbow
+    m_Weight: 1
+  - m_Path: Root2/Spine/Chest/r_clavicle/r_shoulder/r_elbow/r_wrist
+    m_Weight: 1
+  - m_Path: Root2/Spine/Chest/r_clavicle/r_shoulder/r_elbow/r_wrist/r_hand
+    m_Weight: 1

@@ -6,6 +6,7 @@ public class LevelController : MonoBehaviour {
 
     static private LevelController instance;
     private List<Transform> hidingSpots;
+    private List<Transform> wanderingSpots;
 
 	// Use this for initialization
 	void Start () {
@@ -13,10 +14,17 @@ public class LevelController : MonoBehaviour {
         {
             LevelController.instance = this;
             hidingSpots = new List<Transform>();
+            wanderingSpots = new List<Transform>();
             GameObject[] spotObjects = GameObject.FindGameObjectsWithTag("Hiding Spot");
             for (int i = 0; i < spotObjects.Length; i++)
             {
                 hidingSpots.Add(spotObjects[i].transform);
+            }
+
+            spotObjects = GameObject.FindGameObjectsWithTag("Wandering Spot");
+            for (int i = 0; i < spotObjects.Length; i++)
+            {
+                wanderingSpots.Add(spotObjects[i].transform);
             }
         }
         else
@@ -35,5 +43,10 @@ public class LevelController : MonoBehaviour {
     public List<Transform> getHidingSpots()
     {
         return this.hidingSpots;
+    }
+
+    public List<Transform> getWanderingSpots()
+    {
+        return this.wanderingSpots;
     }
 }

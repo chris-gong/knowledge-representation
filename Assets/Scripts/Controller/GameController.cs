@@ -13,7 +13,10 @@ public class GameController : MonoBehaviour {
             GameController.instance = this;
         }
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-        player = players[0];
+        if(players.Length > 0)
+        {
+            player = players[0];
+        }
         GameObject[] agents = GameObject.FindGameObjectsWithTag("Agent");
         //GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
         for(int i = 0; i < agents.Length; i++)

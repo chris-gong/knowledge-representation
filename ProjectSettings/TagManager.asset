@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Agent
   - Hiding Spot
+  - Wandering Spot
   layers:
   - Default
   - TransparentFX

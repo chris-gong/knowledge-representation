@@ -1,0 +1,370 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Body
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: M3DMale
+    m_Weight: 1
+  - m_Path: M3DMale/hip
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/lCollar
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/lCollar/lShldrBend
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/lCollar/lShldrBend/lShldrTwist
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/lCollar/lShldrBend/lShldrTwist/lForearmBend
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/lCollar/lShldrBend/lShldrTwist/lForearmBend/lForearmTwist
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/lCollar/lShldrBend/lShldrTwist/lForearmBend/lForearmTwist/lHand
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/lCollar/lShldrBend/lShldrTwist/lForearmBend/lForearmTwist/lHand/lCarpal1
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/lCollar/lShldrBend/lShldrTwist/lForearmBend/lForearmTwist/lHand/lCarpal1/lIndex1
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/lCollar/lShldrBend/lShldrTwist/lForearmBend/lForearmTwist/lHand/lCarpal1/lIndex1/lIndex2
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/lCollar/lShldrBend/lShldrTwist/lForearmBend/lForearmTwist/lHand/lCarpal1/lIndex1/lIndex2/lIndex3
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/lCollar/lShldrBend/lShldrTwist/lForearmBend/lForearmTwist/lHand/lCarpal2
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/lCollar/lShldrBend/lShldrTwist/lForearmBend/lForearmTwist/lHand/lCarpal2/lMid1
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/lCollar/lShldrBend/lShldrTwist/lForearmBend/lForearmTwist/lHand/lCarpal2/lMid1/lMid2
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/lCollar/lShldrBend/lShldrTwist/lForearmBend/lForearmTwist/lHand/lCarpal2/lMid1/lMid2/lMid3
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/lCollar/lShldrBend/lShldrTwist/lForearmBend/lForearmTwist/lHand/lCarpal3
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/lCollar/lShldrBend/lShldrTwist/lForearmBend/lForearmTwist/lHand/lCarpal3/lRing1
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/lCollar/lShldrBend/lShldrTwist/lForearmBend/lForearmTwist/lHand/lCarpal3/lRing1/lRing2
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/lCollar/lShldrBend/lShldrTwist/lForearmBend/lForearmTwist/lHand/lCarpal3/lRing1/lRing2/lRing3
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/lCollar/lShldrBend/lShldrTwist/lForearmBend/lForearmTwist/lHand/lCarpal4
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/lCollar/lShldrBend/lShldrTwist/lForearmBend/lForearmTwist/lHand/lCarpal4/lPinky1
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/lCollar/lShldrBend/lShldrTwist/lForearmBend/lForearmTwist/lHand/lCarpal4/lPinky1/lPinky2
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/lCollar/lShldrBend/lShldrTwist/lForearmBend/lForearmTwist/lHand/lCarpal4/lPinky1/lPinky2/lPinky3
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/lCollar/lShldrBend/lShldrTwist/lForearmBend/lForearmTwist/lHand/lHandAttachmentPointL
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/lCollar/lShldrBend/lShldrTwist/lForearmBend/lForearmTwist/lHand/lThumb1
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/lCollar/lShldrBend/lShldrTwist/lForearmBend/lForearmTwist/lHand/lThumb1/lThumb2
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/lCollar/lShldrBend/lShldrTwist/lForearmBend/lForearmTwist/lHand/lThumb1/lThumb2/lThumb3
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/lEar
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/lEye
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/lowerJaw
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/lowerJaw/lowerFaceRig
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/lowerJaw/lowerFaceRig/BelowJaw
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/lowerJaw/lowerFaceRig/Chin
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/lowerJaw/lowerFaceRig/lCheekLower
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/lowerJaw/lowerFaceRig/LipBelow
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/lowerJaw/lowerFaceRig/LipLowerMiddle
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/lowerJaw/lowerFaceRig/lJawClench
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/lowerJaw/lowerFaceRig/lLipCorner
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/lowerJaw/lowerFaceRig/lLipLowerInner
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/lowerJaw/lowerFaceRig/lLipLowerOuter
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/lowerJaw/lowerFaceRig/lNasolabialLower
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/lowerJaw/lowerFaceRig/lNasolabialMouthCorner
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/lowerJaw/lowerFaceRig/rCheekLower
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/lowerJaw/lowerFaceRig/rJawClench
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/lowerJaw/lowerFaceRig/rLipCorner
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/lowerJaw/lowerFaceRig/rLipLowerInner
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/lowerJaw/lowerFaceRig/rLipLowerOuter
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/lowerJaw/lowerFaceRig/rNasolabialLower
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/lowerJaw/lowerFaceRig/rNasolabialMouthCorner
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/lowerJaw/lowerTeeth
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/lowerJaw/lowerTeeth/tongue01
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/lowerJaw/lowerTeeth/tongue01/tongue02
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/lowerJaw/lowerTeeth/tongue01/tongue02/tongue03
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/lowerJaw/lowerTeeth/tongue01/tongue02/tongue03/tongue04
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/rEar
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/rEye
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/upperFaceRig
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/upperFaceRig/CenterBrow
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/upperFaceRig/lBrowInner
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/upperFaceRig/lBrowMid
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/upperFaceRig/lBrowOuter
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/upperFaceRig/lCheekUpper
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/upperFaceRig/lEyelidInner
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/upperFaceRig/lEyelidLower
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/upperFaceRig/lEyelidLowerInner
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/upperFaceRig/lEyelidLowerOuter
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/upperFaceRig/lEyelidOuter
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/upperFaceRig/lEyelidUpper
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/upperFaceRig/lEyelidUpperInner
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/upperFaceRig/lEyelidUpperOuter
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/upperFaceRig/LipUpperMiddle
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/upperFaceRig/lLipBelowNose
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/upperFaceRig/lLipNasolabialCrease
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/upperFaceRig/lLipUpperInner
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/upperFaceRig/lLipUpperOuter
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/upperFaceRig/lNasolabialMiddle
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/upperFaceRig/lNasolabialUpper
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/upperFaceRig/lNostril
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/upperFaceRig/lSquintInner
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/upperFaceRig/lSquintOuter
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/upperFaceRig/MidNoseBridge
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/upperFaceRig/Nose
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/upperFaceRig/rBrowInner
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/upperFaceRig/rBrowMid
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/upperFaceRig/rBrowOuter
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/upperFaceRig/rCheekUpper
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/upperFaceRig/rEyelidInner
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/upperFaceRig/rEyelidLower
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/upperFaceRig/rEyelidLowerInner
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/upperFaceRig/rEyelidLowerOuter
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/upperFaceRig/rEyelidOuter
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/upperFaceRig/rEyelidUpper
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/upperFaceRig/rEyelidUpperInner
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/upperFaceRig/rEyelidUpperOuter
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/upperFaceRig/rLipBelowNose
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/upperFaceRig/rLipNasolabialCrease
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/upperFaceRig/rLipUpperInner
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/upperFaceRig/rLipUpperOuter
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/upperFaceRig/rNasolabialMiddle
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/upperFaceRig/rNasolabialUpper
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/upperFaceRig/rNostril
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/upperFaceRig/rSquintInner
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/upperFaceRig/rSquintOuter
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/neckLower/neckUpper/head/upperTeeth
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/rCollar
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/rCollar/rShldrBend
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/rCollar/rShldrBend/rShldrTwist
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/rCollar/rShldrBend/rShldrTwist/rForearmBend
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/rCollar/rShldrBend/rShldrTwist/rForearmBend/rForearmTwist
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/rCollar/rShldrBend/rShldrTwist/rForearmBend/rForearmTwist/rHand
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/rCollar/rShldrBend/rShldrTwist/rForearmBend/rForearmTwist/rHand/rCarpal1
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/rCollar/rShldrBend/rShldrTwist/rForearmBend/rForearmTwist/rHand/rCarpal1/rIndex1
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/rCollar/rShldrBend/rShldrTwist/rForearmBend/rForearmTwist/rHand/rCarpal1/rIndex1/rIndex2
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/rCollar/rShldrBend/rShldrTwist/rForearmBend/rForearmTwist/rHand/rCarpal1/rIndex1/rIndex2/rIndex3
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/rCollar/rShldrBend/rShldrTwist/rForearmBend/rForearmTwist/rHand/rCarpal2
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/rCollar/rShldrBend/rShldrTwist/rForearmBend/rForearmTwist/rHand/rCarpal2/rMid1
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/rCollar/rShldrBend/rShldrTwist/rForearmBend/rForearmTwist/rHand/rCarpal2/rMid1/rMid2
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/rCollar/rShldrBend/rShldrTwist/rForearmBend/rForearmTwist/rHand/rCarpal2/rMid1/rMid2/rMid3
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/rCollar/rShldrBend/rShldrTwist/rForearmBend/rForearmTwist/rHand/rCarpal3
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/rCollar/rShldrBend/rShldrTwist/rForearmBend/rForearmTwist/rHand/rCarpal3/rRing1
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/rCollar/rShldrBend/rShldrTwist/rForearmBend/rForearmTwist/rHand/rCarpal3/rRing1/rRing2
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/rCollar/rShldrBend/rShldrTwist/rForearmBend/rForearmTwist/rHand/rCarpal3/rRing1/rRing2/rRing3
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/rCollar/rShldrBend/rShldrTwist/rForearmBend/rForearmTwist/rHand/rCarpal4
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/rCollar/rShldrBend/rShldrTwist/rForearmBend/rForearmTwist/rHand/rCarpal4/rPinky1
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/rCollar/rShldrBend/rShldrTwist/rForearmBend/rForearmTwist/rHand/rCarpal4/rPinky1/rPinky2
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/rCollar/rShldrBend/rShldrTwist/rForearmBend/rForearmTwist/rHand/rCarpal4/rPinky1/rPinky2/rPinky3
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/rCollar/rShldrBend/rShldrTwist/rForearmBend/rForearmTwist/rHand/rHandAttachmentPointR
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/rCollar/rShldrBend/rShldrTwist/rForearmBend/rForearmTwist/rHand/rThumb1
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/rCollar/rShldrBend/rShldrTwist/rForearmBend/rForearmTwist/rHand/rThumb1/rThumb2
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/chestUpper/rCollar/rShldrBend/rShldrTwist/rForearmBend/rForearmTwist/rHand/rThumb1/rThumb2/rThumb3
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/lPectoral
+    m_Weight: 1
+  - m_Path: M3DMale/hip/abdomenLower/abdomenUpper/chestLower/rPectoral
+    m_Weight: 1
+  - m_Path: M3DMale/hip/pelvis
+    m_Weight: 1
+  - m_Path: M3DMale/hip/pelvis/lThighBend
+    m_Weight: 1
+  - m_Path: M3DMale/hip/pelvis/lThighBend/lThighTwist
+    m_Weight: 1
+  - m_Path: M3DMale/hip/pelvis/lThighBend/lThighTwist/lShin
+    m_Weight: 1
+  - m_Path: M3DMale/hip/pelvis/lThighBend/lThighTwist/lShin/lFoot
+    m_Weight: 1
+  - m_Path: M3DMale/hip/pelvis/lThighBend/lThighTwist/lShin/lFoot/lHeel
+    m_Weight: 1
+  - m_Path: M3DMale/hip/pelvis/lThighBend/lThighTwist/lShin/lFoot/lMetatarsals
+    m_Weight: 1
+  - m_Path: M3DMale/hip/pelvis/lThighBend/lThighTwist/lShin/lFoot/lMetatarsals/lBigToe
+    m_Weight: 1
+  - m_Path: M3DMale/hip/pelvis/lThighBend/lThighTwist/lShin/lFoot/lMetatarsals/lBigToe/lBigToe_2
+    m_Weight: 1
+  - m_Path: M3DMale/hip/pelvis/lThighBend/lThighTwist/lShin/lFoot/lMetatarsals/lSmallToe1
+    m_Weight: 1
+  - m_Path: M3DMale/hip/pelvis/lThighBend/lThighTwist/lShin/lFoot/lMetatarsals/lSmallToe1/lSmallToe1_2
+    m_Weight: 1
+  - m_Path: M3DMale/hip/pelvis/lThighBend/lThighTwist/lShin/lFoot/lMetatarsals/lSmallToe2
+    m_Weight: 1
+  - m_Path: M3DMale/hip/pelvis/lThighBend/lThighTwist/lShin/lFoot/lMetatarsals/lSmallToe2/lSmallToe2_2
+    m_Weight: 1
+  - m_Path: M3DMale/hip/pelvis/lThighBend/lThighTwist/lShin/lFoot/lMetatarsals/lSmallToe3
+    m_Weight: 1
+  - m_Path: M3DMale/hip/pelvis/lThighBend/lThighTwist/lShin/lFoot/lMetatarsals/lSmallToe3/lSmallToe3_2
+    m_Weight: 1
+  - m_Path: M3DMale/hip/pelvis/lThighBend/lThighTwist/lShin/lFoot/lMetatarsals/lSmallToe4
+    m_Weight: 1
+  - m_Path: M3DMale/hip/pelvis/lThighBend/lThighTwist/lShin/lFoot/lMetatarsals/lSmallToe4/lSmallToe4_2
+    m_Weight: 1
+  - m_Path: M3DMale/hip/pelvis/lThighBend/lThighTwist/lShin/lFoot/lMetatarsals/lToe
+    m_Weight: 1
+  - m_Path: M3DMale/hip/pelvis/rThighBend
+    m_Weight: 1
+  - m_Path: M3DMale/hip/pelvis/rThighBend/rThighTwist
+    m_Weight: 1
+  - m_Path: M3DMale/hip/pelvis/rThighBend/rThighTwist/rShin
+    m_Weight: 1
+  - m_Path: M3DMale/hip/pelvis/rThighBend/rThighTwist/rShin/rFoot
+    m_Weight: 1
+  - m_Path: M3DMale/hip/pelvis/rThighBend/rThighTwist/rShin/rFoot/rHeel
+    m_Weight: 1
+  - m_Path: M3DMale/hip/pelvis/rThighBend/rThighTwist/rShin/rFoot/rMetatarsals
+    m_Weight: 1
+  - m_Path: M3DMale/hip/pelvis/rThighBend/rThighTwist/rShin/rFoot/rMetatarsals/rBigToe
+    m_Weight: 1
+  - m_Path: M3DMale/hip/pelvis/rThighBend/rThighTwist/rShin/rFoot/rMetatarsals/rBigToe/rBigToe_2
+    m_Weight: 1
+  - m_Path: M3DMale/hip/pelvis/rThighBend/rThighTwist/rShin/rFoot/rMetatarsals/rSmallToe1
+    m_Weight: 1
+  - m_Path: M3DMale/hip/pelvis/rThighBend/rThighTwist/rShin/rFoot/rMetatarsals/rSmallToe1/rSmallToe1_2
+    m_Weight: 1
+  - m_Path: M3DMale/hip/pelvis/rThighBend/rThighTwist/rShin/rFoot/rMetatarsals/rSmallToe2
+    m_Weight: 1
+  - m_Path: M3DMale/hip/pelvis/rThighBend/rThighTwist/rShin/rFoot/rMetatarsals/rSmallToe2/rSmallToe2_2
+    m_Weight: 1
+  - m_Path: M3DMale/hip/pelvis/rThighBend/rThighTwist/rShin/rFoot/rMetatarsals/rSmallToe3
+    m_Weight: 1
+  - m_Path: M3DMale/hip/pelvis/rThighBend/rThighTwist/rShin/rFoot/rMetatarsals/rSmallToe3/rSmallToe3_2
+    m_Weight: 1
+  - m_Path: M3DMale/hip/pelvis/rThighBend/rThighTwist/rShin/rFoot/rMetatarsals/rSmallToe4
+    m_Weight: 1
+  - m_Path: M3DMale/hip/pelvis/rThighBend/rThighTwist/rShin/rFoot/rMetatarsals/rSmallToe4/rSmallToe4_2
+    m_Weight: 1
+  - m_Path: M3DMale/hip/pelvis/rThighBend/rThighTwist/rShin/rFoot/rMetatarsals/rToe
+    m_Weight: 1
+  - m_Path: M3DMale/M3DMale_LOD0
+    m_Weight: 1
+  - m_Path: M3DMale/M3DMale_LOD1
+    m_Weight: 1
+  - m_Path: M3DMale/M3DMale_LOD2
+    m_Weight: 1
+  - m_Path: M3DMale/M3DMale_LOD3
+    m_Weight: 1

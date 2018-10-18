@@ -1,0 +1,105 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66c29ae64b76cbd438fae7c43c9361ad, type: 3}
+  m_Name: bt 4
+  m_EditorClassIdentifier: 
+  Children:
+  - {fileID: 114758184519393548}
+  g_Status: 1
+  Blackboard: {fileID: 0}
+  g_Assertion: {fileID: 0}
+--- !u!114 &114631615083771644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: face38d12d9d90349ba1a8f94ed9fd0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Children: []
+  g_Status: 1
+  Blackboard: {fileID: 0}
+--- !u!114 &114758184519393548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 413598b5a3eddd24dad037b6fda51123, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Children:
+  - {fileID: 114892440919281234}
+  - {fileID: 114631615083771644}
+  g_Status: 1
+  Blackboard: {fileID: 114816530876756322}
+--- !u!114 &114816530876756322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22807213bc17d4941959a5cb394073b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Root: {fileID: 114758184519393548}
+  Parameters:
+  - ParameterName: Wandering Points
+    AssignedType: 3
+    ParameterType: UnityEngine.Transform
+    BoolValue: 0
+    StringValue: 
+    NumericValue: 0
+    EnumValue: 0
+    ObjectUniqueName: Wandering_Points
+--- !u!114 &114892440919281234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6442965100d74d942b9850d9d0f6918e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Children: []
+  g_Status: 1
+  Blackboard: {fileID: 0}
+  g_Affordance:
+    MethodName: Behavior_GoToRandomPoint
+    Name: Go To Random Point
+    Parameters:
+    - ParameterName: Wandering Points
+      AssignedType: 0
+      ParameterType: UnityEngine.Transform
+      BoolValue: 0
+      StringValue: 
+      NumericValue: 0
+      EnumValue: 0
+      ObjectUniqueName: Wandering_Points
+    - ParameterName: Run
+      AssignedType: 0
+      ParameterType: System.Boolean
+      BoolValue: 1
+      StringValue: 
+      NumericValue: 0
+      EnumValue: 0
+      ObjectUniqueName: 
+    OverrideAgent: 0
+    g_AgentName: 

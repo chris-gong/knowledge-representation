@@ -62,6 +62,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Editor\FieldOfViewEditor.cs" />
+    <Compile Include="Assets\Scripts\NPC\Editor\Components\Behaviors Editor\Blackboard.cs" />
+    <Compile Include="Assets\Scripts\NPC\Editor\Components\Behaviors Editor\Library.cs" />
+    <Compile Include="Assets\Scripts\NPC\Editor\Components\Behaviors Editor\Node.cs" />
+    <Compile Include="Assets\Scripts\NPC\Editor\Components\Behaviors Editor\NodeList.cs" />
+    <Compile Include="Assets\Scripts\NPC\Editor\Components\Behaviors Editor\NodeParam.cs" />
+    <Compile Include="Assets\Scripts\NPC\Editor\NPCBehaviors_Editor.cs" />
+    <Compile Include="Assets\Scripts\NPC\Editor\NPCController_Editor.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/User/Documents/Unity Projects/StateRepresentation/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>

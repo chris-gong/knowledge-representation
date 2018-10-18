@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using YieldProlog;
+using NPC;
 
 public class AgentBehavior : MonoBehaviour {
 
@@ -14,6 +15,7 @@ public class AgentBehavior : MonoBehaviour {
     private GameObject levelController;
     private Coroutine currentBehavior;
     private Coroutine thinkingBehavior;
+    private NPCController behaviorController; 
     public float speed;
 
     private NavMeshAgent agent;
@@ -24,10 +26,19 @@ public class AgentBehavior : MonoBehaviour {
         knowledgeBase = gameObject.GetComponent<KnowledgeBase>();
         agent.speed = speed;
         info = gameObject.GetComponent<AgentInfo>();
+        behaviorController = gameObject.GetComponent<NPCController>();
         levelController = GameObject.Find("LevelController");
-        currentBehavior = StartCoroutine("RandomwWalkBehavior");
-        thinkingBehavior = StartCoroutine("ChooseBehavior");
+        //currentBehavior = StartCoroutine("RandomwWalkBehavior");
+        //thinkingBehavior = StartCoroutine("ChooseBehavior");
 
+        NPCNode behaviorTree = new NPCDecoratorLoop(new NPCSequence(
+            new NPCNode[] {
+                new NPCAction(() => WanderAround()),
+                new NPCWait(3000)
+            })
+        );
+        behaviorController.AI.AddBehavior(behaviorTree);
+        behaviorController.AI.StartBehavior();
     }
 
     void StartNewBehavior(string newBehavior)
@@ -129,5 +140,17 @@ public class AgentBehavior : MonoBehaviour {
         agent.SetDestination(hidingSpots[index].position);
         agent.speed = agent.speed * 3;
 
+    }
+
+    [NPCAffordance("Wander_Behavior")]
+    public BEHAVIOR_STATUS WanderAround()
+    {
+        Debug.Log("Affordance activated");
+        List<Transform> wanderingSpots = levelController.GetComponent<LevelController>().getWanderingSpots();
+        System.Random rand = new System.Random();
+        int index = rand.Next(wanderingSpots.Count);
+
+        agent.SetDestination(wanderingSpots[index].position);
+        return BEHAVIOR_STATUS.SUCCESS;
     }
 }
