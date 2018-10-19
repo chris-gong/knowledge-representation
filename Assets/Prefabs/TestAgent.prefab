@@ -343,7 +343,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1626953152656190}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2d6f4e53e0de63a44abf5e7642d6fba5, type: 3}
   m_Name: 
@@ -416,7 +416,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agentId: 0
-  agentName: 
+  agentName: TestAgent
 --- !u!114 &114392264172021450
 MonoBehaviour:
   m_ObjectHideFlags: 1

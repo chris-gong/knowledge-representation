@@ -147,10 +147,20 @@ public class AgentBehavior : MonoBehaviour {
     {
         Debug.Log("Affordance activated");
         List<Transform> wanderingSpots = levelController.GetComponent<LevelController>().getWanderingSpots();
-        System.Random rand = new System.Random();
-        int index = rand.Next(wanderingSpots.Count);
-
-        agent.SetDestination(wanderingSpots[index].position);
+        if(wanderingSpots.Count == 0)
+        {
+            return BEHAVIOR_STATUS.SUCCESS;
+        }
+        //System.Random rand = new System.Random();
+        //NOTE: only use unity random, NOT system random
+        int index = Random.Range(0, wanderingSpots.Count);
+        Debug.Log("Index:" + index);    
+        Debug.Log("Going to " + wanderingSpots[index].position);
+        Vector3 newPosition = wanderingSpots[index].position;
+        float offsetXRange = Random.Range(-1, 1);
+        float offsetZRange = Random.Range(-1, 1);
+        newPosition = new Vector3(newPosition.x + offsetXRange, newPosition.y, newPosition.z + offsetZRange);
+        agent.SetDestination(newPosition);
         return BEHAVIOR_STATUS.SUCCESS;
     }
 }

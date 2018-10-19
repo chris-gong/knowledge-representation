@@ -22,6 +22,7 @@ public class LevelController : MonoBehaviour {
             }
 
             spotObjects = GameObject.FindGameObjectsWithTag("Wandering Spot");
+            Debug.Log("Number of wandering spots: " + spotObjects.Length);
             for (int i = 0; i < spotObjects.Length; i++)
             {
                 wanderingSpots.Add(spotObjects[i].transform);
