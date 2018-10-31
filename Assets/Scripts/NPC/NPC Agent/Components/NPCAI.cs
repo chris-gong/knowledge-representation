@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using System;
 using System.Linq;
+using YieldProlog;
 
 ///
 /// Created by Fernando Geraci on 2018
@@ -410,6 +411,46 @@ namespace NPC {
                     return BEHAVIOR_STATUS.FAILURE;
                 }
             }
+        }
+
+        [NPCAffordance("Hide")]
+        public BEHAVIOR_STATUS GoToHidingSpot(Transform levelController)
+        {
+            Debug.Log("hiding affordance activated");
+            List<Transform> hidingSpots = levelController.GetComponent<LevelController>().getHidingSpots();
+            UnityEngine.AI.NavMeshAgent agent = gNPCController.AI.gNavMeshAgent;
+            System.Random rand = new System.Random();
+            int index = rand.Next(hidingSpots.Count);
+            //Debug.Log(hidingSpots[index].position);
+            agent.SetDestination(hidingSpots[index].position);
+            agent.speed = agent.speed * 3;
+            return BEHAVIOR_STATUS.SUCCESS;
+        }
+
+        [NPCAffordance("Wander Around")]
+        public BEHAVIOR_STATUS WanderAround(Transform levelController)
+        {
+            Debug.Log("Wander around Affordance activated");
+            UnityEngine.AI.NavMeshAgent agent = gNPCController.AI.gNavMeshAgent;
+            LevelController lc = levelController.GetComponent<LevelController>();
+            //AgentInfo info = agentInfo.GetComponent<AgentInfo>();
+            List<Transform> wanderingSpots = lc.getWanderingSpots();
+
+            if (wanderingSpots.Count == 0)
+            {
+                return BEHAVIOR_STATUS.SUCCESS;
+            }
+
+            //NOTE: only use unity random, NOT system random
+            int index = UnityEngine.Random.Range(0, wanderingSpots.Count);
+            Debug.Log("Going to " + wanderingSpots[index].position);
+            Vector3 newPosition = wanderingSpots[index].position;
+            float offsetXRange = UnityEngine.Random.Range(-1, 1);
+            float offsetZRange = UnityEngine.Random.Range(-1, 1);
+            newPosition = new Vector3(newPosition.x + offsetXRange, newPosition.y, newPosition.z + offsetZRange);
+            agent.SetDestination(newPosition);
+
+            return BEHAVIOR_STATUS.SUCCESS;
         }
 
         #endregion

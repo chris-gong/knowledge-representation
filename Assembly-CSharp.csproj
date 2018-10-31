@@ -68,6 +68,7 @@
     <Compile Include="Assets\Scripts\Agent\MoveRandomly.cs" />
     <Compile Include="Assets\Scripts\Controller\GameController.cs" />
     <Compile Include="Assets\Scripts\Controller\LevelController.cs" />
+    <Compile Include="Assets\Scripts\HoverTextLevel.cs" />
     <Compile Include="Assets\Scripts\NPC\NPC Agent\Components\Behaviors\NPCAction.cs" />
     <Compile Include="Assets\Scripts\NPC\NPC Agent\Components\Behaviors\NPCAffordance.cs" />
     <Compile Include="Assets\Scripts\NPC\NPC Agent\Components\Behaviors\NPCAssert.cs" />
@@ -181,6 +182,7 @@
     <Compile Include="Assets\Scripts\YieldProlog\PrologTest.cs" />
     <Compile Include="Assets\Scripts\YieldProlog\Variable.cs" />
     <Compile Include="Assets\Scripts\YieldProlog\YP.cs" />
+    <Compile Include="Assets\ZoneInfo.cs" />
     <None Include="Assets\Scripts\NPC\Documentation\README.txt" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/User/Documents/Unity Projects/StateRepresentation/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>

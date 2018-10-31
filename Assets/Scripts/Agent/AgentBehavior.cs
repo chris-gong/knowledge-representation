@@ -10,18 +10,21 @@ public class AgentBehavior : MonoBehaviour {
     public float retargetDelay;
     public float behaviorDelay;
     public Transform runTarget;
+    public LayerMask zoneLayer;
     KnowledgeBase knowledgeBase;
     private AgentInfo info;
     private GameObject levelController;
     private Coroutine currentBehavior;
     private Coroutine thinkingBehavior;
-    private NPCController behaviorController; 
+    private NPCController behaviorController;
+    private int lastZone;
     public float speed;
 
     private NavMeshAgent agent;
     // Use this for initialization
     void Start()
     {
+        lastZone = 0;
         agent = gameObject.GetComponent<NavMeshAgent>();
         knowledgeBase = gameObject.GetComponent<KnowledgeBase>();
         agent.speed = speed;
@@ -33,8 +36,7 @@ public class AgentBehavior : MonoBehaviour {
 
         NPCNode behaviorTree = new NPCDecoratorLoop(new NPCSequence(
             new NPCNode[] {
-                new NPCAction(() => WanderAround()),
-                new NPCWait(3000)
+                new NPCAction(() => WanderAround())
             })
         );
         behaviorController.AI.AddBehavior(behaviorTree);
@@ -142,25 +144,53 @@ public class AgentBehavior : MonoBehaviour {
 
     }
 
+    void OnCollisionEnter(Collision col)
+    {
+        if (col.gameObject.name == "prop_powerCube")
+        {
+            Destroy(col.gameObject);
+        }
+    }
+
     [NPCAffordance("Wander_Behavior")]
     public BEHAVIOR_STATUS WanderAround()
     {
         Debug.Log("Affordance activated");
-        List<Transform> wanderingSpots = levelController.GetComponent<LevelController>().getWanderingSpots();
-        if(wanderingSpots.Count == 0)
+        Collider[] targetsInRadius = Physics.OverlapSphere(transform.position, 1.0f, zoneLayer);
+        if(targetsInRadius.Length > 0)
         {
+            int zoneNum = targetsInRadius[0].GetComponent<ZoneInfo>().zoneNum;
+            Debug.Log(string.Format("Zone number {0}", zoneNum));
+            if(lastZone != zoneNum)
+            {
+                Debug.Log(string.Format("Changed from zone {0} to zone {1}", lastZone, zoneNum));
+                lastZone = zoneNum;
+            }
+            
+        }
+        if (agent.destination != null && Vector3.Distance(agent.destination, transform.position) < 1)
+        {
+            
+            /*List<Transform> wanderingSpots = levelController.GetComponent<LevelController>().getWanderingSpots();
+            if (wanderingSpots.Count == 0)
+            {
+                return BEHAVIOR_STATUS.SUCCESS;
+            }*/
+            //System.Random rand = new System.Random();
+            //NOTE: only use unity random, NOT system random
+            //int index = Random.Range(0, wanderingSpots.Count);
+            //Debug.Log("Index:" + index);
+            //Debug.Log("Going to " + wanderingSpots[index].position);
+            //Vector3 newPosition = wanderingSpots[index].position;
+            //float offsetXRange = Random.Range(-1, 1);
+            //float offsetZRange = Random.Range(-1, 1);
+            NavMeshHit hit;
+            Vector3 randomLocation = new Vector3(Random.Range(-50, 50), Random.Range(-50, 50), Random.Range(-50, 50));
+            NavMesh.SamplePosition(randomLocation, out hit, 20.0f, NavMesh.AllAreas);
+            Debug.Log("Going to position " + hit.position);
+            agent.SetDestination(hit.position);
             return BEHAVIOR_STATUS.SUCCESS;
         }
-        //System.Random rand = new System.Random();
-        //NOTE: only use unity random, NOT system random
-        int index = Random.Range(0, wanderingSpots.Count);
-        Debug.Log("Index:" + index);    
-        Debug.Log("Going to " + wanderingSpots[index].position);
-        Vector3 newPosition = wanderingSpots[index].position;
-        float offsetXRange = Random.Range(-1, 1);
-        float offsetZRange = Random.Range(-1, 1);
-        newPosition = new Vector3(newPosition.x + offsetXRange, newPosition.y, newPosition.z + offsetZRange);
-        agent.SetDestination(newPosition);
         return BEHAVIOR_STATUS.SUCCESS;
     }
 }

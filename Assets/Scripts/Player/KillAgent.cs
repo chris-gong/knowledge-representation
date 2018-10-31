@@ -52,6 +52,7 @@ public class KillAgent : MonoBehaviour
                 AgentInfo info = (targetsInRadius[i].gameObject).GetComponent<AgentInfo>();
                 GameObject eventObs = Instantiate(obs, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
                 Observable observableFacts = eventObs.GetComponent<Observable>();
+                Debug.Log(observableFacts);
                 string label = "killed";
                 string[] values = new string[] {gameObject.name, info.agentName};
 

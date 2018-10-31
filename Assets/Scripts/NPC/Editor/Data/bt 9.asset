@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d6000cc234a1754780bd75064ee9ad6, type: 3}
+  m_Name: bt 9
+  m_EditorClassIdentifier: 
+  Children:
+  - {fileID: 114569305947505856}
+  g_Status: 1
+  Blackboard: {fileID: 0}
+  g_Assertion: {fileID: 0}
+--- !u!114 &114290431114881416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21f7ec4683fc33e4a84204b815be5f64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Children: []
+  g_Status: 1
+  Blackboard: {fileID: 0}
+  g_WaitTime: 3000
+--- !u!114 &114569305947505856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92ab4077a49f23e47af2687570c3d115, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Children:
+  - {fileID: 114740727764674048}
+  - {fileID: 114290431114881416}
+  g_Status: 1
+  Blackboard: {fileID: 0}
+--- !u!114 &114740727764674048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f543eb77696a8c4c8a95c4111270f8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Children: []
+  g_Status: 1
+  Blackboard: {fileID: 0}
+  g_Affordance:
+    MethodName: WanderAround
+    Name: Wander Behavior
+    Parameters:
+    - ParameterName: levelController
+      AssignedType: 0
+      ParameterType: 
+      BoolValue: 0
+      StringValue: 
+      NumericValue: 0
+      EnumValue: 0
+      ObjectUniqueName: 
+    OverrideAgent: 0
+    g_AgentName: 
