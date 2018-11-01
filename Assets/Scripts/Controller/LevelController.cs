@@ -60,7 +60,6 @@ public class LevelController : MonoBehaviour {
         
     }
    
-
     public List<Transform> getHidingSpots()
     {
         return this.hidingSpots;

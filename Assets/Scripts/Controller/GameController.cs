@@ -46,6 +46,10 @@ public class GameController : MonoBehaviour {
     }
 
     #region Public Methods
-        public 
+    public int GetTime()
+    {
+        return timeCtl.GetTime();
+    }
+
     #endregion
 }
