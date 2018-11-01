@@ -342,7 +342,7 @@ Prefab:
         type: 2}
       propertyPath: gPerceptionField
       value: 
-      objectReference: {fileID: 1460352763}
+      objectReference: {fileID: 1103789997}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a91f78fb8c2669f42aa246caafbc7765, type: 2}
   m_IsPrefabAsset: 0
@@ -396,48 +396,6 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5fd8205f69f779f43943c3fdea08b5b7, type: 2}
   m_IsPrefabAsset: 0
---- !u!1001 &409915485
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4194821004087242, guid: 8565d35c16e071648a7b25250675d342, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 2.1722448
-      objectReference: {fileID: 0}
-    - target: {fileID: 4194821004087242, guid: 8565d35c16e071648a7b25250675d342, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4194821004087242, guid: 8565d35c16e071648a7b25250675d342, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0.15111828
-      objectReference: {fileID: 0}
-    - target: {fileID: 4194821004087242, guid: 8565d35c16e071648a7b25250675d342, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4194821004087242, guid: 8565d35c16e071648a7b25250675d342, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4194821004087242, guid: 8565d35c16e071648a7b25250675d342, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4194821004087242, guid: 8565d35c16e071648a7b25250675d342, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4194821004087242, guid: 8565d35c16e071648a7b25250675d342, type: 2}
-      propertyPath: m_RootOrder
-      value: 10
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 8565d35c16e071648a7b25250675d342, type: 2}
-  m_IsPrefabAsset: 0
 --- !u!1001 &651816304
 Prefab:
   m_ObjectHideFlags: 0
@@ -477,11 +435,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 114645063790428438, guid: a91f78fb8c2669f42aa246caafbc7765,
-        type: 2}
-      propertyPath: gPerceptionField
-      value: 
-      objectReference: {fileID: 1236388714}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a91f78fb8c2669f42aa246caafbc7765, type: 2}
   m_IsPrefabAsset: 0
@@ -573,6 +526,11 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5fd8205f69f779f43943c3fdea08b5b7, type: 2}
   m_IsPrefabAsset: 0
+--- !u!135 &1103789997 stripped
+SphereCollider:
+  m_CorrespondingSourceObject: {fileID: 135568004217375060, guid: a91f78fb8c2669f42aa246caafbc7765,
+    type: 2}
+  m_PrefabInternal: {fileID: 1897692891}
 --- !u!1 &1136906876
 GameObject:
   m_ObjectHideFlags: 0
@@ -666,11 +624,6 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5fd8205f69f779f43943c3fdea08b5b7, type: 2}
   m_IsPrefabAsset: 0
---- !u!135 &1460352763 stripped
-SphereCollider:
-  m_CorrespondingSourceObject: {fileID: 135568004217375060, guid: a91f78fb8c2669f42aa246caafbc7765,
-    type: 2}
-  m_PrefabInternal: {fileID: 395403630}
 --- !u!1001 &1464845690
 Prefab:
   m_ObjectHideFlags: 0
@@ -848,7 +801,7 @@ Transform:
   - {fileID: 1174528810}
   - {fileID: 1582576925}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1582576925 stripped
 Transform:
@@ -1020,6 +973,11 @@ Prefab:
       propertyPath: m_Name
       value: Agent (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 114645063790428438, guid: a91f78fb8c2669f42aa246caafbc7765,
+        type: 2}
+      propertyPath: gPerceptionField
+      value: 
+      objectReference: {fileID: 1103789997}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a91f78fb8c2669f42aa246caafbc7765, type: 2}
   m_IsPrefabAsset: 0

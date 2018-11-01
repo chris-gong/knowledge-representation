@@ -167,6 +167,7 @@ public class NPCBehavior : MonoBehaviour, INPCModule, IHasBehaviorObject {
         Transform t = chair.MainInteractionPoint;
         return NPCBehavior_TakeSit(t);
     }
+   
 
     public Node NPCBehavior_TakeSit(NPCObject chair, Transform table)
     {
@@ -704,6 +705,16 @@ public class NPCBehavior : MonoBehaviour, INPCModule, IHasBehaviorObject {
 
     private RunStatus Behavior_LookAt(Transform t) {
         g_NPCController.Body.StartLookAt(t);
+        return RunStatus.Success;
+    }
+
+    public Node NPCBehavior_Dummy()
+    {
+        return new LeafInvoke(() => { return Behavior_Dummy(); });
+    }
+
+    private RunStatus Behavior_Dummy()
+    {
         return RunStatus.Success;
     }
 

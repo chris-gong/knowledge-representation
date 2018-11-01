@@ -128,7 +128,11 @@ namespace NPC {
                         Debug.LogWarning("Invalid AgentName for affordance: " + this);
                     }
                 }
-                return (BEHAVIOR_STATUS) Agent.AI.GetType().GetMethod(MethodName).Invoke(Agent.AI, pms);
+                if(Agent.AI != null)
+                {
+                    return (BEHAVIOR_STATUS)Agent.AI.GetType().GetMethod(MethodName).Invoke(Agent.AI, pms);
+                }
+                return BEHAVIOR_STATUS.SUCCESS;
             } catch(Exception e) {
                 Debug.LogError("Couldn't execute affordance due to: " + e.Message);
                 return BEHAVIOR_STATUS.FAILURE;

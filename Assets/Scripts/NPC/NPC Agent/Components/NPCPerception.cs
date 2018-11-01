@@ -163,7 +163,11 @@ namespace NPC {
             foreach(INPCPerceivable p in g_PerceivedObjects) {
                 //g_Controller.DebugLine(g_Head.position, p.GetTransform().position,Color.white);
             }
-            gPerceptionField.radius = g_PerceptionFieldRadius * (1 - 0.1f * g_PerceivedObjects.Count);
+            if(gPerceptionField != null)
+            {
+                gPerceptionField.radius = g_PerceptionFieldRadius * (1 - 0.1f * g_PerceivedObjects.Count);
+            }
+            
         }
 
         public float CalculatePerceptionWeight(INPCPerceivable p) {

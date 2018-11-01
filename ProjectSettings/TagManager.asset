@@ -7,6 +7,8 @@ TagManager:
   - Agent
   - Hiding Spot
   - Wandering Spot
+  - ZoneMarker
+  - HoverText
   layers:
   - Default
   - TransparentFX
@@ -20,7 +22,7 @@ TagManager:
   - Observables
   - Obstacles
   - Agent
-  - 
+  - Zones
   - 
   - 
   - 
