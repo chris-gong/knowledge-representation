@@ -5,6 +5,9 @@ using UnityEngine;
 public class ZoneInfo : MonoBehaviour {
 
     public int zoneNum;
+    private ZoneInfo[] neighbors;
+    private Vector3 coords;
+
 	// Use this for initialization
 	void Start () {
 		

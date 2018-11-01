@@ -7,4 +7,6 @@ public class AgentInfo : MonoBehaviour {
     public int agentId;
     public string agentName;
 
+    
+
 }
