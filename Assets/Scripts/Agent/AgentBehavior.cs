@@ -155,7 +155,7 @@ public class AgentBehavior : MonoBehaviour {
     [NPCAffordance("Wander_Behavior")]
     public BEHAVIOR_STATUS WanderAround()
     {
-        Debug.Log("Affordance activated");
+        //Debug.Log("Affordance activated");
         Collider[] targetsInRadius = Physics.OverlapSphere(transform.position, 1.0f, zoneLayer);
         if(targetsInRadius.Length > 0)
         {
