@@ -15,7 +15,6 @@ public class AgentBehavior : MonoBehaviour {
     private AgentInfo info;
     private GameObject levelController;
     private Coroutine currentBehavior;
-    private Coroutine thinkingBehavior;
     private NPCController behaviorController;
     private int lastZone;
     public float speed;
@@ -155,7 +154,7 @@ public class AgentBehavior : MonoBehaviour {
     [NPCAffordance("Wander_Behavior")]
     public BEHAVIOR_STATUS WanderAround()
     {
-        Debug.Log("Affordance activated");
+        //Debug.Log("Affordance activated");
         Collider[] targetsInRadius = Physics.OverlapSphere(transform.position, 1.0f, zoneLayer);
         if(targetsInRadius.Length > 0)
         {

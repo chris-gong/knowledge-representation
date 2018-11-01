@@ -9,17 +9,17 @@ public class FieldOfView:MonoBehaviour {
 
     public LayerMask targetMask;//Our observables
     public LayerMask obstacleMask;
+    private KnowledgeBase kb; 
 
     public List<Transform> visibleTargets = new List<Transform>();
     public List<GameObject> observables = new List<GameObject>();
     private List<GameObject> seenObservables = new List<GameObject>();
-    //have a closed set for observables
+    //have a closed set for observables and clear it at the end of the day
 
 
     void Start()
     {
-        seenObservables.Add(gameObject);
-        //Debug.Log("STARTING");
+
         StartCoroutine("FindTargetsWithDelay", .2f);
     }
 

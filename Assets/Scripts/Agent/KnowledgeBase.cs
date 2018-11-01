@@ -5,7 +5,7 @@ using YieldProlog;
 
 public class KnowledgeBase : MonoBehaviour {
 
-    public List<string> facts;
+    private List<LocationClue> locationClueList;
     private FieldOfView fow;
     public AgentInfo info;
 
@@ -25,6 +25,10 @@ public class KnowledgeBase : MonoBehaviour {
         }
     }
 
+    LocationClue ClueFromAgent(GameObject obj)
+    {
+        return null;
+    }
     void RetrieveFacts()
     {
         foreach (GameObject obj in fow.observables)

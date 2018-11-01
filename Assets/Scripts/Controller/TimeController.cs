@@ -1,62 +1,99 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-
+using UnityEngine.Events;
 public class TimeController : MonoBehaviour {
-    #region Properties
-    public int CurrentTime = 0;
-    public string[] IntervalNames = { "Morning", "Day", "Evening", "Night" };
-    public int[] IntervalLengths = { 45, 30, 30, 0 };
-    public string TimeIntervalName;
-    private int TimeIntervalIndex = 0;
-    private int TimeLeft;
-    public float TimeDelay = 1f;
+
+    public static TimeController instance = null;
+
+    #region Fields
+    public int currentTime = 0;
+    public string[] intervalNames = { "Morning", "Day", "Evening", "Night" };
+    public int[] intervalLengths = { 45, 30, 30, 0 };
+    public string currentInterval;
+    public int timeSpeed = 1;
+
+    private readonly float timeDelay = 1f;
+    private int timeIntervalIndex = 0;
+    private int remainingIntervalTime;
+
+    public UnityEvent onDayEnd;
+    public UnityEvent onTimeTick;
+
     #endregion
 
-    #region Property Functions
-    public int GetTime()
-    {
-        UpdateInterval(0);
-        return CurrentTime;
-    }
-    public string GetIntervalName()
-    {
-        return TimeIntervalName;
-    }
-    public string GetIntervalName(int n)
-    {
-        return IntervalNames[n];
-    }
-    #endregion
 
     IEnumerator TimeClock()
     {
         while (true) { 
-            yield return new WaitForSeconds(this.TimeDelay);
-            CurrentTime++;
-            TimeLeft--;
-            if(TimeLeft == 0) {
-                TimeIntervalIndex++;
-                UpdateInterval(TimeIntervalIndex);
+            yield return new WaitForSeconds(this.timeDelay);
+            currentTime+= timeSpeed;
+            remainingIntervalTime-= timeSpeed;
+            if(remainingIntervalTime <= 0) {
+                timeIntervalIndex++;
+                UpdateInterval(timeIntervalIndex);
+                Debug.Log("Updating Time Interval to: {" + currentInterval + "}");
+                if(timeIntervalIndex > intervalNames.Length) {
+                    EndOfDay();
+                }
             }
+            onTimeTick.Invoke();
         }
     }
+
     private void UpdateInterval(int n)
     {
-        TimeIntervalName = IntervalNames[n];
+        currentInterval = intervalNames[n];
         //Debug.Log("INTERVAL: " + IntervalNames[n]);
-        TimeLeft = IntervalLengths[n];
+        remainingIntervalTime = intervalLengths[n];
     }
 
-    #region Unity Methods
+    private void EndOfDay()
+    {
+        onDayEnd.Invoke();
+        return;
+    }
+
+    #region Public Methods
+
+    public int GetTime()
+    {
+        UpdateInterval(0);
+        return currentTime;
+    }
+
+    public string GetIntervalName()
+    {
+        return currentInterval;
+    }
+
+    public string GetIntervalName(int n)
+    {
+        return intervalNames[n];
+    }
 
     // Use this for initialization
-    void Start()
+    public void InitTimeCtl()
     {
+        if (TimeController.instance == null) {
+            TimeController.instance = this;
+        }
+        else {
+            Object.Destroy(gameObject);
+            return;
+        }
+
+        Debug.Assert(intervalLengths.Length == intervalNames.Length,
+                    string.Format("ERROR: Count of Names/Lengths array does not match: {0}/{1}",
+                                   intervalLengths.Length, intervalNames.Length));
         UpdateInterval(0);
         IEnumerator clockCoroutine = TimeClock();
         StartCoroutine(clockCoroutine);
     }
+
+    #endregion
+
+    #region Unity Methods
+
     #endregion
 }
