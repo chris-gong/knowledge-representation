@@ -21,8 +21,11 @@ public class LevelController : MonoBehaviour {
             zoneMarkers = new List<Transform>();
             GameObject[] spotObjects = GameObject.FindGameObjectsWithTag("Hiding Spot");
             GameObject[] zoneObjects = GameObject.FindGameObjectsWithTag("ZoneMarker");
-
-            for (int i = 0; i < spotObjects.Length; i++)
+            for(int i = 0; i < zoneObjects.Length; i++) {
+                AllocateZoneId(zoneObjects[i]);
+            }
+            
+                for (int i = 0; i < spotObjects.Length; i++)
             {
                 hidingSpots.Add(spotObjects[i].transform);
             }
@@ -33,20 +36,7 @@ public class LevelController : MonoBehaviour {
             {
                 wanderingSpots.Add(spotObjects[i].transform);
             }
-            for( int i = 0; i < zoneObjects.Length; i++)
-            {
-                GameObject zoneMarker = zoneObjects[i];
-                ZoneInfo info = zoneMarker.GetComponent<ZoneInfo>();
-                if(info != null)
-                {
-                    info.zoneNum = i;
-                }
-                else
-                {
-                    Debug.Log(zoneMarker.name);
-                }
-                zoneMarkers.Add(zoneMarker.transform);
-            }
+            
         }
         else
         {
@@ -55,11 +45,21 @@ public class LevelController : MonoBehaviour {
 
 
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    private void AllocateZoneId(GameObject zoneMarker)
+    {
+        zoneMarkers.Add(zoneMarker.transform);
+        ZoneInfo info = zoneMarker.GetComponent<ZoneInfo>();
+        if (info != null) {
+            info.zoneNum = zoneMarkers.Count;
+        }
+        else {
+            Debug.Log(string.Format("ERROR:gameobject({0}) at {1} is missing a ZoneInfo component"
+                ,zoneMarker.name,zoneMarker.transform.position.ToString()));
+        }
+        
+    }
+   
 
     public List<Transform> getHidingSpots()
     {
@@ -75,4 +75,10 @@ public class LevelController : MonoBehaviour {
     {
         return this.zoneMarkers;
     }
+
+    public List<int> getShortestPath()
+    {
+        return null;
+    }
+
 }

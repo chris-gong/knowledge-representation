@@ -65,7 +65,6 @@
     <Compile Include="Assets\Scripts\Agent\AgentInfo.cs" />
     <Compile Include="Assets\Scripts\Agent\FieldOfView.cs" />
     <Compile Include="Assets\Scripts\Agent\KnowledgeBase.cs" />
-    <Compile Include="Assets\Scripts\Agent\MoveRandomly.cs" />
     <Compile Include="Assets\Scripts\Clue.cs" />
     <Compile Include="Assets\Scripts\Controller\GameController.cs" />
     <Compile Include="Assets\Scripts\Controller\LevelController.cs" />
