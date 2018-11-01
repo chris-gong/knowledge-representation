@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class TimeController : MonoBehaviour {
     #region Properties
-    private int CurrentTime = 0;
+    public int CurrentTime = 0;
     public string[] IntervalNames = { "Morning", "Day", "Evening", "Night" };
     public int[] IntervalLengths = { 45, 30, 30, 0 };
-    private string TimeIntervalName;
+    public string TimeIntervalName;
     private int TimeIntervalIndex = 0;
     private int TimeLeft;
     public float TimeDelay = 1f;
@@ -42,22 +42,21 @@ public class TimeController : MonoBehaviour {
             }
         }
     }
-
-    #region Unity Methods
     private void UpdateInterval(int n)
     {
         TimeIntervalName = IntervalNames[n];
+        //Debug.Log("INTERVAL: " + IntervalNames[n]);
         TimeLeft = IntervalLengths[n];
     }
+
+    #region Unity Methods
 
     // Use this for initialization
     void Start()
     {
-
+        UpdateInterval(0);
+        IEnumerator clockCoroutine = TimeClock();
+        StartCoroutine(clockCoroutine);
     }
-    // Update is called once per frame
-    void Update () {
-		
-	}
     #endregion
 }
