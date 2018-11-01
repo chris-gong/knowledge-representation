@@ -23,9 +23,11 @@ public class GameController : MonoBehaviour {
         }
         // Initiate Time Controller
         timeCtl = GetComponent<TimeController>();
+        timeCtl.InitTimeCtl();
         Debug.Assert(timeCtl != null, "ERROR: Gamecontroller gameobject is missing TimeController Component");
         // Initiate Level Controller
         levelCtl = GetComponent<LevelController>();
+        levelCtl.InitiLevelCtl();
         Debug.Assert(levelCtl != null, "ERROR: Gamecontroller gameobject is missing LevelController Component");
         
         // Player instancing

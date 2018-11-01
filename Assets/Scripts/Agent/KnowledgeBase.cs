@@ -5,7 +5,7 @@ using YieldProlog;
 
 public class KnowledgeBase : MonoBehaviour {
 
-    private List<LocationClue> LocationClueList;
+    private List<LocationClue> locationClueList;
     private FieldOfView fow;
     public AgentInfo info;
 

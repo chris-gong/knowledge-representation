@@ -15,7 +15,6 @@ public class AgentBehavior : MonoBehaviour {
     private AgentInfo info;
     private GameObject levelController;
     private Coroutine currentBehavior;
-    private Coroutine thinkingBehavior;
     private NPCController behaviorController;
     private int lastZone;
     public float speed;

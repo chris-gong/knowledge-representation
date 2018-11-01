@@ -5,16 +5,18 @@ using UnityEngine;
 public class LevelController : MonoBehaviour {
 
     static private LevelController instance;
+
+    #region Location Collections
+
     private List<Transform> hidingSpots;
     private List<Transform> wanderingSpots;
     private List<Transform> zoneMarkers;
-    public int timeUntilWander;
 
-	// Use this for initialization
-	void Start () {
+    #endregion
+    // Use this for initialization
+    public void InitiLevelCtl () {
 		if(instance == null)
         {
-            timeUntilWander = 0;
             LevelController.instance = this;
             hidingSpots = new List<Transform>();
             wanderingSpots = new List<Transform>();
