@@ -97,7 +97,7 @@ public class AgentBehavior : MonoBehaviour {
             if(deadCount == 3 || killerFound)
             {
                 StartNewBehavior("RunAwayBehavior");
-                StopCoroutine(thinkingBehavior);
+                //StopCoroutine(thinkingBehavior);
             }
         }
     }

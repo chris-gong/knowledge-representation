@@ -1,19 +1,32 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class MovePlayer : MonoBehaviour {
     public float moveSpeed;
-    public Rigidbody rb;
+    public Camera camera;
+    private NavMeshAgent agent;
+
 	// Use this for initialization
 	void Start () {
-        rb = GetComponent<Rigidbody>();
+        agent = GetComponent<NavMeshAgent>();
+        agent.speed = moveSpeed;
 	}
 	
 	// Update is called once per frame
-	void FixedUpdate () {
-        Vector3 translation = new Vector3(moveSpeed * Input.GetAxis("Horizontal") * Time.deltaTime, 0, moveSpeed* Input.GetAxis("Vertical") * Time.deltaTime);
-        rb.MovePosition(transform.position + translation);
-  
+	void Update () {
+        RaycastHit hit;
+        Ray ray = camera.ScreenPointToRay(Input.mousePosition);
+        if (Input.GetMouseButtonDown(0)){
+            Debug.Log("Mouse clicked ");
+
+            if (Physics.Raycast(ray, out hit))
+            {
+                Debug.Log("Clicked on location " + hit.point);
+                agent.SetDestination(hit.point);
+            }
+
+        }
 	}
 }
