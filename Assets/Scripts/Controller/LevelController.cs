@@ -83,6 +83,9 @@ public class LevelController : MonoBehaviour {
                 continue;
             }
             info.zoneNum = zoneMarkersTransforms.Count;
+            TextMesh mesh = markerObj.transform.parent.Find("HoverText").GetComponent<TextMesh>();
+            Vector3 objPos = markerObj.transform.position;
+            mesh.text = string.Format("Zone {0} ({1}, {2})", info.zoneNum, objPos.x, objPos.z);
             zoneMarkersTransforms.Add(markerObj.transform);
             zoneInfoList.Add(info);
         }
