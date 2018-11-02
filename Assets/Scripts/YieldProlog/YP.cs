@@ -52,6 +52,10 @@ namespace YieldProlog
         private static Dictionary<string, object> _prologFlags = new Dictionary<string, object>();
         public const int MAX_ARITY = 255;
 
+        public static void initializePredicateStores(int agentCount)
+        {
+            predicateStoreList = new Dictionary<NameArity, List<IClause>>[agentCount];
+        }
         /// <summary>
         /// An IClause is used so that dynamic predicates can call match.
         /// </summary>

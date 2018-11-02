@@ -88,7 +88,7 @@ public class LevelController : MonoBehaviour {
         }
     }
 
-    private int getZoneFromObj(GameObject obj)
+    public int getZoneFromObj(GameObject obj)
     {
         Collider[] targetsInRadius = Physics.OverlapSphere(obj.transform.position, 1.0f, zoneLayer);
         if (targetsInRadius.Length > 0)
