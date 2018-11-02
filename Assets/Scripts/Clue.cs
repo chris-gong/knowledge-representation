@@ -23,10 +23,6 @@ public class LocationClue {
         
 }
 
-public class zoneNode{
-
-}
-
 public class MurderItemClue
 {
     private int agentID;
