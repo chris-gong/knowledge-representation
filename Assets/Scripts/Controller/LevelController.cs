@@ -11,6 +11,7 @@ public class LevelController : MonoBehaviour {
     private List<Transform> hidingSpots;
     private List<Transform> wanderingSpots;
     private List<Transform> zoneMarkers;
+    public LayerMask zoneLayer;
 
     #endregion
 
@@ -52,7 +53,7 @@ public class LevelController : MonoBehaviour {
                 AllocateZoneId(zoneObjects[i]);
             }
             
-                for (int i = 0; i < spotObjects.Length; i++)
+            for (int i = 0; i < spotObjects.Length; i++)
             {
                 hidingSpots.Add(spotObjects[i].transform);
             }
@@ -87,5 +88,16 @@ public class LevelController : MonoBehaviour {
         }
     }
 
+    private int getZoneFromObj(GameObject obj)
+    {
+        Collider[] targetsInRadius = Physics.OverlapSphere(obj.transform.position, 1.0f, zoneLayer);
+        if (targetsInRadius.Length > 0)
+        {
+            int zoneNum = targetsInRadius[0].GetComponent<ZoneInfo>().zoneNum;
+            return zoneNum;
+
+        }
+        return -1;
+    }
     #endregion
 }
