@@ -135,7 +135,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1118545420284184}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2033da9d2cc0c23428bf213564025953, type: 3}
   m_Name: 
@@ -144,7 +144,10 @@ MonoBehaviour:
   targetLayer:
     serializedVersion: 2
     m_Bits: 2048
-  radius: 1.1
+  weaponLayer:
+    serializedVersion: 2
+    m_Bits: 8192
+  radius: 1
 --- !u!114 &114425022203257532
 MonoBehaviour:
   m_ObjectHideFlags: 1

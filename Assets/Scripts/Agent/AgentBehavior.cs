@@ -186,7 +186,7 @@ public class AgentBehavior : MonoBehaviour {
             }
             curMarker.transform.position = randomLocation; */
             NavMesh.SamplePosition(randomLocation, out hit, 1.0f, NavMesh.AllAreas);
-            Debug.Log("Going to position " + hit.position);
+            //Debug.Log("Going to position " + hit.position);
             agent.SetDestination(hit.position);
             return BEHAVIOR_STATUS.SUCCESS;
         }
