@@ -8,7 +8,6 @@ public class Solver{
     
     public Solver(Agent myAgent)
     {
-        Debug.Log("Initiating solver:" + myAgent.agentId);
         candidates = new List<Candidate>();
         agent = myAgent;
         int agentCount = GameController.GetInstance().GetAgentCount();
@@ -32,13 +31,28 @@ public class Solver{
             {
                 continue;
             }
-            Debug.Log(""+candidate.agentID + candidate.CluesToString());
             str += candidate.CluesToString();
         }
         Debug.Log(str);
     }
 
+    public void TryAndSolve(){
+        int numCandidates = candidates.Count;
+        List<int> scores = new List<int>();
+        for (int i = 0; i < numCandidates; i++){
+            scores[i] = 0;
+        }
+        for (int i = 0; i < numCandidates; i++){
+            scores[i] = CalculateScore(candidates[i]);
+        }
+    }
 
+    private int CalculateScore(Candidate candidate){
+        int score = 0;
+
+        // TODO
+        return score;
+    }
 
 
 }
