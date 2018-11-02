@@ -12,7 +12,7 @@ public class GameController : MonoBehaviour {
     private LevelController levelCtl;
     private GameObject playerInstance;
     private List<Agent> agents;
-    private int agentCount;
+    private int npc_count;
 
     #endregion
 
@@ -80,9 +80,6 @@ public class GameController : MonoBehaviour {
     /// Gathers the agents and assigns their agentinfo
     /// </summary>
     private void InitializeAgents(){
-        agents = new List<Agent>(10);
-        agentCount = 0;
-
         GameObject[] agentObjs = GameObject.FindGameObjectsWithTag("Agent");
 
         for (int i = 0; i < agentObjs.Length; i++)
@@ -100,24 +97,26 @@ public class GameController : MonoBehaviour {
             Debug.Log("valid agent");
             agents.Add(agent);
         }
-        agentCount = agents.Count;
-        for (int i = 0; i < agentCount; i++)
+        for (int i = 1; i < agents.Count; i++)
         {
             Agent info = agents[i];
-            info.InitAgentInfo(i+1); //+1 since player starts with id 0
+            info.InitAgentInfo(i); //+1 since player starts with id 0
         }
 
     }
 
     private void InitializePlayer(){
+        agents = new List<Agent>(10);
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
         if (players.Length > 0)
         {
             playerInstance = players[0];
             Agent agent = playerInstance.GetComponent<Agent>();
             agent.InitPlayerAgentInfo(0);
+            agents.Add(agent);
         }else{
             Debug.LogError("No player");
+            return;
         }
     }
 

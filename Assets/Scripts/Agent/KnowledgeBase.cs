@@ -46,7 +46,6 @@ public class KnowledgeBase : MonoBehaviour {
             }
             foreach (LocationClue clue in obs.locationClues)
             {
-                Debug.Log("KB adding clue " + clue);
                 agent.solver.AddLocationClue(clue);
             }
         }

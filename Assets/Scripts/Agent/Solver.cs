@@ -26,12 +26,13 @@ public class Solver{
 
 
     public void PrintAllCandidates(){
-        string str = "Agent(x):";
+        string str = "Agent("+agent.agentId+"):";
         foreach(Candidate candidate in candidates){
             if (candidate.agentID == agent.agentId)
             {
                 continue;
             }
+            Debug.Log(""+candidate.agentID + candidate.CluesToString());
             str += candidate.CluesToString();
         }
         Debug.Log(str);
