@@ -15,12 +15,11 @@ public class TimeController : MonoBehaviour {
     public int[] intervalLengths = { 45, 30, 30, 0 };
     public string currentInterval;
     public int timeSpeed = 1;
-    public int murderTime = -1;
+    public int murderTime = -1; //-1 if the murder has not happened yet
 
     private readonly float timeDelay = 1f;
     private int timeIntervalIndex = 0;
     private int remainingIntervalTime;
-    private int murderTime = -1; //-1 if the murder has not happened yet
 
     public UnityEvent onDayEnd;
     public UnityEvent onTimeTick;
