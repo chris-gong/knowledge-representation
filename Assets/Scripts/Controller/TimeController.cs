@@ -19,6 +19,7 @@ public class TimeController : MonoBehaviour {
     private readonly float timeDelay = 1f;
     private int timeIntervalIndex = 0;
     private int remainingIntervalTime;
+    private int murderTime = -1; //-1 if the murder has not happened yet
 
     public UnityEvent onDayEnd;
     public UnityEvent onTimeTick;
@@ -105,6 +106,15 @@ public class TimeController : MonoBehaviour {
         StartCoroutine(clockCoroutine);
     }
 
+    public void setMurderTime(int time)
+    {
+        murderTime = time;
+    }
+
+    public int getMurderTime()
+    {
+        return murderTime;
+    }
     #endregion
 
     #region Unity Methods
