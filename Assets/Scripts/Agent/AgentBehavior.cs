@@ -156,39 +156,27 @@ public class AgentBehavior : MonoBehaviour {
     [NPCAffordance("Wander_Behavior")]
     public BEHAVIOR_STATUS WanderAround()
     {
-        //Debug.Log("Affordance activated");
-        /*int zoneNum = levelController.getZoneFromObj(gameObject);
-        Debug.Log("In zone " + zoneNum);*/
         if (agent.destination != null && Vector3.Distance(agent.destination, transform.position) < 1)
         {
-            
-            /*List<Transform> wanderingSpots = levelController.GetComponent<LevelController>().getWanderingSpots();
-            if (wanderingSpots.Count == 0)
+
+            float pickANewSpot = Random.Range(0, 1);
+            if(pickANewSpot >= 0)
             {
+                NavMeshHit hit;
+                List<Transform> zoneMarkers = levelController.GetZoneMarkers();
+                Vector3 randomLocation = zoneMarkers[Random.Range(0, zoneMarkers.Count)].position;
+                Vector3 offset = new Vector3(Random.Range(-2, 2), 0, Random.Range(2, 2));
+                randomLocation += offset;
+                /*if (curMarker == null)
+                {
+                    curMarker = Instantiate(targetMarker, randomLocation, Quaternion.identity);
+                }
+                curMarker.transform.position = randomLocation; */
+                NavMesh.SamplePosition(randomLocation, out hit, 1.0f, NavMesh.AllAreas);
+                //Debug.Log("Going to position " + hit.position);
+                agent.SetDestination(hit.position);
                 return BEHAVIOR_STATUS.SUCCESS;
-            }*/
-            //System.Random rand = new System.Random();
-            //NOTE: only use unity random, NOT system random
-            //int index = Random.Range(0, wanderingSpots.Count);
-            //Debug.Log("Index:" + index);
-            //Debug.Log("Going to " + wanderingSpots[index].position);
-            //Vector3 newPosition = wanderingSpots[index].position;
-            //float offsetXRange = Random.Range(-1, 1);
-            //float offsetZRange = Random.Range(-1, 1);
-            NavMeshHit hit;
-            List<Transform> zoneMarkers = levelController.GetZoneMarkers();
-            Vector3 randomLocation = zoneMarkers[Random.Range(0, zoneMarkers.Count)].position;
-            Vector3 offset = new Vector3(Random.Range(-2, 2), 0, Random.Range(2, 2));
-            randomLocation += offset;
-            /*if (curMarker == null)
-            {
-                curMarker = Instantiate(targetMarker, randomLocation, Quaternion.identity);
             }
-            curMarker.transform.position = randomLocation; */
-            NavMesh.SamplePosition(randomLocation, out hit, 1.0f, NavMesh.AllAreas);
-            //Debug.Log("Going to position " + hit.position);
-            agent.SetDestination(hit.position);
-            return BEHAVIOR_STATUS.SUCCESS;
         }
         return BEHAVIOR_STATUS.SUCCESS;
     }
