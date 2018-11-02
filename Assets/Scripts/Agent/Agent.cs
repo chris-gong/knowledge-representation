@@ -28,7 +28,7 @@ public class Agent : MonoBehaviour {
         Observable obsInfo= newobs.GetComponent<Observable>();
 
         int time = GameController.GetInstanceTimeController().GetTime();
-        int zoneID = GameController.GetInstanceTimeController().GetZoneFromObj(gameObject);
+        int zoneID = GameController.GetInstanceLevelController().GetZoneFromObj(gameObject);
 
         obsInfo.AddLocationClue(new LocationClue(agentId, 0, time));
         currentObs = newobs;

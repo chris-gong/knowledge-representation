@@ -18,7 +18,7 @@ public class MovePlayer : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        int zoneNum = levelController.getZoneFromObj(gameObject);
+        int zoneNum = levelController.GetZoneFromObj(gameObject);
         Debug.Log("In zone " + zoneNum);
         RaycastHit hit;
         Ray ray = camera.ScreenPointToRay(Input.mousePosition);
