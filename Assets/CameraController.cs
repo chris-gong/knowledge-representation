@@ -51,7 +51,6 @@ public class CameraController : MonoBehaviour {
         {
             mounted = true;
             transform.position = player.transform.position + offset;
-            orthoCamera.orthographicSize = 5;
         }
 	}
 }
