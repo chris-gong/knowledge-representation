@@ -27,7 +27,7 @@ public class Candidate
         string str = "";
         foreach(LocationClue clue in locationClues)
         {
-            str += locationClues+"\n";
+            str += clue+"\n";
         }
         return str;
     }
