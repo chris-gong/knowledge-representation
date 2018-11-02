@@ -159,8 +159,8 @@ public class AgentBehavior : MonoBehaviour {
         if (agent.destination != null && Vector3.Distance(agent.destination, transform.position) < 1)
         {
 
-            float pickANewSpot = Random.Range(0, 1);
-            if(pickANewSpot >= 0)
+            float pickANewSpot = Random.Range(0f, 1f);
+            if(pickANewSpot > 0.98)
             {
                 NavMeshHit hit;
                 List<Transform> zoneMarkers = levelController.GetZoneMarkers();
