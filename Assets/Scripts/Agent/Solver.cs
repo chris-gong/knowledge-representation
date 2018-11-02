@@ -8,7 +8,6 @@ public class Solver{
     
     public Solver(Agent myAgent)
     {
-        Debug.Log("Initiating solver:" + myAgent.agentId);
         candidates = new List<Candidate>();
         agent = myAgent;
         int agentCount = GameController.GetInstance().GetAgentCount();
@@ -32,7 +31,6 @@ public class Solver{
             {
                 continue;
             }
-            Debug.Log(""+candidate.agentID + candidate.CluesToString());
             str += candidate.CluesToString();
         }
         Debug.Log(str);
