@@ -13,7 +13,7 @@ public class AgentBehavior : MonoBehaviour {
     public LayerMask zoneLayer;
     KnowledgeBase knowledgeBase;
     private Agent info;
-    private GameObject levelController;
+    private LevelController levelController;
     private Coroutine currentBehavior;
     private NPCController behaviorController;
     private int lastZone;
