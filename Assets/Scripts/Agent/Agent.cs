@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AgentInfo : MonoBehaviour {
+public class Agent : MonoBehaviour {
 
     public int agentId;
     public string agentName = null;
     private GameObject currentObs = null;
     public GameObject blankObs;
+    public Solver solver;
 
-    public void InitAgentInfo(int newID){
-        blankObs = Resources.Load<GameObject>("Assets/Prefabs/Observable.prefab");
+    public void InitAgentInfo(int newID,int agentCount){
+        blankObs = Resources.Load<GameObject>("Observable");
         if (agentName == null)
         {
             agentName = string.Format("Agent#{0}", newID);
@@ -20,11 +21,13 @@ public class AgentInfo : MonoBehaviour {
     }
 
     public void UpdateAgentObs(){
-        if(!currentObs){
+        if(currentObs != null){
             Destroy(currentObs);
         }
-        GameObject newobs = Instantiate(blankObs,gameObject.transform);
-        Observable obsInfo= newobs.GetComponent<Observable>();
+        GameObject newObs = Instantiate(blankObs,gameObject.transform);
+        Observable obsInfo= newObs.GetComponent<Observable>();
+        currentObs = newObs;
+
         // TODO Add up-to-date information on the agent's current location
     }
 }

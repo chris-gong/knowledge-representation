@@ -7,13 +7,14 @@ public class KnowledgeBase : MonoBehaviour {
 
     private List<LocationClue> locationClueList;
     private FieldOfView fow;
-    public AgentInfo info;
+    public Agent info;
 
 	// Use this for initialization
-	void Start () {
+	void InitKnowledgeBase () {
+
         fow = gameObject.GetComponent<FieldOfView>();
         StartCoroutine("RetrieveFactsWithDelay", .2f);
-        info = gameObject.GetComponent<AgentInfo>();
+        info = gameObject.GetComponent<Agent>();
     }
 	
     IEnumerator RetrieveFactsWithDelay(float delay)
@@ -47,4 +48,8 @@ public class KnowledgeBase : MonoBehaviour {
 
         fow.observables.Clear();
     }
+
+
+
 }
+

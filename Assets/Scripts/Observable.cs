@@ -36,7 +36,7 @@ public class ObservableFact
 
 public class Observable : MonoBehaviour {
     
-    private List<ObservableFact> facts = new List<ObservableFact>();
+    private List<ObservableFact> observableFacts = new List<ObservableFact>();
 
     public void AddFact(string label, string[] values)
     {
@@ -44,11 +44,11 @@ public class Observable : MonoBehaviour {
         newFact.SetLabel(label);
         newFact.SetValues(values);
 
-        facts.Add(newFact);
+        observableFacts.Add(newFact);
     }
 
     public List<ObservableFact> GetFacts()
     {
-        return facts;
+        return observableFacts;
     }
 }

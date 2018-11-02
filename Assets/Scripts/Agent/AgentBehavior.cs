@@ -12,8 +12,8 @@ public class AgentBehavior : MonoBehaviour {
     public Transform runTarget;
     public LayerMask zoneLayer;
     KnowledgeBase knowledgeBase;
-    private AgentInfo info;
-    private LevelController levelController;
+    private Agent info;
+    private GameObject levelController;
     private Coroutine currentBehavior;
     private NPCController behaviorController;
     private int lastZone;
@@ -29,7 +29,7 @@ public class AgentBehavior : MonoBehaviour {
         agent = gameObject.GetComponent<NavMeshAgent>();
         knowledgeBase = gameObject.GetComponent<KnowledgeBase>();
         agent.speed = speed;
-        info = gameObject.GetComponent<AgentInfo>();
+        info = gameObject.GetComponent<Agent>();
         behaviorController = gameObject.GetComponent<NPCController>();
         levelController = GameObject.Find("GameController").GetComponent<LevelController>();
         //currentBehavior = StartCoroutine("RandomwWalkBehavior");

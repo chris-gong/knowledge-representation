@@ -12,6 +12,7 @@ public class GameController : MonoBehaviour {
     private LevelController levelCtl;
     private GameObject playerInstance;
     private List<GameObject> agentList;
+    private int agentCount;
 
     #endregion
 
@@ -74,35 +75,32 @@ public class GameController : MonoBehaviour {
     /// Gathers the agents and assigns their agentinfo
     /// </summary>
     private void InitializeAgents(){
-        agentList = new List<GameObject>();
-        // TODO assert that agent is configured correctly
+        agentList = new List<GameObject>(10);
+        List<Agent> infoList = new List<Agent>(10);
+        agentCount = 0;
 
         GameObject[] agents = GameObject.FindGameObjectsWithTag("Agent");
+
         for (int i = 0; i < agents.Length; i++)
         {
             GameObject agentObj = agents[i];
-            AgentInfo info = agentObj.GetComponent<AgentInfo>();
-            if(info == null)
+            Agent info = agentObj.GetComponent<Agent>();
+            if (info == null)
             {
                 Debug.LogError("ERROR: No agent info component on gameobject tagged as agent NAME: " + agentObj.name);
                 continue;
             }
-            info.InitAgentInfo(agentList.Count);
             agentList.Add(agentObj);
+            infoList.Add(info);
+            agentCount++;
         }
-        for (int i = 0; i < agentList.Count; i++)
+
+        for (int i = 0; i < agentCount; i++)
         {
-            GameObject obj = agentList[i];
-            Solver solver = obj.GetComponent<Solver>();
-            if (solver == null)
-            {
-                Debug.LogError("ERROR: No solver component on gameobject tagged as agent NAME: " + obj.name);
-                continue;
-            }else
-            {
-                solver.InitSolver(i);
-            }
+            Agent info = infoList[i];
+            info.InitAgentInfo(i, agentCount);
         }
+
     }
 
     private void GatherPlayer(){
