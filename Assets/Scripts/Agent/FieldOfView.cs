@@ -19,7 +19,7 @@ public class FieldOfView:MonoBehaviour {
 
     void Start()
     {
-        StartCoroutine("FindTargetsWithDelay", .2f);
+        StartCoroutine("FindTargetsWithDelay", .1f);
     }
 
     IEnumerator FindTargetsWithDelay(float delay)
@@ -48,7 +48,7 @@ public class FieldOfView:MonoBehaviour {
                 if (!Physics.Raycast(transform.position, dirToTarget, dstToTarget, obstacleMask))
                 {
                     //make sure to check that your observable is not yourself
-
+                    //Debug.Log("target in field of view " + target);
                     visibleTargets.Add(target);
                     if (!seenObservables.Contains(obj))
                     {

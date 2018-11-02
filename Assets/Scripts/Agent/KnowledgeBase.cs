@@ -10,7 +10,7 @@ public class KnowledgeBase : MonoBehaviour {
     public Agent info;
 
 	// Use this for initialization
-	void InitKnowledgeBase () {
+	public void InitKnowledgeBase() {
 
         fow = gameObject.GetComponent<FieldOfView>();
         agent = gameObject.GetComponent<Agent>();
@@ -31,6 +31,7 @@ public class KnowledgeBase : MonoBehaviour {
 
     void RetrieveFacts()
     {
+        //Debug.Log("# of observables: " + fow.observables.Count);
         foreach (GameObject obj in fow.observables)
         {
             if(obj == null)
@@ -38,6 +39,7 @@ public class KnowledgeBase : MonoBehaviour {
                 continue;
             }
             Observable obs = obj.GetComponent<Observable>();
+            //Debug.Log("Observable " + obs);
             foreach(ObservableFact fact in obs.observableFacts)
             {
                 YP.assertFact(info.agentId, fact.getLabel(), fact.getValues());

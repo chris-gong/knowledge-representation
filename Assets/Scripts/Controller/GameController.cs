@@ -90,6 +90,8 @@ public class GameController : MonoBehaviour {
             Debug.Log("found agent");
             GameObject agentObj = agentObjs[i];
             Agent agent = agentObj.GetComponent<Agent>();
+            KnowledgeBase kb = agentObj.GetComponent<KnowledgeBase>();
+            kb.InitKnowledgeBase();
             if (agent == null)
             {
                 Debug.LogError("ERROR: No agent info component on gameobject tagged as agent NAME: " + agentObj.name);
@@ -102,7 +104,7 @@ public class GameController : MonoBehaviour {
         for (int i = 0; i < agentCount; i++)
         {
             Agent info = agents[i];
-            info.InitAgentInfo(i);
+            info.InitAgentInfo(i+1); //+1 since player starts with id 0
         }
 
     }

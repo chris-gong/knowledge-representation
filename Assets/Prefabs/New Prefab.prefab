@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4598306354166028}
   m_Layer: 0
-  m_Name: Knife
+  m_Name: New Prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -120,7 +120,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1585015740943918}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 2.0550048, z: 9.515693}

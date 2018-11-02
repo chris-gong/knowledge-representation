@@ -23,11 +23,11 @@ public class MovePlayer : MonoBehaviour {
         RaycastHit hit;
         Ray ray = camera.ScreenPointToRay(Input.mousePosition);
         if (Input.GetMouseButtonDown(0)){
-            Debug.Log("Mouse clicked ");
+            //Debug.Log("Mouse clicked ");
 
             if (Physics.Raycast(ray, out hit))
             {
-                Debug.Log("Clicked on location " + hit.point);
+                //Debug.Log("Clicked on location " + hit.point);
                 agent.SetDestination(hit.point);
             }
 
