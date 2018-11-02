@@ -54,11 +54,12 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\CameraController.cs" />
+     <Compile Include="Assets\Scripts\Agent\Agent.cs" />
      <Compile Include="Assets\Scripts\Agent\AgentBehavior.cs" />
-     <Compile Include="Assets\Scripts\Agent\AgentInfo.cs" />
      <Compile Include="Assets\Scripts\Agent\FieldOfView.cs" />
      <Compile Include="Assets\Scripts\Agent\KnowledgeBase.cs" />
      <Compile Include="Assets\Scripts\Agent\Solver.cs" />
+     <Compile Include="Assets\Scripts\Candidate.cs" />
      <Compile Include="Assets\Scripts\Clue.cs" />
      <Compile Include="Assets\Scripts\Controller\GameController.cs" />
      <Compile Include="Assets\Scripts\Controller\LevelController.cs" />

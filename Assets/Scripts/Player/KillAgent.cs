@@ -49,7 +49,7 @@ public class KillAgent : MonoBehaviour
 
             for (int i = 0; i < targetsInRadius.Length; i++)
             {
-                AgentInfo info = (targetsInRadius[i].gameObject).GetComponent<AgentInfo>();
+                Agent info = (targetsInRadius[i].gameObject).GetComponent<Agent>();
                 GameObject eventObs = Instantiate(obs, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
                 Observable observableFacts = eventObs.GetComponent<Observable>();
                 Debug.Log(observableFacts);
