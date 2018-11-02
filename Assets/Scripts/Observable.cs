@@ -35,10 +35,11 @@ public class ObservableFact
 }
 
 public class Observable : MonoBehaviour {
-    
-    private List<ObservableFact> observableFacts = new List<ObservableFact>();
 
-    public void AddFact(string label, string[] values)
+    public List<ObservableFact> observableFacts = new List<ObservableFact>();
+    public List<LocationClue> locationClues = new List<LocationClue>;
+
+    public void AddObservableFact(string label, string[] values)
     {
         ObservableFact newFact = new ObservableFact();
         newFact.SetLabel(label);
@@ -47,8 +48,8 @@ public class Observable : MonoBehaviour {
         observableFacts.Add(newFact);
     }
 
-    public List<ObservableFact> GetFacts()
-    {
-        return observableFacts;
+    public void AddLocationClue(LocationClue clue){
+        locationClues.Add(clue);
     }
+
 }

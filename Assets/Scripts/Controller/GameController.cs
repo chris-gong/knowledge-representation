@@ -38,6 +38,11 @@ public class GameController : MonoBehaviour {
         return levelCtl;
     }
 
+    public static LevelController GetInstanceLevelController()
+    {
+        return instance.levelCtl;
+    }
+
     #endregion
 
     #region Unity Methods
