@@ -13,9 +13,34 @@ public class LevelController : MonoBehaviour {
     private List<Transform> zoneMarkers;
 
     #endregion
-    // Use this for initialization
+
+    #region Public Methods
+
+    public List<Transform> GetHidingSpots()
+    {
+        return this.hidingSpots;
+    }
+
+    public List<Transform> GetWanderingSpots()
+    {
+        return this.wanderingSpots;
+    }
+
+    public List<Transform> GetZoneMarkers()
+    {
+        return this.zoneMarkers;
+    }
+
+    public List<int> GetShortestPath()
+    {
+        return null;
+    }
+
+    /// <summary>
+    /// Initializes the LevelController and is called by the GameController
+    /// </summary>
     public void InitiLevelCtl () {
-		if(instance == null)
+        if(instance == null)
         {
             LevelController.instance = this;
             hidingSpots = new List<Transform>();
@@ -38,15 +63,16 @@ public class LevelController : MonoBehaviour {
             {
                 wanderingSpots.Add(spotObjects[i].transform);
             }
-            
         }
         else
         {
             Destroy(gameObject);
         }
+    }
+   
+    #endregion
 
-
-	}
+    #region Aggregate Methods
 
     private void AllocateZoneId(GameObject zoneMarker)
     {
@@ -57,29 +83,9 @@ public class LevelController : MonoBehaviour {
         }
         else {
             Debug.Log(string.Format("ERROR:gameobject({0}) at {1} is missing a ZoneInfo component"
-                ,zoneMarker.name,zoneMarker.transform.position.ToString()));
+                                    ,zoneMarker.name,zoneMarker.transform.position.ToString()));
         }
-        
-    }
-   
-    public List<Transform> getHidingSpots()
-    {
-        return this.hidingSpots;
     }
 
-    public List<Transform> getWanderingSpots()
-    {
-        return this.wanderingSpots;
-    }
-
-    public List<Transform> getZoneMarkers()
-    {
-        return this.zoneMarkers;
-    }
-
-    public List<int> getShortestPath()
-    {
-        return null;
-    }
-
+    #endregion
 }

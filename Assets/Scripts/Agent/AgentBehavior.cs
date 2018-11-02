@@ -97,7 +97,7 @@ public class AgentBehavior : MonoBehaviour {
             if(deadCount == 3 || killerFound)
             {
                 StartNewBehavior("RunAwayBehavior");
-                StopCoroutine(thinkingBehavior);
+                //StopCoroutine(thinkingBehavior);
             }
         }
     }
@@ -134,7 +134,7 @@ public class AgentBehavior : MonoBehaviour {
     }
     void SetHidingSpot()
     {
-        List<Transform> hidingSpots = levelController.GetComponent<LevelController>().getHidingSpots();
+        List<Transform> hidingSpots = levelController.GetComponent<LevelController>().GetHidingSpots();
         System.Random rand = new System.Random();
         int index = rand.Next(hidingSpots.Count);
         //Debug.Log(hidingSpots[index].position);

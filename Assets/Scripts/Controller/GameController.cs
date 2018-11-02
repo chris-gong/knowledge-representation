@@ -6,21 +6,53 @@ public class GameController : MonoBehaviour {
 
     private static GameController instance;
 
-    // Sub Controllers
-    public TimeController timeCtl;
-    public LevelController levelCtl;
+    #region Fields
 
-    GameObject player;
+    private TimeController timeCtl;
+    private GameObject playerInstance;
+    private List<GameObject> agentList;
+    private LevelController levelCtl;
 
-	// Use this for initialization
-	void Start () {
-        if (GameController.instance == null) {
+    #endregion
+
+    #region Controller Instance Methods
+
+    public static GameController GetInstance()
+    {
+        return GameController.instance;
+    }
+
+    public TimeController GetTimeController()
+    {
+        return timeCtl;
+    }
+
+    public static TimeController GetInstanceTimeController()
+    {
+        return instance.timeCtl;
+    }
+
+    public LevelController GetLevelController()
+    {
+        return levelCtl;
+    }
+
+    #endregion
+
+    #region Unity Methods
+
+    void Start()
+    {
+        if (GameController.instance == null)
+        {
             GameController.instance = this;
         }
-        else {
+        else
+        {
             Destroy(gameObject);
             return;
         }
+
         // Initiate Time Controller
         timeCtl = GetComponent<TimeController>();
         timeCtl.InitTimeCtl();
@@ -29,23 +61,45 @@ public class GameController : MonoBehaviour {
         levelCtl = GetComponent<LevelController>();
         levelCtl.InitiLevelCtl();
         Debug.Assert(levelCtl != null, "ERROR: Gamecontroller gameobject is missing LevelController Component");
-        
-        // Player instancing
-        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-        if(players.Length > 0)
-        {
-            player = players[0];
-        }
 
-        // Agent gathering
+        GatherAgents();
+        GatherPlayer();
+    }
+
+    #endregion
+
+    #region Aggregate Methods
+
+    /// <summary>
+    /// Gathers the agents and assigns their agentinfo
+    /// </summary>
+    private void GatherAgents(){
+        agentList = new List<GameObject>();
+        // TODO assert that agent is configured correctly
+
         GameObject[] agents = GameObject.FindGameObjectsWithTag("Agent");
         for(int i = 0; i < agents.Length; i++)
         {
-            AgentInfo info = agents[i].GetComponent<AgentInfo>();
-            info.agentId = i;
-            info.agentName = string.Format("Agent{0}", i);
+            GameObject agentObj = agents[i];
+            AgentInfo info = agentObj.GetComponent<AgentInfo>();
+            Debug.Assert(info != null,"ERROR: No agent info component on gameobject tagged as agent NAME: "+ agentObj.name);
+            if(info.agentName == null){
+                info.agentName = string.Format("Agent{0}", i);
+            }
+            agentList.Add(agentObj);
         }       
     }
+
+    private void GatherPlayer(){
+        // Player gathering
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        if (players.Length > 0)
+        {
+            playerInstance = players[0];
+        }
+    }
+
+    #endregion
 
     #region Public Methods
     public int GetTime()

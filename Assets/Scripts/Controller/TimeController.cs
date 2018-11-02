@@ -7,6 +7,9 @@ public class TimeController : MonoBehaviour {
     public static TimeController instance = null;
 
     #region Fields
+
+    private GameController gameCtl;
+
     public int currentTime = 0;
     public string[] intervalNames = { "Morning", "Day", "Evening", "Night" };
     public int[] intervalLengths = { 45, 30, 30, 0 };
@@ -22,19 +25,23 @@ public class TimeController : MonoBehaviour {
 
     #endregion
 
-
+    #region Clock Coroutines Methods and Events
     IEnumerator TimeClock()
     {
-        while (true) { 
+        while (true)
+        {
             yield return new WaitForSeconds(this.timeDelay);
-            currentTime+= timeSpeed;
-            remainingIntervalTime-= timeSpeed;
-            if(remainingIntervalTime <= 0) {
+            currentTime += timeSpeed;
+            remainingIntervalTime -= timeSpeed;
+            if (remainingIntervalTime <= 0)
+            {
                 timeIntervalIndex++;
                 UpdateInterval(timeIntervalIndex);
                 Debug.Log("Updating Time Interval to: {" + currentInterval + "}");
-                if(timeIntervalIndex > intervalNames.Length) {
+                if (timeIntervalIndex > intervalNames.Length)
+                {
                     EndOfDay();
+                    yield break;
                 }
             }
             onTimeTick.Invoke();
@@ -48,11 +55,15 @@ public class TimeController : MonoBehaviour {
         remainingIntervalTime = intervalLengths[n];
     }
 
+    /// <summary>
+    /// Ends the day and invokes all end of day events
+    /// </summary>
     private void EndOfDay()
     {
         onDayEnd.Invoke();
         return;
     }
+    #endregion
 
     #region Public Methods
 
@@ -72,7 +83,9 @@ public class TimeController : MonoBehaviour {
         return intervalNames[n];
     }
 
-    // Use this for initialization
+    /// <summary>
+    /// Intializes the TimeController and is called by the GameController
+    /// </summary>
     public void InitTimeCtl()
     {
         if (TimeController.instance == null) {
@@ -82,7 +95,7 @@ public class TimeController : MonoBehaviour {
             Object.Destroy(gameObject);
             return;
         }
-
+        gameCtl = GameController.GetInstance();
         Debug.Assert(intervalLengths.Length == intervalNames.Length,
                     string.Format("ERROR: Count of Names/Lengths array does not match: {0}/{1}",
                                    intervalLengths.Length, intervalNames.Length));
