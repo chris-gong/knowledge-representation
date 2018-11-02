@@ -10,7 +10,8 @@ public class LevelController : MonoBehaviour {
 
     private List<Transform> hidingSpots;
     private List<Transform> wanderingSpots;
-    private List<Transform> zoneMarkers;
+    private List<Transform> zoneMarkersTransforms;
+    private List<ZoneInfo> zoneInfoList;
 
     #endregion
 
@@ -28,10 +29,10 @@ public class LevelController : MonoBehaviour {
 
     public List<Transform> GetZoneMarkers()
     {
-        return this.zoneMarkers;
+        return this.zoneMarkersTransforms;
     }
 
-    public List<int> GetShortestPath()
+    public List<int> GetShortestPath(int zone1,int zone2)
     {
         return null;
     }
@@ -40,52 +41,60 @@ public class LevelController : MonoBehaviour {
     /// Initializes the LevelController and is called by the GameController
     /// </summary>
     public void InitiLevelCtl () {
-        if(instance == null)
+        if (instance == null)
         {
             LevelController.instance = this;
-            hidingSpots = new List<Transform>();
-            wanderingSpots = new List<Transform>();
-            zoneMarkers = new List<Transform>();
-            GameObject[] spotObjects = GameObject.FindGameObjectsWithTag("Hiding Spot");
-            GameObject[] zoneObjects = GameObject.FindGameObjectsWithTag("ZoneMarker");
-            for(int i = 0; i < zoneObjects.Length; i++) {
-                AllocateZoneId(zoneObjects[i]);
-            }
-            
-                for (int i = 0; i < spotObjects.Length; i++)
-            {
-                hidingSpots.Add(spotObjects[i].transform);
-            }
-
-            spotObjects = GameObject.FindGameObjectsWithTag("Wandering Spot");
-            //Debug.Log("Number of wandering spots: " + spotObjects.Length);
-            for (int i = 0; i < spotObjects.Length; i++)
-            {
-                wanderingSpots.Add(spotObjects[i].transform);
-            }
         }
         else
         {
             Destroy(gameObject);
+            return;
         }
+
+        hidingSpots = new List<Transform>();
+        wanderingSpots = new List<Transform>();
+
+
+        GatherZoneMarkers();
+        GatherWanderingSpots();
+
     }
    
     #endregion
 
     #region Aggregate Methods
 
-    private void AllocateZoneId(GameObject zoneMarker)
+    private void GatherZoneMarkers()
     {
-        zoneMarkers.Add(zoneMarker.transform);
-        ZoneInfo info = zoneMarker.GetComponent<ZoneInfo>();
-        if (info != null) {
-            info.zoneNum = zoneMarkers.Count;
-        }
-        else {
-            Debug.Log(string.Format("ERROR:gameobject({0}) at {1} is missing a ZoneInfo component"
-                                    ,zoneMarker.name,zoneMarker.transform.position.ToString()));
+
+        zoneMarkersTransforms = new List<Transform>();
+        zoneInfoList = new List<ZoneInfo>();
+        GameObject[] zoneObjects = GameObject.FindGameObjectsWithTag("ZoneMarker");
+
+        for (int i = 0; i < zoneObjects.Length; i++)
+        {
+            GameObject markerObj = zoneObjects[i];
+            ZoneInfo info = markerObj.GetComponent<ZoneInfo>();
+            if (info == null)
+            {
+                Debug.LogError(string.Format("ERROR:gameobject({0}) at {1} is missing a ZoneInfo component"
+                                        , markerObj.name, markerObj.transform.position.ToString()));
+                continue;
+            }
+            info.zoneNum = zoneMarkersTransforms.Count;
+            zoneMarkersTransforms.Add(markerObj.transform);
+            zoneInfoList.Add(info);
         }
     }
 
+    private void GatherWanderingSpots()
+    {
+        GameObject[] spotObjects = GameObject.FindGameObjectsWithTag("Hiding Spot");
+        spotObjects = GameObject.FindGameObjectsWithTag("Wandering Spot");
+        for (int i = 0; i < spotObjects.Length; i++)
+        {
+            wanderingSpots.Add(spotObjects[i].transform);
+        }
+    }
     #endregion
 }
