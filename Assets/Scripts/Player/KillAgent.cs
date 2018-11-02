@@ -8,38 +8,15 @@ public class KillAgent : MonoBehaviour
     public GameObject obs;
     public LayerMask targetLayer;
     public LayerMask weaponLayer;
+    public GameController gameController;
     public float radius;
     private bool equipped = false;
     
     // Use this for initialization
-    /*
-    void OnCollisionEnter(Collision collision)
-    {
-        return;
-        if (collision.gameObject.tag == "Agent")
-        {
-            GameObject eventObs = Instantiate(obs, transform.position+new Vector3(0,1,0), Quaternion.identity);
-            Observable facts = eventObs.GetComponent<Observable>();
-            facts.addFact(string.Format("killed({0},{1})",
-                          gameObject.name,
-                          collision.gameObject.name));
-            Destroy(eventObs.gameObject, 2);
 
-            GameObject deadObs = Instantiate(obs, transform.position, Quaternion.identity);
-            facts = eventObs.GetComponent<Observable>();
-            facts.addFact(string.Format("dead({0},{1},{2})",
-                          collision.gameObject.name,
-                          "level 1",
-                          "day"));
-
-            Destroy(collision.gameObject);
-            //Instantiate(deadObs, transform.position, Quaternion.identity);
-        }
-    }
-    */
     private void Start()
     {
-        //StartCoroutine("FindKillableAgents", .2f);
+        gameController = GameObject.Find("GameController").GetComponent<GameController>();
     }
 
     private void Update()
@@ -61,7 +38,10 @@ public class KillAgent : MonoBehaviour
 
             if (targetsInRadius.Length > 0)
             {
-                Destroy(targetsInRadius[0].gameObject);
+                targetsInRadius[0].gameObject.SetActive(false);
+                equipped = false; //one kill per weapon only
+                int time = gameController.GetTimeController().GetTime();
+                gameController.GetTimeController().setMurderTime(time);
             }
         }
     }
