@@ -9,9 +9,9 @@ public class GameController : MonoBehaviour {
     #region Fields
 
     private TimeController timeCtl;
+    private LevelController levelCtl;
     private GameObject playerInstance;
     private List<GameObject> agentList;
-    private LevelController levelCtl;
 
     #endregion
 
@@ -62,32 +62,47 @@ public class GameController : MonoBehaviour {
         levelCtl.InitiLevelCtl();
         Debug.Assert(levelCtl != null, "ERROR: Gamecontroller gameobject is missing LevelController Component");
 
-        GatherAgents();
+        InitializeAgents();
         GatherPlayer();
     }
 
     #endregion
 
-    #region Aggregate Methods
+    #region Collection Methods
 
     /// <summary>
     /// Gathers the agents and assigns their agentinfo
     /// </summary>
-    private void GatherAgents(){
+    private void InitializeAgents(){
         agentList = new List<GameObject>();
         // TODO assert that agent is configured correctly
 
         GameObject[] agents = GameObject.FindGameObjectsWithTag("Agent");
-        for(int i = 0; i < agents.Length; i++)
+        for (int i = 0; i < agents.Length; i++)
         {
             GameObject agentObj = agents[i];
             AgentInfo info = agentObj.GetComponent<AgentInfo>();
-            Debug.Assert(info != null,"ERROR: No agent info component on gameobject tagged as agent NAME: "+ agentObj.name);
-            if(info.agentName == null){
-                info.agentName = string.Format("Agent{0}", i);
+            if(info == null)
+            {
+                Debug.LogError("ERROR: No agent info component on gameobject tagged as agent NAME: " + agentObj.name);
+                continue;
             }
+            info.InitAgentInfo(agentList.Count);
             agentList.Add(agentObj);
-        }       
+        }
+        for (int i = 0; i < agentList.Count; i++)
+        {
+            GameObject obj = agentList[i];
+            Solver solver = obj.GetComponent<Solver>();
+            if (solver == null)
+            {
+                Debug.LogError("ERROR: No solver component on gameobject tagged as agent NAME: " + obj.name);
+                continue;
+            }else
+            {
+                solver.InitSolver(i);
+            }
+        }
     }
 
     private void GatherPlayer(){
@@ -96,6 +111,8 @@ public class GameController : MonoBehaviour {
         if (players.Length > 0)
         {
             playerInstance = players[0];
+        }else{
+            Debug.LogError("No player");
         }
     }
 

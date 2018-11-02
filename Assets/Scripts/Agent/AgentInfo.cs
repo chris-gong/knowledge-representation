@@ -9,7 +9,7 @@ public class AgentInfo : MonoBehaviour {
     private GameObject currentObs = null;
     public GameObject blankObs;
 
-    public void InitAgentInfo(int newID, string name){
+    public void InitAgentInfo(int newID){
         blankObs = Resources.Load<GameObject>("Assets/Prefabs/Observable.prefab");
         if (agentName == null)
         {

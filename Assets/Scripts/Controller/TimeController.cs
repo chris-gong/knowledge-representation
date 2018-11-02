@@ -26,6 +26,7 @@ public class TimeController : MonoBehaviour {
     #endregion
 
     #region Clock Coroutines Methods and Events
+
     IEnumerator TimeClock()
     {
         while (true)
@@ -63,6 +64,7 @@ public class TimeController : MonoBehaviour {
         onDayEnd.Invoke();
         return;
     }
+
     #endregion
 
     #region Public Methods
