@@ -12,7 +12,6 @@ public class GameController : MonoBehaviour {
     private LevelController levelCtl;
     private GameObject playerInstance;
     private List<Agent> agents;
-    private int npc_count;
 
     #endregion
 

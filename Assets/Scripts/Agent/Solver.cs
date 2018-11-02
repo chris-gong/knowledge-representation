@@ -36,7 +36,23 @@ public class Solver{
         Debug.Log(str);
     }
 
+    public void TryAndSolve(){
+        int numCandidates = candidates.Count;
+        List<int> scores = new List<int>();
+        for (int i = 0; i < numCandidates; i++){
+            scores[i] = 0;
+        }
+        for (int i = 0; i < numCandidates; i++){
+            scores[i] = CalculateScore(candidates[i]);
+        }
+    }
 
+    private int CalculateScore(Candidate candidate){
+        int score = 0;
+
+        // TODO
+        return score;
+    }
 
 
 }
