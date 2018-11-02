@@ -5,17 +5,20 @@ using YieldProlog;
 
 public class KnowledgeBase : MonoBehaviour {
 
-    private List<LocationClue> locationClueList;
     private FieldOfView fow;
+    private Agent agent;
     public Agent info;
 
 	// Use this for initialization
 	void InitKnowledgeBase () {
 
         fow = gameObject.GetComponent<FieldOfView>();
+        agent = gameObject.GetComponent<Agent>();
         StartCoroutine("RetrieveFactsWithDelay", .2f);
         info = gameObject.GetComponent<Agent>();
     }
+
+
 	
     IEnumerator RetrieveFactsWithDelay(float delay)
     {
@@ -26,10 +29,6 @@ public class KnowledgeBase : MonoBehaviour {
         }
     }
 
-    LocationClue ClueFromAgent(GameObject obj)
-    {
-        return null;
-    }
     void RetrieveFacts()
     {
         foreach (GameObject obj in fow.observables)
@@ -39,13 +38,16 @@ public class KnowledgeBase : MonoBehaviour {
                 continue;
             }
             Observable obs = obj.GetComponent<Observable>();
-            List< ObservableFact> factList = obs.GetObservableFacts();
-            foreach(ObservableFact fact in factList)
+            foreach(ObservableFact fact in obs.observableFacts)
             {
                 YP.assertFact(info.agentId, fact.getLabel(), fact.getValues());
             }
+            foreach (LocationClue clue in obs.locationClues)
+            {
+                Debug.Log("KB adding clue " + clue);
+                agent.solver.AddLocationClue(clue);
+            }
         }
-
         fow.observables.Clear();
     }
 

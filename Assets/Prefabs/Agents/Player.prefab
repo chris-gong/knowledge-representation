@@ -21,12 +21,12 @@ GameObject:
   - component: {fileID: 4342079891175158}
   - component: {fileID: 33538115287436728}
   - component: {fileID: 23740729657484252}
-  - component: {fileID: 114425022203257532}
   - component: {fileID: 114003025373313286}
   - component: {fileID: 114229153853399084}
   - component: {fileID: 54727701975291860}
   - component: {fileID: 65305556047952176}
   - component: {fileID: 195333041437718728}
+  - component: {fileID: 114386483251353244}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -145,17 +145,20 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
   radius: 1.1
---- !u!114 &114425022203257532
+--- !u!114 &114386483251353244
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1118545420284184}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 001ff793dd48c084281b81c0e0cb6137, type: 3}
+  m_Script: {fileID: 11500000, guid: d8669e7d5b7db4b60b5fc9e053e3a04c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  agentId: 0
+  agentName: 
+  blankObs: {fileID: 0}
 --- !u!195 &195333041437718728
 NavMeshAgent:
   m_ObjectHideFlags: 1

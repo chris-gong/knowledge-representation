@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class LocationClue {
 
-    private int agentID;
-    private int zoneID;
-    private int timeInt;
+    public int agentID;
+    public int zoneID;
+    public int timeInt;
     
     public LocationClue(int agent, int zone, int time)
     {
@@ -15,6 +15,10 @@ public class LocationClue {
         this.timeInt = time;
     }
 
+    public override string ToString()
+    {
+        return string.Format("({0},{1},{2})",agentID,zoneID,timeInt);
+    }
 
     public static int CmpTime(LocationClue obj, LocationClue other)
     {

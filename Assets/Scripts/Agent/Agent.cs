@@ -9,14 +9,27 @@ public class Agent : MonoBehaviour {
     private GameObject currentObs = null;
     public GameObject blankObs;
     public Solver solver;
+    private bool isPlayer = false;
+    private KnowledgeBase kb;
 
-    public void InitAgentInfo(int newID,int agentCount){
+    public void InitAgentInfo(int newID){
+        Debug.Log("Initiating agent:" + agentName + "/"+agentId);
         blankObs = Resources.Load<GameObject>("Observable");
         if (agentName == null)
         {
             agentName = string.Format("Agent#{0}", newID);
         }
         agentId = newID;
+        UpdateAgentObs();
+        solver = new Solver(this);
+        GameController.GetInstanceTimeController().onTimeTick.AddListener(UpdateAgentObs);
+    }
+
+    public void InitPlayerAgentInfo(int newID){
+        blankObs = Resources.Load<GameObject>("Observable");
+        agentName = "Player";
+        agentId = newID;
+        UpdateAgentObs();
         GameController.GetInstanceTimeController().onTimeTick.AddListener(UpdateAgentObs);
     }
 
@@ -27,12 +40,17 @@ public class Agent : MonoBehaviour {
         GameObject newobs = Instantiate(blankObs,gameObject.transform);
         Observable obsInfo= newobs.GetComponent<Observable>();
 
-        int time = GameController.GetInstanceTimeController().GetTime();
+        int time = GameController.GetTime();
         int zoneID = GameController.GetInstanceLevelController().GetZoneFromObj(gameObject);
 
-        obsInfo.AddLocationClue(new LocationClue(agentId, 0, time));
+        obsInfo.AddLocationClue(new LocationClue(agentId, zoneID, time));
         currentObs = newobs;
 
-        // TODO Add up-to-date information on the agent's current location
+    }
+    public void Update(){
+        if (Input.GetKeyDown("space") && solver != null)
+        {
+            solver.PrintAllCandidates();
+        }
     }
 }

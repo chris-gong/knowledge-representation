@@ -52,7 +52,4 @@ public class Observable : MonoBehaviour {
         locationClues.Add(clue);
     }
 
-    public List<ObservableFact> GetObservableFacts(){
-        return observableFacts;
-    }
 }
