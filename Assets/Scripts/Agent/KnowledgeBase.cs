@@ -39,7 +39,7 @@ public class KnowledgeBase : MonoBehaviour {
                 continue;
             }
             Observable obs = obj.GetComponent<Observable>();
-            List< ObservableFact> factList = obs.GetFacts();
+            List< ObservableFact> factList = obs.GetObservableFacts();
             foreach(ObservableFact fact in factList)
             {
                 YP.assertFact(info.agentId, fact.getLabel(), fact.getValues());

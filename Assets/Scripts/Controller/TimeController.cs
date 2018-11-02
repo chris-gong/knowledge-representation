@@ -71,7 +71,6 @@ public class TimeController : MonoBehaviour {
 
     public int GetTime()
     {
-        UpdateInterval(0);
         return currentTime;
     }
 

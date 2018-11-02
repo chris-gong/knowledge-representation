@@ -24,9 +24,14 @@ public class Agent : MonoBehaviour {
         if(currentObs != null){
             Destroy(currentObs);
         }
-        GameObject newObs = Instantiate(blankObs,gameObject.transform);
-        Observable obsInfo= newObs.GetComponent<Observable>();
-        currentObs = newObs;
+        GameObject newobs = Instantiate(blankObs,gameObject.transform);
+        Observable obsInfo= newobs.GetComponent<Observable>();
+
+        int time = GameController.GetInstanceTimeController().GetTime();
+        int zoneID = GameController.GetInstanceLevelController().GetZoneFromObj(gameObject);
+
+        obsInfo.AddLocationClue(new LocationClue(agentId, 0, time));
+        currentObs = newobs;
 
         // TODO Add up-to-date information on the agent's current location
     }
