@@ -22,7 +22,7 @@ public class MovePlayer : MonoBehaviour {
         Debug.Log("In zone " + zoneNum);*/
         RaycastHit hit;
         Ray ray = camera.ScreenPointToRay(Input.mousePosition);
-        if (Input.GetMouseButtonDown(0)){
+        if (Input.GetMouseButton(0)){
             //Debug.Log("Mouse clicked ");
 
             if (Physics.Raycast(ray, out hit))

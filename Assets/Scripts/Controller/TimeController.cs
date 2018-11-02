@@ -12,9 +12,9 @@ public class TimeController : MonoBehaviour {
 
     public int currentTime = 0;
     public string[] intervalNames = { "Morning", "Day", "Evening", "Night" };
-    public int[] intervalLengths = { 45, 30, 30, 0 };
-    public string currentInterval;
-    public int timeSpeed = 1;
+    public int[] intervalLengths = { 15, 15, 15, 0 };
+    public string currentInterval = "Morning";
+    public int timeSpeed = 6;
     public int murderTime = -1; //-1 if the murder has not happened yet
 
     private readonly float timeDelay = 1f;
@@ -37,14 +37,14 @@ public class TimeController : MonoBehaviour {
             remainingIntervalTime -= timeSpeed;
             if (remainingIntervalTime <= 0)
             {
-                timeIntervalIndex++;
-                UpdateInterval(timeIntervalIndex);
-                Debug.Log("Updating Time Interval to: {" + currentInterval + "}");
-                if (timeIntervalIndex > intervalNames.Length)
+                if (timeIntervalIndex >= intervalNames.Length - 1)
                 {
                     EndOfDay();
                     yield break;
                 }
+                timeIntervalIndex++;
+                UpdateInterval(timeIntervalIndex);
+                Debug.Log("Updating Time Interval to: {" + currentInterval + "}");
             }
             onTimeTick.Invoke();
         }
@@ -62,6 +62,7 @@ public class TimeController : MonoBehaviour {
     /// </summary>
     private void EndOfDay()
     {
+        timeIntervalIndex = 0;
         onDayEnd.Invoke();
         return;
     }

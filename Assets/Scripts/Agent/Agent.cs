@@ -11,6 +11,7 @@ public class Agent : MonoBehaviour {
     public Solver solver;
     private bool isPlayer = false;
     private KnowledgeBase kb;
+    public bool isAlive = true;
 
     public void InitAgentInfo(int newID){
         Debug.Log("Initiating agent:" + agentName + "/"+agentId);
@@ -22,6 +23,7 @@ public class Agent : MonoBehaviour {
         agentId = newID;
         UpdateAgentObs();
         solver = new Solver(this);
+        solver.agentId = agentId;
         GameController.GetInstanceTimeController().onTimeTick.AddListener(UpdateAgentObs);
     }
 

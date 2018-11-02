@@ -13,6 +13,7 @@ public class LevelController : MonoBehaviour {
     public LayerMask zoneLayer;
     private List<Transform> zoneMarkersTransforms;
     private List<ZoneInfo> zoneInfoList;
+    public int murderedZone;
 
     #endregion
 
@@ -36,6 +37,11 @@ public class LevelController : MonoBehaviour {
     public List<int> GetShortestPath(int zone1,int zone2)
     {
         return null;
+    }
+
+    public List<ZoneInfo> GetZoneInfos()
+    {
+        return this.zoneInfoList;
     }
 
     /// <summary>
@@ -85,7 +91,7 @@ public class LevelController : MonoBehaviour {
             info.zoneNum = zoneMarkersTransforms.Count;
             TextMesh mesh = markerObj.transform.parent.Find("HoverText").GetComponent<TextMesh>();
             Vector3 objPos = markerObj.transform.position;
-            mesh.text = string.Format("Zone {0} ({1}, {2})", info.zoneNum, objPos.x, objPos.z);
+            mesh.text = string.Format("Zone {0}", info.zoneNum);
             zoneMarkersTransforms.Add(markerObj.transform);
             zoneInfoList.Add(info);
         }
