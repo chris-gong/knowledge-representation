@@ -16,7 +16,7 @@ public class TimeController : MonoBehaviour {
     public string currentInterval;
     public int timeSpeed = 1;
 
-    private readonly float timeDelay = 1f;
+    private readonly float timeDelay = 2.5f;
     private int timeIntervalIndex = 0;
     private int remainingIntervalTime;
 

@@ -2236,6 +2236,21 @@ Prefab:
       propertyPath: weaponLayer.m_Bits
       value: 8192
       objectReference: {fileID: 0}
+    - target: {fileID: 195333041437718728, guid: 139bd25b4775dda44b78cf5d66365733,
+        type: 2}
+      propertyPath: m_Acceleration
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 195333041437718728, guid: 139bd25b4775dda44b78cf5d66365733,
+        type: 2}
+      propertyPath: m_AngularSpeed
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 114003025373313286, guid: 139bd25b4775dda44b78cf5d66365733,
+        type: 2}
+      propertyPath: moveSpeed
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 139bd25b4775dda44b78cf5d66365733, type: 2}
   m_IsPrefabAsset: 0
