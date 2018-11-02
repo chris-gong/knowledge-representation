@@ -274,6 +274,25 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f90ee0f675926f4f9ca46f823f6a006, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &113208038 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1059738877113718, guid: a91f78fb8c2669f42aa246caafbc7765,
+    type: 2}
+  m_PrefabInternal: {fileID: 139138461}
+--- !u!114 &113208054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 113208038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8669e7d5b7db4b60b5fc9e053e3a04c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agentId: 0
+  agentName: 
+  blankObs: {fileID: 0}
 --- !u!1 &138880465
 GameObject:
   m_ObjectHideFlags: 0
@@ -802,7 +821,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4598306354166028, guid: 91a9c6ab3a5ec2844856db1d494581b0, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4598306354166028, guid: 91a9c6ab3a5ec2844856db1d494581b0, type: 2}
       propertyPath: m_LocalPosition.z
@@ -839,6 +858,11 @@ Prefab:
     - target: {fileID: 1087890190664384, guid: 91a9c6ab3a5ec2844856db1d494581b0, type: 2}
       propertyPath: m_Name
       value: Knife (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 65186152640581956, guid: 91a9c6ab3a5ec2844856db1d494581b0,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91a9c6ab3a5ec2844856db1d494581b0, type: 2}

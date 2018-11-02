@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 54727701975291860}
   - component: {fileID: 65305556047952176}
   - component: {fileID: 195333041437718728}
-  - component: {fileID: 114386483251353244}
+  - component: {fileID: 114425022203257532}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -150,7 +150,7 @@ MonoBehaviour:
   radius: 1
 --- !u!114 &114425022203257532
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1118545420284184}
