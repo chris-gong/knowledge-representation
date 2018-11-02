@@ -7,7 +7,9 @@ public class KillAgent : MonoBehaviour
 {
     public GameObject obs;
     public LayerMask targetLayer;
-    public float radius = 1.5f;
+    public LayerMask weaponLayer;
+    public float radius;
+    private bool equipped = false;
     
     // Use this for initialization
     /*
@@ -40,6 +42,29 @@ public class KillAgent : MonoBehaviour
         //StartCoroutine("FindKillableAgents", .2f);
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.E) && !equipped)
+        {
+            Collider[] targetsInRadius = Physics.OverlapSphere(transform.position, radius, weaponLayer);
+
+            if(targetsInRadius.Length > 0)
+            {
+                Destroy(targetsInRadius[0].transform.parent.gameObject);
+                equipped = true;
+            }
+        }
+
+        if (equipped && Input.GetKeyDown(KeyCode.Space))
+        {
+            Collider[] targetsInRadius = Physics.OverlapSphere(transform.position, radius, targetLayer);
+
+            if (targetsInRadius.Length > 0)
+            {
+                Destroy(targetsInRadius[0].gameObject);
+            }
+        }
+    }
     IEnumerator FindKillableAgents(float delay)
     {
         while (true)
