@@ -37,7 +37,7 @@ public class KillAgent : MonoBehaviour
     */
     private void Start()
     {
-        StartCoroutine("FindKillableAgents", .2f);
+        //StartCoroutine("FindKillableAgents", .2f);
     }
 
     IEnumerator FindKillableAgents(float delay)
