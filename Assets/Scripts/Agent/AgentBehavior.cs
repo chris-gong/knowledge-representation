@@ -13,11 +13,13 @@ public class AgentBehavior : MonoBehaviour {
     public LayerMask zoneLayer;
     KnowledgeBase knowledgeBase;
     private Agent info;
-    private GameObject levelController;
+    private LevelController levelController;
     private Coroutine currentBehavior;
     private NPCController behaviorController;
     private int lastZone;
     public float speed;
+    public GameObject targetMarker;
+    public GameObject curMarker;
 
     private NavMeshAgent agent;
     // Use this for initialization
@@ -29,7 +31,7 @@ public class AgentBehavior : MonoBehaviour {
         agent.speed = speed;
         info = gameObject.GetComponent<Agent>();
         behaviorController = gameObject.GetComponent<NPCController>();
-        levelController = GameObject.Find("LevelController");
+        levelController = GameObject.Find("GameController").GetComponent<LevelController>();
         //currentBehavior = StartCoroutine("RandomwWalkBehavior");
         //thinkingBehavior = StartCoroutine("ChooseBehavior");
 
@@ -145,28 +147,18 @@ public class AgentBehavior : MonoBehaviour {
 
     void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject.name == "prop_powerCube")
+        /*if (col.gameObject.name == "prop_powerCube")
         {
             Destroy(col.gameObject);
-        }
+        }*/
     }
 
     [NPCAffordance("Wander_Behavior")]
     public BEHAVIOR_STATUS WanderAround()
     {
         //Debug.Log("Affordance activated");
-        Collider[] targetsInRadius = Physics.OverlapSphere(transform.position, 1.0f, zoneLayer);
-        if(targetsInRadius.Length > 0)
-        {
-            int zoneNum = targetsInRadius[0].GetComponent<ZoneInfo>().zoneNum;
-            Debug.Log(string.Format("Zone number {0}", zoneNum));
-            if(lastZone != zoneNum)
-            {
-                Debug.Log(string.Format("Changed from zone {0} to zone {1}", lastZone, zoneNum));
-                lastZone = zoneNum;
-            }
-            
-        }
+        /*int zoneNum = levelController.getZoneFromObj(gameObject);
+        Debug.Log("In zone " + zoneNum);*/
         if (agent.destination != null && Vector3.Distance(agent.destination, transform.position) < 1)
         {
             
@@ -184,8 +176,16 @@ public class AgentBehavior : MonoBehaviour {
             //float offsetXRange = Random.Range(-1, 1);
             //float offsetZRange = Random.Range(-1, 1);
             NavMeshHit hit;
-            Vector3 randomLocation = new Vector3(Random.Range(-50, 50), Random.Range(-50, 50), Random.Range(-50, 50));
-            NavMesh.SamplePosition(randomLocation, out hit, 20.0f, NavMesh.AllAreas);
+            List<Transform> zoneMarkers = levelController.GetZoneMarkers();
+            Vector3 randomLocation = zoneMarkers[Random.Range(0, zoneMarkers.Count)].position;
+            Vector3 offset = new Vector3(Random.Range(-2, 2), 0, Random.Range(2, 2));
+            randomLocation += offset;
+            /*if (curMarker == null)
+            {
+                curMarker = Instantiate(targetMarker, randomLocation, Quaternion.identity);
+            }
+            curMarker.transform.position = randomLocation; */
+            NavMesh.SamplePosition(randomLocation, out hit, 1.0f, NavMesh.AllAreas);
             Debug.Log("Going to position " + hit.position);
             agent.SetDestination(hit.position);
             return BEHAVIOR_STATUS.SUCCESS;

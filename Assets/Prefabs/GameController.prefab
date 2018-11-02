@@ -430,7 +430,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b156de2d00a1314f8b500db9fb6fdd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeUntilWander: 0
+  zoneLayer:
+    serializedVersion: 2
+    m_Bits: 4096
 --- !u!114 &114355486201685382
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -442,15 +444,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11e6301e36e66bf4197eb02704ad7b7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentTime: 0
-  IntervalNames:
+  currentTime: 0
+  intervalNames:
   - Morning
   - Day
   - Evening
   - Night
-  IntervalLengths: 050000001e0000001e00000000000000
-  CurrentInterval: 
-  TimeDelay: 1
+  intervalLengths: 2d0000001e0000001e00000000000000
+  currentInterval: 
+  timeSpeed: 1
+  onDayEnd:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onTimeTick:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &114642980509135022
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -462,5 +474,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d198c24a37cbf2447b034d7788a389f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeCtl: {fileID: 0}
-  levelCtl: {fileID: 0}
