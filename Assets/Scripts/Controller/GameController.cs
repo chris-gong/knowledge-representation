@@ -138,12 +138,18 @@ public class GameController : MonoBehaviour {
         return agents.Count;
     }
 
-    public List<Agent> getAgents()
+    public List<Agent> GetAgents()
     {
         return agents;
     }
     public GameObject GetPlayer(){
         return this.playerInstance;
     }
+ 
+    public InventoryController GetInvCtl()
+    {
+        return invCtl;
+    }
+
     #endregion
 }

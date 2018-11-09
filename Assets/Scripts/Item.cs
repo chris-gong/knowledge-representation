@@ -6,17 +6,66 @@ public class Item
     public string name;
     public int count;
 
-    public Item()
+    public Item(string argItemName, int itemCount = 1)
     {
-        
+        name = argItemName;
+        count = itemCount;
+    }
+
+    public virtual void OnUse()
+    {
+        Debug.Log(string.Format("Item used: {0}", name));
+        return;
     }
 }
 
-public class MurderWeapon:Item{
-    public float detect_chance;
+public class MurderWeaponItem:Item{
+    public float detectProb;
+    public bool concealable;
 
-    public MurderWeapon(){
+    public MurderWeaponItem(string itemName, bool argConcealable = false, float argDetectProb = 0):base(itemName,1)
+    {
+        detectProb = argDetectProb;
+        concealable = argConcealable;
+    }
 
+    public override void OnUse()
+    {
+        GameObject player = GameController.GetInstance().GetPlayer();
+
+
+        Debug.Log(string.Format("Item used: {0}", name));
     }
 }
 
+public class SmokeScreenItem : Item
+{
+    public int radius;
+    public float duration;
+    public SmokeScreenItem(string argItemName = "SmokeScreen", int argRadius = 5, float argDuration = 5f)
+        :base(argItemName,1)
+    {
+        radius = argRadius;
+        duration = argDuration;
+    }
+
+    public override void OnUse()
+    {
+        GameObject blankSS = Resources.Load<GameObject>("SmokeScreen");
+        base.OnUse();
+        Vector3 pos = GameController.GetInstance().GetPlayer().transform.position;
+        GameObject ssobj = GameController.Instantiate(blankSS,pos, Quaternion.identity);
+        GameController.GetInstance().GetInvCtl().RemoveItem(this);
+    }
+}
+
+/*
+public class ConsumableItem:Item{
+    
+    public ConsumableItem(string itemName, int itemCount = 1)
+    {
+        base(itemName, itemCount);
+    }
+}
+
+*/

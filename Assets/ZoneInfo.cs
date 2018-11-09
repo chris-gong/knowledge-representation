@@ -10,7 +10,6 @@ public class ZoneInfo : MonoBehaviour {
 
 	void Start () {
         coords = transform.position;
-
 	}
 	
 }
