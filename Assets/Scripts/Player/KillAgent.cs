@@ -29,6 +29,7 @@ public class KillAgent : MonoBehaviour
             {
                 Destroy(targetsInRadius[0].transform.parent.gameObject);
                 equipped = true;
+                GameController.GetInstanceLevelController().setEventText("Knife Equipped", 2);
             }
         }
 

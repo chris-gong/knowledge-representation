@@ -138,6 +138,10 @@ public class GameController : MonoBehaviour {
         return agents.Count;
     }
 
+    public List<Agent> getAgents()
+    {
+        return agents;
+    }
     public GameObject GetPlayer(){
         return this.playerInstance;
     }
