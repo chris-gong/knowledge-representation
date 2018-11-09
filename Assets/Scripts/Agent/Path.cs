@@ -61,6 +61,7 @@ public class Path {
         combinedPath.SetScore(p1.score + p2.score);
 
         combinedPath.zonesInOrder.AddRange(p1.zonesInOrder);
+        combinedPath.zonesInOrder.RemoveAt(combinedPath.zonesInOrder.Count - 1); //to prevent duplication of murderzone
         combinedPath.zonesInOrder.AddRange(p2.zonesInOrder);
 
         return combinedPath;
@@ -77,7 +78,7 @@ public class Path {
         string pathStr = "";
         for(int i = 0; i < zonesInOrder.Count; i++)
         {
-            pathStr += string.Format("{0} ", zonesInOrder[i]);
+            pathStr += string.Format("{0}->", zonesInOrder[i]);
         }
         pathStr += string.Format("with a score of {0}", score);
         return pathStr;

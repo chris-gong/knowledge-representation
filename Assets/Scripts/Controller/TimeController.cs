@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
+
 public class TimeController : MonoBehaviour {
 
     public static TimeController instance = null;
@@ -14,13 +16,13 @@ public class TimeController : MonoBehaviour {
     public string[] intervalNames = { "Morning", "Day", "Evening", "Night" };
     public int[] intervalLengths = { 15, 15, 15, 0 };
     public string currentInterval = "Morning";
-    public int timeSpeed = 6;
+    public int timeSpeed;
     public int murderTime = -1; //-1 if the murder has not happened yet
 
     private readonly float timeDelay = 1f;
     private int timeIntervalIndex = 0;
     private int remainingIntervalTime;
-
+    private Text timer;
     public UnityEvent onDayEnd;
     public UnityEvent onTimeTick;
 
@@ -34,6 +36,7 @@ public class TimeController : MonoBehaviour {
         {
             yield return new WaitForSeconds(this.timeDelay);
             currentTime += timeSpeed;
+            timer.text = string.Format("{0}",currentTime);
             remainingIntervalTime -= timeSpeed;
             if (remainingIntervalTime <= 0)
             {
@@ -47,6 +50,7 @@ public class TimeController : MonoBehaviour {
                 Debug.Log("Updating Time Interval to: {" + currentInterval + "}");
             }
             onTimeTick.Invoke();
+            
         }
     }
 
@@ -63,6 +67,9 @@ public class TimeController : MonoBehaviour {
     private void EndOfDay()
     {
         timeIntervalIndex = 0;
+        GameController.GetInstanceLevelController().enableBackground();
+        GameController.GetInstanceLevelController().enableRestartButton();
+        GameController.GetInstanceLevelController().AddResultText("Game Over");
         onDayEnd.Invoke();
         return;
     }
@@ -99,6 +106,7 @@ public class TimeController : MonoBehaviour {
             return;
         }
         gameCtl = GameController.GetInstance();
+        timer = GameObject.Find("Timer").GetComponent<Text>();
         Debug.Assert(intervalLengths.Length == intervalNames.Length,
                     string.Format("ERROR: Count of Names/Lengths array does not match: {0}/{1}",
                                    intervalLengths.Length, intervalNames.Length));

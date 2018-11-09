@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LevelController : MonoBehaviour {
 
@@ -14,6 +16,9 @@ public class LevelController : MonoBehaviour {
     private List<Transform> zoneMarkersTransforms;
     private List<ZoneInfo> zoneInfoList;
     private int murderedZone;
+    private GameObject gameOverBackground;
+    private Text gameResults;
+    private GameObject restartButton;
 
     #endregion
 
@@ -53,6 +58,35 @@ public class LevelController : MonoBehaviour {
     {
         murderedZone = zoneNum;
     }
+
+    public void AddResultText(string result)
+    {
+        gameResults.text += string.Format("{0}\n", result);
+    }
+
+    public void enableBackground()
+    {
+        gameOverBackground.GetComponent<Image>().enabled = true;
+    }
+
+    public void disableBackground()
+    {
+        gameOverBackground.GetComponent<Image>().enabled = false;
+    }
+
+    public void enableRestartButton()
+    {
+        restartButton.GetComponent<Image>().enabled = true;
+        restartButton.GetComponent<Button>().enabled = true;
+        restartButton.transform.Find("Text").gameObject.SetActive(true);
+    }
+
+    public void disableRestartButton()
+    {
+        restartButton.GetComponent<Image>().enabled = false;
+        restartButton.GetComponent<Button>().enabled = false;
+        restartButton.transform.Find("Text").gameObject.SetActive(false);
+    }
     /// <summary>
     /// Initializes the LevelController and is called by the GameController
     /// </summary>
@@ -69,8 +103,7 @@ public class LevelController : MonoBehaviour {
 
         hidingSpots = new List<Transform>();
         wanderingSpots = new List<Transform>();
-
-
+        GatherUIElements();
         GatherZoneMarkers();
         GatherWanderingSpots();
 
@@ -80,6 +113,33 @@ public class LevelController : MonoBehaviour {
 
     #region Aggregate Methods
 
+    private void GatherUIElements()
+    {
+        GameObject canvas = GameObject.Find("Canvas");
+        Transform[] children = canvas.GetComponentsInChildren<Transform>();
+        foreach (Transform t in children)
+        {
+            GameObject obj = t.gameObject;
+            if (obj.name == "GameResults")
+            {
+                gameResults = obj.GetComponent<Text>();
+            }
+            else if (obj.name == "Background")
+            {
+                gameOverBackground = obj;
+            }
+            else if (obj.name == "RestartButton")
+            {
+                restartButton = obj;
+                restartButton.GetComponent<Button>().onClick.AddListener(RestartLevel);
+            }
+        }
+    }
+
+    private void RestartLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
     private void GatherZoneMarkers()
     {
 

@@ -66,8 +66,8 @@ public class Solver{
                 bestPath = p;
             }
         }
-
-        Debug.Log(string.Format("Agent {0} believes Agent {1} went through path {2}", agent.agentId, mostLikelyCand, bestPath.ToString()));
+        string result = string.Format("Agent {0} believes Agent {1} went through path {2}", agent.agentId, mostLikelyCand, bestPath.ToString());
+        GameController.GetInstanceLevelController().AddResultText(result);
     }
 
     private Path CalculateScore(Candidate candidate){
