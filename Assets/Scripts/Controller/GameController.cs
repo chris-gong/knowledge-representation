@@ -12,6 +12,7 @@ public class GameController : MonoBehaviour {
     private LevelController levelCtl;
     private GameObject playerInstance;
     private List<Agent> agents;
+    private InventoryController invCtl;
 
     #endregion
 
@@ -65,6 +66,10 @@ public class GameController : MonoBehaviour {
         // Initiate Level Controller
         levelCtl = GetComponent<LevelController>();
         levelCtl.InitiLevelCtl();
+        Debug.Assert(levelCtl != null, "ERROR: Gamecontroller gameobject is missing LevelController Component");
+        // Initiate Level Controller
+        invCtl = GetComponent<InventoryController>();
+        invCtl.InitInvCtl();
         Debug.Assert(levelCtl != null, "ERROR: Gamecontroller gameobject is missing LevelController Component");
 
         agents = new List<Agent>();
@@ -136,6 +141,9 @@ public class GameController : MonoBehaviour {
     public List<Agent> getAgents()
     {
         return agents;
+    }
+    public GameObject GetPlayer(){
+        return this.playerInstance;
     }
     #endregion
 }
