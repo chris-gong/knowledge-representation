@@ -83,29 +83,48 @@ public class Solver{
 
         List<ZoneInfo> zones = GameController.GetInstanceLevelController().GetZoneInfos();
 
+        ZoneInfo start = zones[origin.zoneID]; //set the starting zone to origin
+        int[] prev = findPath(start, zones.Count);
+        Path originToMurderZone = Path.CreatePath(prev, murderZone, origin.zoneID);
+
+        start = zones[murderZone]; //set the starting zone to murder zone
+        prev = findPath(start, zones.Count); 
+        Path murderZoneToDest = Path.CreatePath(prev, destination.zoneID, murderZone);
+
+        Path combinedPath = Path.CombinePaths(originToMurderZone, murderZoneToDest);
+        //calculating actual time elapsed from origin to destination
+        int timeElapsed = destination.timeInt - origin.timeInt;
+        //how close is the score of the path compared to the actual time elapsed
+        //will show us how likely the candidate took a path going through the murder zone
+        score = 100 - (Mathf.Abs(combinedPath.GetScore() - timeElapsed));
+        combinedPath.SetScore(score);
+        return combinedPath;
+    }
+
+    private int[] findPath(ZoneInfo start, int numberOfZones)
+    {
         //BFS
-        int[] weights = new int[zones.Count]; //cost of shortest path to the zone 
-        for(int i = 0; i < zones.Count; i++)
+        int[] weights = new int[numberOfZones]; //cost of shortest path to the zone 
+        for (int i = 0; i < numberOfZones; i++)
         {
             weights[i] = -1;
         }
 
-        ZoneInfo start = zones[origin.zoneID]; //set the starting zone
-        weights[origin.zoneID] = 0; //set the starting zone's cost
+        weights[start.zoneNum] = 0; //set the starting zone's cost
         Queue<ZoneInfo> fringe = new Queue<ZoneInfo>(); //queue for bfs
         fringe.Enqueue(start); //adding the starting zone to the fringe
-        int[] prev = new int[zones.Count]; //each node's previous/parent node by zone number
-        for (int i = 0; i < zones.Count; i++)
+        int[] prev = new int[numberOfZones]; //each node's previous/parent node by zone number
+        for (int i = 0; i < numberOfZones; i++)
         {
             prev[i] = -1;
         }
-
+        //run bfs from origin to murderzone
         while (fringe.Count > 0)
         {
             ZoneInfo zone = fringe.Dequeue();
             int parentZoneNum = zone.zoneNum;
             int cost = weights[zone.zoneNum];
-            for(int i = 0; i < zone.neighbors.Length; i++)
+            for (int i = 0; i < zone.neighbors.Length; i++)
             {
                 ZoneInfo zi = zone.neighbors[i].GetComponent<ZoneInfo>();
                 if (weights[zi.zoneNum] == -1)
@@ -117,20 +136,11 @@ public class Solver{
                     weights[zi.zoneNum] = cost + 1;
                     prev[zi.zoneNum] = parentZoneNum;
                 }
-                
+
             }
         }
-        Debug.Log("prev " + prev);
-        Path originToMurderZone = Path.CreatePath(prev, murderZone, origin.zoneID);
-        Path murderZoneToDest = Path.CreatePath(prev, destination.zoneID, murderZone);
-        Path combinedPath = Path.CombinePaths(originToMurderZone, murderZoneToDest);
-        //calculating actual time elapsed from origin to destination
-        int timeElapsed = destination.timeInt - origin.timeInt;
-        //how close is the score of the path compared to the actual time elapsed
-        //will show us how likely the candidate took a path going through the murder zone
-        score = 100 - (Mathf.Abs(combinedPath.GetScore() - timeElapsed));
-        combinedPath.SetScore(score);
-        return combinedPath;
+
+        return prev;
     }
     #endregion
 

@@ -45,7 +45,6 @@ public class Path {
         //loop below assumes rest of prev is perfect (graph is connected)
         while (nextZone != origin)
         {
-            Debug.Log(nextZone);
             p.incrementScore();
             p.PrependToPath(nextZone);
             nextZone = prev[nextZone];
