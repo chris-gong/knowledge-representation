@@ -13,7 +13,6 @@ public class AgentBehavior : MonoBehaviour {
     public LayerMask zoneLayer;
     KnowledgeBase knowledgeBase;
     private Agent info;
-    private LevelController levelController;
     private Coroutine currentBehavior;
     private NPCController behaviorController;
     private int lastZone;
@@ -31,9 +30,6 @@ public class AgentBehavior : MonoBehaviour {
         agent.speed = speed;
         info = gameObject.GetComponent<Agent>();
         behaviorController = gameObject.GetComponent<NPCController>();
-        levelController = GameObject.Find("GameController").GetComponent<LevelController>();
-        //currentBehavior = StartCoroutine("RandomwWalkBehavior");
-        //thinkingBehavior = StartCoroutine("ChooseBehavior");
 
         NPCNode behaviorTree = new NPCDecoratorLoop(new NPCSequence(
             new NPCNode[] {
@@ -44,6 +40,7 @@ public class AgentBehavior : MonoBehaviour {
         behaviorController.AI.StartBehavior();
     }
 
+    #region deprecated
     void StartNewBehavior(string newBehavior)
     {
         StopCoroutine(currentBehavior);
@@ -136,7 +133,7 @@ public class AgentBehavior : MonoBehaviour {
     }
     void SetHidingSpot()
     {
-        List<Transform> hidingSpots = levelController.GetComponent<LevelController>().GetHidingSpots();
+        List<Transform> hidingSpots = GameController.GetInstanceLevelController().GetHidingSpots();
         System.Random rand = new System.Random();
         int index = rand.Next(hidingSpots.Count);
         //Debug.Log(hidingSpots[index].position);
@@ -152,18 +149,18 @@ public class AgentBehavior : MonoBehaviour {
             Destroy(col.gameObject);
         }*/
     }
-
+    #endregion
     [NPCAffordance("Wander_Behavior")]
     public BEHAVIOR_STATUS WanderAround()
     {
         if (agent.destination != null && Vector3.Distance(agent.destination, transform.position) < 1)
         {
-
+            //random number used to make the agent wait before finding a new spot
             float pickANewSpot = Random.Range(0f, 1f);
             if(pickANewSpot > 0.98)
             {
                 NavMeshHit hit;
-                List<Transform> zoneMarkers = levelController.GetZoneMarkers();
+                List<Transform> zoneMarkers = GameController.GetInstanceLevelController().GetZoneMarkers();
                 Vector3 randomLocation = zoneMarkers[Random.Range(0, zoneMarkers.Count)].position;
                 Vector3 offset = new Vector3(Random.Range(-2, 2), 0, Random.Range(2, 2));
                 randomLocation += offset;
@@ -173,7 +170,6 @@ public class AgentBehavior : MonoBehaviour {
                 }
                 curMarker.transform.position = randomLocation; */
                 NavMesh.SamplePosition(randomLocation, out hit, 1.0f, NavMesh.AllAreas);
-                //Debug.Log("Going to position " + hit.position);
                 agent.SetDestination(hit.position);
                 return BEHAVIOR_STATUS.SUCCESS;
             }
