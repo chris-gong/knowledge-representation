@@ -44,7 +44,8 @@ public class Solver{
         {
             return;
         }
-        
+        List<Agent> agents = GameController.GetInstance().getAgents();
+
         int numCandidates = candidates.Count;
         int greatestScore = 0;
         int mostLikelyCand = -1;
@@ -52,13 +53,17 @@ public class Solver{
 
         for (int i = 0; i < numCandidates; i++){
             Debug.Log("Score being calculated");
-            
+            int candidateId = candidates[i].agentID;
+            if (!agents[candidateId].isAlive)
+            {
+                continue;
+            }
             Path p = CalculateScore(candidates[i]);
             if (p == null)
             {
                 continue;
             }
-            
+
             if(p.GetScore() > greatestScore)
             {
                 greatestScore = p.GetScore();

@@ -133,5 +133,9 @@ public class GameController : MonoBehaviour {
         return agents.Count;
     }
 
+    public List<Agent> getAgents()
+    {
+        return agents;
+    }
     #endregion
 }
