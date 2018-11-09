@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class SmokeScreen : MonoBehaviour {
 
-	// Use this for initialization
+    private static float time = 5f;
+
 	void Start () {
-		
+        StartCoroutine("Countdown");
 	}
+	IEnumerator Countdown()
+    {
+        yield return new WaitForSeconds(time);
+        Destroy(gameObject);
+        yield break;
+    }
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }

@@ -44,7 +44,7 @@ public class Solver{
         {
             return;
         }
-        List<Agent> agents = GameController.GetInstance().getAgents();
+        List<Agent> agents = GameController.GetInstance().GetAgents();
 
         int numCandidates = candidates.Count;
         int greatestScore = 0;

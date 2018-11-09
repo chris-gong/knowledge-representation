@@ -45,7 +45,7 @@ public class FieldOfView:MonoBehaviour {
             {
                 float dstToTarget = Vector3.Distance(transform.position, target.position);
 
-                if (!Physics.Raycast(transform.position, dirToTarget, dstToTarget, obstacleMask))
+                if (!Physics.Raycast(transform.position, dirToTarget, dstToTarget, obstacleMask,QueryTriggerInteraction.Collide))
                 {
                     //make sure to check that your observable is not yourself
                     //Debug.Log("target in field of view " + target);
