@@ -2,15 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour {
+public class InventoryMenu : MonoBehaviour
+{
+    private InventoryController invCtl;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    public void openMenu(){
+
+    }
+    public void closeMenu(){
+
+    }
+
+    public void Start()
+    {
+        invCtl = GetComponent<InventoryController>();
+    }
 }

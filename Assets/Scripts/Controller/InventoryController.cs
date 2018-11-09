@@ -7,12 +7,12 @@ public class InventoryController : MonoBehaviour {
     private static int menuCdMax = 10;
 
     public List<Item> itemList;
-
+    
     private GameObject player;
     private GameController gameCtl;
     private bool isMenuOpen;
     private int menuCd;
-
+    private InventoryMenu invMenu;
     
 
     public void InitInvCtl(){
@@ -21,6 +21,7 @@ public class InventoryController : MonoBehaviour {
         player = gameCtl.GetPlayer();
         isMenuOpen = false;
         menuCd = 0;
+        //invMenu = GameObject.Find("InventoryMenu").GetComponent<InventoryMenu>();
     }
 
     void Update(){
@@ -31,13 +32,13 @@ public class InventoryController : MonoBehaviour {
             if(isMenuOpen)
             {
                 isMenuOpen = false;
+                invMenu.closeMenu();
             }
             else
             {
                 isMenuOpen = true;
-                
+                invMenu.openMenu();
             }
-
         }
         else
         {
