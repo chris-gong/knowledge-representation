@@ -67,8 +67,11 @@ public class GameController : MonoBehaviour {
         levelCtl.InitiLevelCtl();
         Debug.Assert(levelCtl != null, "ERROR: Gamecontroller gameobject is missing LevelController Component");
 
+        agents = new List<Agent>();
+        //order matters here
         InitializePlayer();
         InitializeAgents();
+
     }
 
     #endregion
@@ -96,16 +99,15 @@ public class GameController : MonoBehaviour {
             Debug.Log("valid agent");
             agents.Add(agent);
         }
-        for (int i = 1; i < agents.Count; i++)
+        for (int i = 1; i < agents.Count; i++) //i starting at one since the player should be the first agent added
         {
             Agent info = agents[i];
-            info.InitAgentInfo(i); //+1 since player starts with id 0
+            info.InitAgentInfo(i);
         }
 
     }
 
     private void InitializePlayer(){
-        agents = new List<Agent>(10);
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
         if (players.Length > 0)
         {

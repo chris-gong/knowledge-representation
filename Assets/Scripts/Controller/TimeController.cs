@@ -107,12 +107,12 @@ public class TimeController : MonoBehaviour {
         StartCoroutine(clockCoroutine);
     }
 
-    public void setMurderTime(int time)
+    public void SetMurderTime(int time)
     {
         murderTime = time;
     }
 
-    public int getMurderTime()
+    public int GetMurderTime()
     {
         return murderTime;
     }
