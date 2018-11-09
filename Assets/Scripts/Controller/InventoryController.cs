@@ -21,7 +21,7 @@ public class InventoryController : MonoBehaviour {
         player = gameCtl.GetPlayer();
         isMenuOpen = false;
         menuCd = 0;
-        //invMenu = GameObject.Find("InventoryMenu").GetComponent<InventoryMenu>();
+        invMenu = GameObject.Find("InventoryMenu").GetComponent<InventoryMenu>();
     }
 
     void Update(){
