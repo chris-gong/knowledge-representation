@@ -417,7 +417,7 @@ namespace NPC {
         public BEHAVIOR_STATUS GoToHidingSpot(Transform levelController)
         {
             Debug.Log("hiding affordance activated");
-            List<Transform> hidingSpots = levelController.GetComponent<LevelController>().getHidingSpots();
+            List<Transform> hidingSpots = levelController.GetComponent<LevelController>().GetHidingSpots();
             UnityEngine.AI.NavMeshAgent agent = gNPCController.AI.gNavMeshAgent;
             System.Random rand = new System.Random();
             int index = rand.Next(hidingSpots.Count);
@@ -434,7 +434,7 @@ namespace NPC {
             UnityEngine.AI.NavMeshAgent agent = gNPCController.AI.gNavMeshAgent;
             LevelController lc = levelController.GetComponent<LevelController>();
             //AgentInfo info = agentInfo.GetComponent<AgentInfo>();
-            List<Transform> wanderingSpots = lc.getWanderingSpots();
+            List<Transform> wanderingSpots = lc.GetWanderingSpots();
 
             if (wanderingSpots.Count == 0)
             {

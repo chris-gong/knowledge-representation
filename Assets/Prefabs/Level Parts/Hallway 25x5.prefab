@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 4474776800595206}
   - component: {fileID: 65593612831595424}
   - component: {fileID: 114391361793778188}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ZoneMarker
   m_TagString: ZoneMarker
   m_Icon: {fileID: 0}
@@ -379,7 +379,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1210036374495660}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 5, y: 1, z: 25}
@@ -410,7 +410,7 @@ TextMesh:
   m_Anchor: 4
   m_Alignment: 0
   m_TabSize: 4
-  m_FontSize: 36
+  m_FontSize: 24
   m_FontStyle: 0
   m_RichText: 1
   m_Font: {fileID: 0}
@@ -429,6 +429,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zoneNum: 0
+  neighbors: []
 --- !u!114 &114458817880522850
 MonoBehaviour:
   m_ObjectHideFlags: 1

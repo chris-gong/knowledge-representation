@@ -326,7 +326,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1059738877113718}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2d6f4e53e0de63a44abf5e7642d6fba5, type: 3}
   m_Name: 
@@ -360,7 +360,7 @@ MonoBehaviour:
   g_Controller: {fileID: 114419393116344388}
   g_Head: {fileID: 0}
   gPerceptionField: {fileID: 135043089287361346}
-  gViewAngle: 127.5
+  gViewAngle: 127
   PerceptionWeight: 1
 --- !u!114 &114362630812401726
 MonoBehaviour:
@@ -378,8 +378,10 @@ MonoBehaviour:
   runTarget: {fileID: 0}
   zoneLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4096
   speed: 8
+  targetMarker: {fileID: 0}
+  curMarker: {fileID: 0}
 --- !u!114 &114417635499963654
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -391,8 +393,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aeb6cf4222df2cc499a4c6ce49b3c79e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  facts:
-  - person(alice)
   info: {fileID: 0}
 --- !u!114 &114419393116344388
 MonoBehaviour:
@@ -488,11 +488,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1059738877113718}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa324bfc2d8640340ab3b7c2b38099c6, type: 3}
+  m_Script: {fileID: 11500000, guid: d8669e7d5b7db4b60b5fc9e053e3a04c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   agentId: 0
   agentName: 
+  blankObs: {fileID: 0}
 --- !u!114 &114766465318538262
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -505,7 +506,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   viewRadius: 30
-  viewAngle: 100
+  viewAngle: 140
   targetMask:
     serializedVersion: 2
     m_Bits: 512
