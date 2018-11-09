@@ -90,11 +90,11 @@ public class Solver{
 
         ZoneInfo start = zones[origin.zoneID]; //set the starting zone to origin
         int[] prev = findPath(start, zones.Count);
-        Path originToMurderZone = Path.CreatePath(prev, murderZone, origin.zoneID);
+        Path originToMurderZone = Path.CreatePath(prev, murderZone, origin.zoneID, murderTime, origin.timeInt);
 
         start = zones[murderZone]; //set the starting zone to murder zone
         prev = findPath(start, zones.Count); 
-        Path murderZoneToDest = Path.CreatePath(prev, destination.zoneID, murderZone);
+        Path murderZoneToDest = Path.CreatePath(prev, destination.zoneID, murderZone, destination.timeInt, murderTime);
 
         Path combinedPath = Path.CombinePaths(originToMurderZone, murderZoneToDest);
         //calculating actual time elapsed from origin to destination

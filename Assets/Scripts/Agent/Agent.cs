@@ -54,4 +54,14 @@ public class Agent : MonoBehaviour {
             solver.PrintAllCandidates();
         }
     }
+
+    public void OnMouseOver()
+    {
+        //GameController.GetInstanceLevelController().setEventText(string.Format("Mouse hovering over agent {0}", agentId), 2);
+    }
+
+    public void OnMouseExit()
+    {
+        //GameController.GetInstanceLevelController().setEventText("", 0);
+    }
 }

@@ -67,7 +67,10 @@ public class LevelController : MonoBehaviour {
 
     public void setEventText(string playerEvent, int duration){
         playerEvents.text = playerEvent;
-        Invoke("clearEventText", duration);
+        if(duration != 0)
+        {
+            Invoke("clearEventText", duration);
+        }
     }
 
     public void clearEventText()
@@ -146,7 +149,7 @@ public class LevelController : MonoBehaviour {
             else if (obj.name == "PlayerEvents")
             {
                 playerEvents = obj.GetComponent<Text>();
-                setEventText("Press e to pick up items", 5);
+                setEventText("Press e to pick up items", 3);
             }
         }
     }
