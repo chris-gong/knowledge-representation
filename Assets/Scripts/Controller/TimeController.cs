@@ -67,10 +67,14 @@ public class TimeController : MonoBehaviour {
     private void EndOfDay()
     {
         timeIntervalIndex = 0;
-        GameController.GetInstanceLevelController().enableBackground();
-        GameController.GetInstanceLevelController().enableRestartButton();
-        GameController.GetInstanceLevelController().AddResultText("Game Over");
-        onDayEnd.Invoke();
+        LevelController lc = GameController.GetInstanceLevelController();
+        lc.enableBackground();
+        lc.enableRestartButton();
+        lc.AddResultText("Game Over");
+        if(murderTime > -1)
+        {
+            onDayEnd.Invoke();
+        }
         return;
     }
 

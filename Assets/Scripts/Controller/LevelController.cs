@@ -19,6 +19,7 @@ public class LevelController : MonoBehaviour {
     private GameObject gameOverBackground;
     private Text gameResults;
     private GameObject restartButton;
+    private Text playerEvents;
 
     #endregion
 
@@ -64,6 +65,15 @@ public class LevelController : MonoBehaviour {
         gameResults.text += string.Format("{0}\n", result);
     }
 
+    public void setEventText(string playerEvent, int duration){
+        playerEvents.text = playerEvent;
+        Invoke("clearEventText", duration);
+    }
+
+    public void clearEventText()
+    {
+        playerEvents.text = "";
+    }
     public void enableBackground()
     {
         gameOverBackground.GetComponent<Image>().enabled = true;
@@ -132,6 +142,10 @@ public class LevelController : MonoBehaviour {
             {
                 restartButton = obj;
                 restartButton.GetComponent<Button>().onClick.AddListener(RestartLevel);
+            }
+            else if (obj.name == "PlayerEvents")
+            {
+                playerEvents = obj.GetComponent<Text>();
             }
         }
     }
