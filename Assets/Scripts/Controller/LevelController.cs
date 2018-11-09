@@ -13,7 +13,7 @@ public class LevelController : MonoBehaviour {
     public LayerMask zoneLayer;
     private List<Transform> zoneMarkersTransforms;
     private List<ZoneInfo> zoneInfoList;
-    public int murderedZone;
+    private int murderedZone;
 
     #endregion
 
@@ -44,6 +44,15 @@ public class LevelController : MonoBehaviour {
         return this.zoneInfoList;
     }
 
+    public int GetMurderZone()
+    {
+        return murderedZone;
+    }
+
+    public void SetMurderZone(int zoneNum)
+    {
+        murderedZone = zoneNum;
+    }
     /// <summary>
     /// Initializes the LevelController and is called by the GameController
     /// </summary>

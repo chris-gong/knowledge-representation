@@ -42,8 +42,8 @@ public class KillAgent : MonoBehaviour
                 targetsInRadius[0].gameObject.SetActive(false);
                 equipped = false; //one kill per weapon only
                 int time = gameController.GetTimeController().GetTime();
-                gameController.GetTimeController().setMurderTime(time);
-                gameController.GetLevelController().murderedZone = gameController.GetLevelController().GetZoneFromObj(gameObject);
+                gameController.GetTimeController().SetMurderTime(time);
+                gameController.GetLevelController().SetMurderZone(gameController.GetLevelController().GetZoneFromObj(gameObject));
             }
         }
     }

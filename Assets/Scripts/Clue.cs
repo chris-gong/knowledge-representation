@@ -24,7 +24,51 @@ public class LocationClue {
     {
         return obj.timeInt - other.timeInt;
     }
-        
+    
+    public static LocationClue GetOriginClue(List<LocationClue> clues, int murderTime)
+    {
+        int i = 0;
+        LocationClue clue = null;
+        if(clues.Count < 1)
+        {
+            return clue;
+        }
+        while (i < clues.Count && clues[i].timeInt < murderTime)
+        {
+            i++;
+        }
+        if (i > 0)
+        {
+            clue = clues[i - 1];
+        }
+        else
+        {
+            clue = clues[i];
+        }
+        return clue;
+    }
+    public static LocationClue GetDestinationClue(List<LocationClue> clues, int murderTime)
+    {
+        int i = 0;
+        LocationClue clue = null;
+        if (clues.Count < 1)
+        {
+            return clue;
+        }
+        while (i < clues.Count && clues[i].timeInt <= murderTime)
+        {
+            i++;
+        }
+        if (i < clues.Count)
+        {
+            clue = clues[i];
+        }
+        else
+        {
+            clue = clues[i - 1];
+        }
+        return clue;
+    }
 }
 
 public class MurderItemClue

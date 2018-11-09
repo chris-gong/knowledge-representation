@@ -23,7 +23,6 @@ public class Agent : MonoBehaviour {
         agentId = newID;
         UpdateAgentObs();
         solver = new Solver(this);
-        solver.agentId = agentId;
         GameController.GetInstanceTimeController().onTimeTick.AddListener(UpdateAgentObs);
     }
 
