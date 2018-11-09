@@ -21,8 +21,13 @@ public class InventoryController : MonoBehaviour {
         player = gameCtl.GetPlayer();
         isMenuOpen = false;
         menuCd = 0;
-        invMenu = GameObject.Find("InventoryMenu").GetComponent<InventoryMenu>();
+
+        GameObject menu = GameObject.Find("InventoryMenu");
+        menu.transform.GetChild(0).gameObject.SetActive(true);
+
+        invMenu = menu.GetComponent<InventoryMenu>();
         invMenu.InitMenu();
+        invMenu.CloseMenu();
     }
 
     public void AddItem(Item item)
@@ -37,6 +42,11 @@ public class InventoryController : MonoBehaviour {
         itemList.Remove(item);
         invMenu.UpdateMenu();
     }
+
+    public InventoryMenu getMenu()
+    {
+        return invMenu;
+    } 
 
     [ContextMenu("Add SmokeScreen Item")]
     void AddSmokeScreen()

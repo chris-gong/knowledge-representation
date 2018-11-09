@@ -71,6 +71,7 @@ public class TimeController : MonoBehaviour {
         lc.enableBackground();
         lc.enableRestartButton();
         lc.AddResultText("Game Over");
+        lc.AddResultText(string.Format("The murdered occurred in zone {0} at time {1}", lc.GetMurderZone(), murderTime));
         if(murderTime > -1)
         {
             onDayEnd.Invoke();

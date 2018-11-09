@@ -43,6 +43,16 @@ public class GameController : MonoBehaviour {
         return instance.levelCtl;
     }
 
+    public InventoryController GetInventoryController()
+    {
+        return invCtl;
+    }
+
+    public static InventoryController GetInstanceInventoryController()
+    {
+        return instance.invCtl;
+    }
+
     #endregion
 
     #region Unity Methods

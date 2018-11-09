@@ -146,6 +146,7 @@ public class LevelController : MonoBehaviour {
             else if (obj.name == "PlayerEvents")
             {
                 playerEvents = obj.GetComponent<Text>();
+                setEventText("Press e to pick up items", 5);
             }
         }
     }

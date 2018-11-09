@@ -6,7 +6,7 @@ public class Agent : MonoBehaviour {
 
     public int agentId;
     public string agentName = null;
-    private GameObject currentObs = null;
+    public GameObject currentObs = null;
     public GameObject blankObs;
     public Solver solver;
     private bool isPlayer = false;

@@ -11,6 +11,7 @@ public class KillAgent : MonoBehaviour
     public GameController gameController;
     public float radius;
     private bool equipped = false;
+    private Item equippedItem;
     
     // Use this for initialization
 
@@ -28,8 +29,8 @@ public class KillAgent : MonoBehaviour
             if(targetsInRadius.Length > 0)
             {
                 Destroy(targetsInRadius[0].transform.parent.gameObject);
-                equipped = true;
-                GameController.GetInstanceLevelController().setEventText("Knife Equipped", 2);
+                GameController.GetInstanceInventoryController().AddItem(new MurderWeaponItem("Knife"));
+                GameController.GetInstanceLevelController().setEventText("Knife Added to Inventory (press i to see)", 4);
             }
         }
 
@@ -39,15 +40,30 @@ public class KillAgent : MonoBehaviour
 
             if (targetsInRadius.Length > 0)
             {
-                targetsInRadius[0].gameObject.GetComponent<Agent>().isAlive = false;
                 targetsInRadius[0].gameObject.SetActive(false);
-                equipped = false; //one kill per weapon only
+                Agent agent = targetsInRadius[0].gameObject.GetComponent<Agent>();
+                agent.isAlive = false;
+                unEquipPlayer(); //one kill per weapon only
                 int time = gameController.GetTimeController().GetTime();
                 gameController.GetTimeController().SetMurderTime(time);
                 gameController.GetLevelController().SetMurderZone(gameController.GetLevelController().GetZoneFromObj(gameObject));
+                GameController.GetInstanceLevelController().setEventText(string.Format("Agent {0} was killed", agent.agentId), 3);
             }
         }
     }
+
+    public void equipPlayer(Item weapon)
+    {
+        equipped = true;
+        equippedItem = weapon;
+    }
+
+    public void unEquipPlayer()
+    {
+        equipped = false; //one kill per weapon only
+        equippedItem = null;
+    }
+    #region deprecated
     IEnumerator FindKillableAgents(float delay)
     {
         while (true)
@@ -79,4 +95,6 @@ public class KillAgent : MonoBehaviour
             }
         }
     }
+    #endregion
+    
 }

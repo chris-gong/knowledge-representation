@@ -22,9 +22,11 @@ public class Item
 public class MurderWeaponItem:Item{
     public float detectProb;
     public bool concealable;
+    public string name;
 
     public MurderWeaponItem(string itemName, bool argConcealable = false, float argDetectProb = 0):base(itemName,1)
     {
+        name = itemName;
         detectProb = argDetectProb;
         concealable = argConcealable;
     }
@@ -32,9 +34,14 @@ public class MurderWeaponItem:Item{
     public override void OnUse()
     {
         GameObject player = GameController.GetInstance().GetPlayer();
-
-
         Debug.Log(string.Format("Item used: {0}", name));
+
+        if(name.ToLower() == "knife")
+        {
+            player.GetComponent<KillAgent>().equipPlayer(this);
+            GameController.GetInstanceInventoryController().getMenu().CloseMenu();
+            GameController.GetInstanceLevelController().setEventText("Knife Equipped (press space to use)", 4);
+        }
     }
 }
 

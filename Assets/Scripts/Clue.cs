@@ -25,6 +25,7 @@ public class LocationClue {
         return obj.timeInt - other.timeInt;
     }
     
+    //assumes that list of clues is sorted in ascending order by time
     public static LocationClue GetOriginClue(List<LocationClue> clues, int murderTime)
     {
         int i = 0;
@@ -47,6 +48,7 @@ public class LocationClue {
         }
         return clue;
     }
+    //assumes that list of clues is sorted in ascending order by time
     public static LocationClue GetDestinationClue(List<LocationClue> clues, int murderTime)
     {
         int i = 0;
