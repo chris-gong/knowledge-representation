@@ -30,7 +30,7 @@ public class KillAgent : MonoBehaviour
             {
                 Destroy(targetsInRadius[0].transform.parent.gameObject);
                 GameController.GetInstanceInventoryController().AddItem(new MurderWeaponItem("Knife"));
-                GameController.GetInstanceLevelController().setEventText("Knife Added to Inventory (press i to see)", 4);
+                GameController.GetInstanceLevelController().SetEventText("Knife Added to Inventory (press i to see)", 4);
             }
         }
 
@@ -47,7 +47,7 @@ public class KillAgent : MonoBehaviour
                 int time = gameController.GetTimeController().GetTime();
                 gameController.GetTimeController().SetMurderTime(time);
                 gameController.GetLevelController().SetMurderZone(gameController.GetLevelController().GetZoneFromObj(gameObject));
-                GameController.GetInstanceLevelController().setEventText(string.Format("Agent {0} was killed", agent.agentId), 3);
+                GameController.GetInstanceLevelController().SetEventText(string.Format("Agent {0} was killed", agent.agentId), 3);
             }
         }
     }

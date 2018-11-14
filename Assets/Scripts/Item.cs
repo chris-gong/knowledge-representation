@@ -40,7 +40,7 @@ public class MurderWeaponItem:Item{
         {
             player.GetComponent<KillAgent>().equipPlayer(this);
             GameController.GetInstanceInventoryController().getMenu().CloseMenu();
-            GameController.GetInstanceLevelController().setEventText("Knife Equipped (press space to use)", 4);
+            GameController.GetInstanceLevelController().SetEventText("Knife Equipped (press space to use)", 4);
         }
     }
 }

@@ -65,36 +65,36 @@ public class LevelController : MonoBehaviour {
         gameResults.text += string.Format("{0}\n", result);
     }
 
-    public void setEventText(string playerEvent, int duration){
+    public void SetEventText(string playerEvent, int duration){
         playerEvents.text = playerEvent;
         if(duration != 0)
         {
-            Invoke("clearEventText", duration);
+            Invoke("ClearEventText", duration);
         }
     }
 
-    public void clearEventText()
+    public void ClearEventText()
     {
         playerEvents.text = "";
     }
-    public void enableBackground()
+    public void EnableBackground()
     {
         gameOverBackground.GetComponent<Image>().enabled = true;
     }
 
-    public void disableBackground()
+    public void DisableBackground()
     {
         gameOverBackground.GetComponent<Image>().enabled = false;
     }
 
-    public void enableRestartButton()
+    public void EnableRestartButton()
     {
         restartButton.GetComponent<Image>().enabled = true;
         restartButton.GetComponent<Button>().enabled = true;
         restartButton.transform.Find("Text").gameObject.SetActive(true);
     }
 
-    public void disableRestartButton()
+    public void DisableRestartButton()
     {
         restartButton.GetComponent<Image>().enabled = false;
         restartButton.GetComponent<Button>().enabled = false;
@@ -149,7 +149,7 @@ public class LevelController : MonoBehaviour {
             else if (obj.name == "PlayerEvents")
             {
                 playerEvents = obj.GetComponent<Text>();
-                setEventText("Press e to pick up items", 3);
+                SetEventText("Press e to pick up items", 3);
             }
         }
     }

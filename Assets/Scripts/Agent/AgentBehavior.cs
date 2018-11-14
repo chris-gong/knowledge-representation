@@ -176,4 +176,10 @@ public class AgentBehavior : MonoBehaviour {
         }
         return BEHAVIOR_STATUS.SUCCESS;
     }
+
+    [NPCAffordance("Exchange_Info")]
+    public BEHAVIOR_STATUS ExchangeInfo()
+    {
+        return BEHAVIOR_STATUS.SUCCESS;
+    }
 }
