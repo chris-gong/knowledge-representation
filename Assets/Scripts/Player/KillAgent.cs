@@ -44,7 +44,7 @@ public class KillAgent : MonoBehaviour
                 Agent agent = targetsInRadius[0].gameObject.GetComponent<Agent>();
                 agent.isAlive = false;
                 unEquipPlayer(); //one kill per weapon only
-                int time = gameController.GetTimeController().GetTime();
+                float time = gameController.GetTimeController().GetTime();
                 gameController.GetTimeController().SetMurderTime(time);
                 gameController.GetLevelController().SetMurderZone(gameController.GetLevelController().GetZoneFromObj(gameObject));
                 GameController.GetInstanceLevelController().SetEventText(string.Format("Agent {0} was killed", agent.agentId), 3);

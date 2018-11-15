@@ -228,7 +228,7 @@ public class AgentBehavior : MonoBehaviour {
         {
             float talkToAgent = Random.Range(0f, 1f);
             //there is a chance that the agent will go after the agent in its knowledge base, will not always do it
-            if(talkToAgent > 0.01)
+            if(talkToAgent > 0.02)
             {
                 return BEHAVIOR_STATUS.SUCCESS;
             }

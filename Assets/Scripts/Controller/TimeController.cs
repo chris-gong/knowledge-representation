@@ -12,16 +12,16 @@ public class TimeController : MonoBehaviour {
 
     private GameController gameCtl;
 
-    public int currentTime = 0;
+    public float currentTime = 0;
     public string[] intervalNames = { "Morning", "Day", "Evening", "Night" };
     public int[] intervalLengths = { 15, 15, 15, 0 };
     public string currentInterval = "Morning";
-    public int timeSpeed;
-    public int murderTime = -1; //-1 if the murder has not happened yet
+    public float timeSpeed;
+    public float murderTime = -1; //-1 if the murder has not happened yet
 
-    private readonly float timeDelay = 1f;
+    private readonly float timeDelay = 0.2f;
     private int timeIntervalIndex = 0;
-    private int remainingIntervalTime;
+    private float remainingIntervalTime;
     private Text timer;
     public UnityEvent onDayEnd;
     public UnityEvent onTimeTick;
@@ -83,7 +83,7 @@ public class TimeController : MonoBehaviour {
 
     #region Public Methods
 
-    public int GetTime()
+    public float GetTime()
     {
         return currentTime;
     }
@@ -120,12 +120,12 @@ public class TimeController : MonoBehaviour {
         StartCoroutine(clockCoroutine);
     }
 
-    public void SetMurderTime(int time)
+    public void SetMurderTime(float time)
     {
         murderTime = time;
     }
 
-    public int GetMurderTime()
+    public float GetMurderTime()
     {
         return murderTime;
     }

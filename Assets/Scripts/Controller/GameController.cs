@@ -139,7 +139,7 @@ public class GameController : MonoBehaviour {
     #endregion
 
     #region Public Methods
-    public static int GetTime()
+    public static float GetTime()
     {
         return instance.timeCtl.GetTime();
     }

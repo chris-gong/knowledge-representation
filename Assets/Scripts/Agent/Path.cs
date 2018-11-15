@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Path {
 
-    private int score;
+    private float score;
     private List<int> zonesInOrder;
-    private int beginningTime;
-    private int endingTime;
+    private float beginningTime;
+    private float endingTime;
 
     public Path()
     {
@@ -17,32 +17,32 @@ public class Path {
         endingTime = 0;
     }
 
-    public void SetScore(int score)
+    public void SetScore(float score)
     {
         this.score = score;
     }
 
-    public int GetScore()
+    public float GetScore()
     {
         return score;
     }
 
-    public void SetBeginningTime(int time)
+    public void SetBeginningTime(float time)
     {
         beginningTime = time;
     }
 
-    public int GetBeginningTime()
+    public float GetBeginningTime()
     {
         return beginningTime;
     }
 
-    public void SetEndingTime(int time)
+    public void SetEndingTime(float time)
     {
         endingTime = time;
     }
 
-    public int GetEndingTime()
+    public float GetEndingTime()
     {
         return endingTime;
     }
@@ -52,7 +52,7 @@ public class Path {
         score++;
     }
 
-    public static Path CreatePath(int[] prev, int dest, int origin, int destTime, int originTime)
+    public static Path CreatePath(int[] prev, int dest, int origin, float destTime, float originTime)
     {
         //create a path by backtracking a dictionary starting from
         //the destination until the origin, assuming the dictionary

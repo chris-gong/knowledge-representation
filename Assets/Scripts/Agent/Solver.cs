@@ -74,7 +74,7 @@ public class Solver{
         List<Agent> agents = GameController.GetInstance().GetAgents();
 
         int numCandidates = candidates.Count;
-        int greatestScore = 0;
+        float greatestScore = 0;
         int mostLikelyCand = -1;
         Path bestPath = new Path();
 
@@ -108,8 +108,8 @@ public class Solver{
         {
             return null; //if we do not have more than two location clues about this candidate
         }
-        int score = 0;
-        int murderTime = GameController.GetInstanceTimeController().GetMurderTime();
+        float score = 0;
+        float murderTime = GameController.GetInstanceTimeController().GetMurderTime();
         int murderZone = GameController.GetInstanceLevelController().GetMurderZone();
         LocationClue origin = LocationClue.GetOriginClue(clues, murderTime);
         LocationClue destination = LocationClue.GetDestinationClue(clues, murderTime); ;
@@ -126,7 +126,7 @@ public class Solver{
 
         Path combinedPath = Path.CombinePaths(originToMurderZone, murderZoneToDest);
         //calculating actual time elapsed from origin to destination
-        int timeElapsed = destination.timeInt - origin.timeInt;
+        float timeElapsed = destination.timeInt - origin.timeInt;
         //how close is the score of the path compared to the actual time elapsed
         //will show us how likely the candidate took a path going through the murder zone
         score = 100 - (Mathf.Abs(combinedPath.GetScore() - timeElapsed));

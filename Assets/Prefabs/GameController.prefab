@@ -452,7 +452,7 @@ MonoBehaviour:
   - Night
   intervalLengths: 0f0000000f0000000f0000000f000000
   currentInterval: 
-  timeSpeed: 1
+  timeSpeed: 0.2
   murderTime: -1
   onDayEnd:
     m_PersistentCalls:

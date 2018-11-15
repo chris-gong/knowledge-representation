@@ -245,6 +245,11 @@ Prefab:
       propertyPath: intervalLengths.Array.data[3]
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 114355486201685382, guid: 2877fb740bfcdf34ca794fbfee422df3,
+        type: 2}
+      propertyPath: timeSpeed
+      value: 0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2877fb740bfcdf34ca794fbfee422df3, type: 2}
   m_IsPrefabAsset: 0
@@ -4590,7 +4595,7 @@ Prefab:
     - target: {fileID: 195333041437718728, guid: 139bd25b4775dda44b78cf5d66365733,
         type: 2}
       propertyPath: m_Acceleration
-      value: 16
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 195333041437718728, guid: 139bd25b4775dda44b78cf5d66365733,
         type: 2}
@@ -4600,7 +4605,7 @@ Prefab:
     - target: {fileID: 114003025373313286, guid: 139bd25b4775dda44b78cf5d66365733,
         type: 2}
       propertyPath: moveSpeed
-      value: 20
+      value: 16
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 139bd25b4775dda44b78cf5d66365733, type: 2}
