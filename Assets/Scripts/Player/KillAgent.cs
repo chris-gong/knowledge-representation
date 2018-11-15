@@ -24,6 +24,11 @@ public class KillAgent : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && !equipped)
         {
+            if (gameController.GetTimeController().GetMurderTime() > -1)
+            {
+                GameController.GetInstanceLevelController().SetEventText("Only one kill per round", 3);
+                return;
+            }
             Collider[] targetsInRadius = Physics.OverlapSphere(transform.position, radius, weaponLayer);
 
             if(targetsInRadius.Length > 0)
@@ -36,8 +41,13 @@ public class KillAgent : MonoBehaviour
 
         if (equipped && Input.GetKeyDown(KeyCode.Space))
         {
+            if(gameController.GetTimeController().GetMurderTime() > -1)
+            {
+                GameController.GetInstanceLevelController().SetEventText("Only one kill per round", 3);
+                return;
+            }
             Collider[] targetsInRadius = Physics.OverlapSphere(transform.position, radius, targetLayer);
-
+            
             if (targetsInRadius.Length > 0)
             {
                 targetsInRadius[0].gameObject.SetActive(false);

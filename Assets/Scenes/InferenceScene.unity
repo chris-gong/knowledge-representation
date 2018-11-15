@@ -404,7 +404,7 @@ Prefab:
       objectReference: {fileID: 360519860}
     - target: {fileID: 1426889223059012, guid: a91f78fb8c2669f42aa246caafbc7765, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1426889223059012, guid: a91f78fb8c2669f42aa246caafbc7765, type: 2}
       propertyPath: m_Layer
@@ -928,7 +928,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Restart Game
+  m_Text: Continue/Restart Game
 --- !u!222 &229507216
 CanvasRenderer:
   m_ObjectHideFlags: 0

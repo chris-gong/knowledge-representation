@@ -161,5 +161,17 @@ public class GameController : MonoBehaviour {
         return invCtl;
     }
 
+    public int GetAliveAgentCount()
+    {
+        int count = 0;
+        for(int i = 0; i < agents.Count; i++)
+        {
+            if (agents[i].isAlive)
+            {
+                count++;
+            }
+        }
+        return count;
+    }
     #endregion
 }

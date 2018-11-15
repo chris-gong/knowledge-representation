@@ -100,6 +100,12 @@ public class Solver{
         }
         string result = string.Format("Agent {0} believes Agent {1} went through path {2}", agent.agentId, mostLikelyCand, bestPath.ToString());
         GameController.GetInstanceLevelController().AddResultText(result);
+        if (mostLikelyCand == 0)
+        {
+            GameController.GetInstanceLevelController().AddResultText("Game Over, you were caught committing murder");
+            GameController.GetInstanceLevelController().gameOver = true;
+            GameController.GetInstanceLevelController().gameWon = false;
+        }
     }
 
     private Path CalculateScore(Candidate candidate){

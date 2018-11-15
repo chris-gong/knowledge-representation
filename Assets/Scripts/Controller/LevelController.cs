@@ -20,7 +20,8 @@ public class LevelController : MonoBehaviour {
     private Text gameResults;
     private GameObject restartButton;
     private Text playerEvents;
-
+    public bool gameOver;
+    public bool gameWon;
     #endregion
 
     #region Public Methods
@@ -77,6 +78,12 @@ public class LevelController : MonoBehaviour {
     {
         playerEvents.text = "";
     }
+
+    public void ClearResultsText()
+    {
+        gameResults.text = "";
+    }
+
     public void EnableBackground()
     {
         gameOverBackground.GetComponent<Image>().enabled = true;
@@ -116,6 +123,8 @@ public class LevelController : MonoBehaviour {
 
         hidingSpots = new List<Transform>();
         wanderingSpots = new List<Transform>();
+        gameOver = false;
+        gameWon = false;
         GatherUIElements();
         GatherZoneMarkers();
         GatherWanderingSpots();
@@ -156,7 +165,31 @@ public class LevelController : MonoBehaviour {
 
     private void RestartLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        //should be implicit that if gameover flag was set then player did not win the game
+        if (gameOver)
+        {
+            Time.timeScale = 1;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+        else
+        {
+            //check if one of the agents
+            GoToNextRound();
+        }
+    }
+
+    private void GoToNextRound()
+    {
+        //set the timescale back and disable menu
+        Time.timeScale = 1;
+        DisableBackground();
+        DisableRestartButton();
+        ClearEventText();
+        ClearResultsText();
+        SetMurderZone(-1);
+        gameOver = false;
+        gameWon = false;
+        GameController.GetInstanceTimeController().ResetDay();
     }
     private void GatherZoneMarkers()
     {
