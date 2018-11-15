@@ -15,7 +15,7 @@ public class KnowledgeBase : MonoBehaviour {
 
         fow = gameObject.GetComponent<FieldOfView>();
         agent = gameObject.GetComponent<Agent>();
-        StartCoroutine("RetrieveFactsWithDelay", .1f);
+        StartCoroutine("RetrieveFactsWithDelay", .2f);
         info = gameObject.GetComponent<Agent>();
     }
 
@@ -61,8 +61,8 @@ public class KnowledgeBase : MonoBehaviour {
     //method for picking one of the agents recently seen for possibly exchanging facts
     void RetrieveAgents()
     {
-        //remove the agent with the same id as this one
-        fow.observedAgents.RemoveAll(x => x.GetComponent<Agent>().agentId == info.agentId);
+        //remove the agent with the same id as this one or if the agent is dead
+        fow.observedAgents.RemoveAll(x => x.GetComponent<Agent>().agentId == info.agentId || !x.GetComponent<Agent>().isAlive);
         //pick a random agent to talk to
         if (fow.observedAgents.Count > 0)
         {
@@ -71,13 +71,27 @@ public class KnowledgeBase : MonoBehaviour {
         fow.observedAgents.Clear();
     }
 
+    public void ResetAgentFollowing()
+    {
+        fow.ClearSeenAgents();
+    }
     //for debugging/showcase purposes
-    IEnumerator stopProcessingFacts(Transform head, Color original, float delay)
+    IEnumerator StopProcessingFacts(Transform head, Color original, float delay)
     {
         yield return new WaitForSeconds(delay);
         head.GetComponent<Renderer>().material.SetColor("_Color", original);
         yield break;
     }
 
+    public void ExchangeClues()
+    {
+        Agent otherAgent = agentToTalkTo.GetComponent<Agent>();
+        Candidate c1 = agent.solver.GetLeastKnownCandidate();
+        Candidate c2 = otherAgent.solver.GetLeastKnownCandidate();
+
+        c1.AddOtherClues(otherAgent.solver.candidates[c1.agentID].locationClues, otherAgent.agentId);
+        c2.AddOtherClues(agent.solver.candidates[c2.agentID].locationClues, agent.agentId);
+        Debug.Log("Facts Exchanged");
+    }
 }
 

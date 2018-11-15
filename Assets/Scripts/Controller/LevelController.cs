@@ -149,7 +149,7 @@ public class LevelController : MonoBehaviour {
             else if (obj.name == "PlayerEvents")
             {
                 playerEvents = obj.GetComponent<Text>();
-                SetEventText("Press e to pick up items", 3);
+                SetEventText("Press e to pick up items", 0);
             }
         }
     }

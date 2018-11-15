@@ -30,7 +30,7 @@ public class KillAgent : MonoBehaviour
             {
                 Destroy(targetsInRadius[0].transform.parent.gameObject);
                 GameController.GetInstanceInventoryController().AddItem(new MurderWeaponItem("Knife"));
-                GameController.GetInstanceLevelController().SetEventText("Knife Added to Inventory (press i to see)", 4);
+                GameController.GetInstanceLevelController().SetEventText("Knife Added to Inventory (press i to see)", 0);
             }
         }
 

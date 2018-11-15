@@ -25,6 +25,33 @@ public class Solver{
         candidate.locationClues.Add(clue);
     }
 
+    public Candidate GetLeastKnownCandidate()
+    {
+        Candidate leastKnown = candidates[0];
+        int clueCount = leastKnown.locationClues.Count;
+        foreach(List<LocationClue> clues in leastKnown.otherLocationClues)
+        {
+            clueCount += clues.Count;
+        }
+        List<Agent> agents = GameController.GetInstance().GetAgents();
+        for (int i = 1; i < candidates.Count; i++){
+            if(i == agent.agentId || !agents[i].isAlive)
+            {
+                continue;
+            }
+            int otherClueCount = candidates[i].locationClues.Count;
+            foreach (List<LocationClue> clues in candidates[i].otherLocationClues)
+            {
+                otherClueCount += clues.Count;
+            }
+            if (otherClueCount < clueCount)
+            {
+                leastKnown = candidates[i];
+                clueCount = otherClueCount;
+            }
+        }
+        return leastKnown;
+    }
 
     public void PrintAllCandidates(){
         string str = "Agent("+agent.agentId+"):";
@@ -76,15 +103,16 @@ public class Solver{
     }
 
     private Path CalculateScore(Candidate candidate){
-        if (candidate.locationClues.Count < 2)
+        List<LocationClue> clues = candidate.IncorporateOtherClues();
+        if (clues.Count < 2)
         {
             return null; //if we do not have more than two location clues about this candidate
         }
         int score = 0;
         int murderTime = GameController.GetInstanceTimeController().GetMurderTime();
         int murderZone = GameController.GetInstanceLevelController().GetMurderZone();
-        LocationClue origin = LocationClue.GetOriginClue(candidate.locationClues, murderTime);
-        LocationClue destination = LocationClue.GetDestinationClue(candidate.locationClues, murderTime); ;
+        LocationClue origin = LocationClue.GetOriginClue(clues, murderTime);
+        LocationClue destination = LocationClue.GetDestinationClue(clues, murderTime); ;
 
         List<ZoneInfo> zones = GameController.GetInstanceLevelController().GetZoneInfos();
 

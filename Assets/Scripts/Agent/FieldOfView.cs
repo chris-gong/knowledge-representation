@@ -23,7 +23,7 @@ public class FieldOfView:MonoBehaviour {
 
     void Start()
     {
-        StartCoroutine("FindTargetsWithDelay", .1f);
+        StartCoroutine("FindTargetsWithDelay", .2f);
     }
 
     IEnumerator FindTargetsWithDelay(float delay)
