@@ -1,7 +1,9 @@
 ﻿using System;
 using UnityEngine;
 using System.Collections;
+#if UNITY_EDITOR
 using UnityEditor.Animations;
+#endif
 
 ///
 /// Created by Fernando Geraci on 2018
@@ -15,9 +17,11 @@ namespace NPC {
     public class NPCAnimation : System.Attribute {
         public string Name;
         public int AnimationHash;
+#if UNITY_EDITOR
         public AnimatorState AnimatorState;
         public AnimationClip AnimationClip;
         public AnimatorControllerLayer AnimatorLayer;
+#endif
         public ANIMATION_PARAM_TYPE ParamType;
         public ANIMATION_LAYER Layer;
         public int RuntimeAnimatorLayer;
