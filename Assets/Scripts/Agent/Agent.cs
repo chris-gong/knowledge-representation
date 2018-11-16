@@ -6,7 +6,7 @@ public class Agent : MonoBehaviour {
 
     public int agentId;
     public string agentName = null;
-    private GameObject currentObs = null;
+    public GameObject currentObs = null;
     public GameObject blankObs;
     public Solver solver;
     private bool isPlayer = false;
@@ -41,7 +41,7 @@ public class Agent : MonoBehaviour {
         GameObject newobs = Instantiate(blankObs,gameObject.transform);
         Observable obsInfo= newobs.GetComponent<Observable>();
 
-        int time = GameController.GetTime();
+        float time = GameController.GetTime();
         int zoneID = GameController.GetInstanceLevelController().GetZoneFromObj(gameObject);
 
         obsInfo.AddLocationClue(new LocationClue(agentId, zoneID, time));
@@ -53,5 +53,15 @@ public class Agent : MonoBehaviour {
         {
             solver.PrintAllCandidates();
         }
+    }
+
+    public void OnMouseOver()
+    {
+        //GameController.GetInstanceLevelController().setEventText(string.Format("Mouse hovering over agent {0}", agentId), 2);
+    }
+
+    public void OnMouseExit()
+    {
+        //GameController.GetInstanceLevelController().setEventText("", 0);
     }
 }

@@ -450,9 +450,10 @@ MonoBehaviour:
   - Day
   - Evening
   - Night
-  intervalLengths: 2d0000001e0000001e00000000000000
+  intervalLengths: 0f0000000f0000000f0000000f000000
   currentInterval: 
-  timeSpeed: 1
+  timeSpeed: 0.2
+  murderTime: -1
   onDayEnd:
     m_PersistentCalls:
       m_Calls: []

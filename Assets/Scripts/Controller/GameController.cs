@@ -43,6 +43,16 @@ public class GameController : MonoBehaviour {
         return instance.levelCtl;
     }
 
+    public InventoryController GetInventoryController()
+    {
+        return invCtl;
+    }
+
+    public static InventoryController GetInstanceInventoryController()
+    {
+        return instance.invCtl;
+    }
+
     #endregion
 
     #region Unity Methods
@@ -129,7 +139,7 @@ public class GameController : MonoBehaviour {
     #endregion
 
     #region Public Methods
-    public static int GetTime()
+    public static float GetTime()
     {
         return instance.timeCtl.GetTime();
     }
@@ -151,5 +161,17 @@ public class GameController : MonoBehaviour {
         return invCtl;
     }
 
+    public int GetAliveAgentCount()
+    {
+        int count = 0;
+        for(int i = 0; i < agents.Count; i++)
+        {
+            if (agents[i].isAlive)
+            {
+                count++;
+            }
+        }
+        return count;
+    }
     #endregion
 }

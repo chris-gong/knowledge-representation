@@ -13,7 +13,6 @@ public class AgentBehavior : MonoBehaviour {
     public LayerMask zoneLayer;
     KnowledgeBase knowledgeBase;
     private Agent info;
-    private LevelController levelController;
     private Coroutine currentBehavior;
     private NPCController behaviorController;
     private int lastZone;
@@ -31,19 +30,30 @@ public class AgentBehavior : MonoBehaviour {
         agent.speed = speed;
         info = gameObject.GetComponent<Agent>();
         behaviorController = gameObject.GetComponent<NPCController>();
-        levelController = GameObject.Find("GameController").GetComponent<LevelController>();
-        //currentBehavior = StartCoroutine("RandomwWalkBehavior");
-        //thinkingBehavior = StartCoroutine("ChooseBehavior");
 
         NPCNode behaviorTree = new NPCDecoratorLoop(new NPCSequence(
             new NPCNode[] {
-                new NPCAction(() => WanderAround())
+                new NPCAction(() => WanderAround()),
+                new NPCSelector(new NPCNode[]
+                {
+                     new NPCAction(() => IdleBehavior()),
+                     new NPCDecoratorLoop(new NPCSequence(
+                         new NPCNode[]
+                         {
+                             new NPCAction(() => FollowAgent()),
+                             new NPCAction(() => ExchangeInfo())
+                         }
+                     )),
+                     new NPCWait(1000, BEHAVIOR_STATUS.FAILURE),
+                     new NPCAction(() => FinishTalking())
+                })
             })
         );
         behaviorController.AI.AddBehavior(behaviorTree);
         behaviorController.AI.StartBehavior();
     }
 
+    #region deprecated
     void StartNewBehavior(string newBehavior)
     {
         StopCoroutine(currentBehavior);
@@ -136,7 +146,7 @@ public class AgentBehavior : MonoBehaviour {
     }
     void SetHidingSpot()
     {
-        List<Transform> hidingSpots = levelController.GetComponent<LevelController>().GetHidingSpots();
+        List<Transform> hidingSpots = GameController.GetInstanceLevelController().GetHidingSpots();
         System.Random rand = new System.Random();
         int index = rand.Next(hidingSpots.Count);
         //Debug.Log(hidingSpots[index].position);
@@ -152,18 +162,18 @@ public class AgentBehavior : MonoBehaviour {
             Destroy(col.gameObject);
         }*/
     }
-
+    #endregion
     [NPCAffordance("Wander_Behavior")]
     public BEHAVIOR_STATUS WanderAround()
     {
         if (agent.destination != null && Vector3.Distance(agent.destination, transform.position) < 1)
         {
-
+            //random number used to make the agent wait before finding a new spot
             float pickANewSpot = Random.Range(0f, 1f);
             if(pickANewSpot > 0.98)
             {
                 NavMeshHit hit;
-                List<Transform> zoneMarkers = levelController.GetZoneMarkers();
+                List<Transform> zoneMarkers = GameController.GetInstanceLevelController().GetZoneMarkers();
                 Vector3 randomLocation = zoneMarkers[Random.Range(0, zoneMarkers.Count)].position;
                 Vector3 offset = new Vector3(Random.Range(-2, 2), 0, Random.Range(2, 2));
                 randomLocation += offset;
@@ -173,11 +183,74 @@ public class AgentBehavior : MonoBehaviour {
                 }
                 curMarker.transform.position = randomLocation; */
                 NavMesh.SamplePosition(randomLocation, out hit, 1.0f, NavMesh.AllAreas);
-                //Debug.Log("Going to position " + hit.position);
                 agent.SetDestination(hit.position);
                 return BEHAVIOR_STATUS.SUCCESS;
             }
         }
+        return BEHAVIOR_STATUS.SUCCESS;
+    }
+
+    [NPCAffordance("Follow_Agent")]
+    public BEHAVIOR_STATUS FollowAgent()
+    {
+        GameObject otherAgent = knowledgeBase.agentToTalkTo;
+        agent.SetDestination(otherAgent.transform.position);
+        return BEHAVIOR_STATUS.SUCCESS; 
+    }
+
+    [NPCAffordance("Exchange_Info")]
+    public BEHAVIOR_STATUS ExchangeInfo()
+    {
+        GameObject otherAgent = knowledgeBase.agentToTalkTo;
+        if (Vector3.Distance(otherAgent.transform.position, transform.position) < 2.5)
+        {
+            Debug.Log("Caught up to Agent " + otherAgent.GetComponent<Agent>().agentId);
+            //once the agents are close enough, both of them stop moving
+            if (isActiveAndEnabled)
+            {
+                agent.isStopped = true;
+            }
+            if(otherAgent.activeSelf)
+            {
+                otherAgent.GetComponent<NavMeshAgent>().isStopped = true;
+            }
+
+            knowledgeBase.ExchangeClues();
+            return BEHAVIOR_STATUS.FAILURE;
+        }
+        return BEHAVIOR_STATUS.SUCCESS;
+    }
+
+    [NPCAffordance("Idle")]
+    public BEHAVIOR_STATUS IdleBehavior()
+    {
+        if(knowledgeBase.agentToTalkTo != null)
+        {
+            float talkToAgent = Random.Range(0f, 1f);
+            //there is a chance that the agent will go after the agent in its knowledge base, will not always do it
+            if(talkToAgent > 0.02)
+            {
+                return BEHAVIOR_STATUS.SUCCESS;
+            }
+            return BEHAVIOR_STATUS.FAILURE;
+        }
+        return BEHAVIOR_STATUS.SUCCESS;
+    }
+
+    [NPCAffordance("After_Talking")]
+    public BEHAVIOR_STATUS FinishTalking()
+    {
+        //after the facts are exchanged, reset the targeted agent in knowledge base
+        if (isActiveAndEnabled)
+        {
+            agent.isStopped = false;
+        }
+        if (knowledgeBase.agentToTalkTo.activeSelf)
+        {
+            knowledgeBase.agentToTalkTo.GetComponent<NavMeshAgent>().isStopped = false;
+        }
+        knowledgeBase.agentToTalkTo = null;
+        knowledgeBase.ResetAgentFollowing();
         return BEHAVIOR_STATUS.SUCCESS;
     }
 }

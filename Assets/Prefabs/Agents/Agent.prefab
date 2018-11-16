@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23346001176209888}
   - component: {fileID: 65800658432515564}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -115,7 +115,7 @@ Transform:
   m_GameObject: {fileID: 1260143287483416}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.38, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4643125893306302}
   m_RootOrder: 0
@@ -141,7 +141,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1059738877113718}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.5, z: -15.1}
+  m_LocalPosition: {x: -8.810013, y: 1.5, z: -13.837599}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4643125893306302}
@@ -379,7 +379,7 @@ MonoBehaviour:
   zoneLayer:
     serializedVersion: 2
     m_Bits: 4096
-  speed: 8
+  speed: 16
   targetMarker: {fileID: 0}
   curMarker: {fileID: 0}
 --- !u!114 &114417635499963654
@@ -394,6 +394,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   info: {fileID: 0}
+  agentToTalkTo: {fileID: 0}
 --- !u!114 &114419393116344388
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -493,7 +494,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agentId: 0
   agentName: 
+  currentObs: {fileID: 0}
   blankObs: {fileID: 0}
+  isAlive: 1
 --- !u!114 &114766465318538262
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -513,8 +516,13 @@ MonoBehaviour:
   obstacleMask:
     serializedVersion: 2
     m_Bits: 1024
+  agentMask:
+    serializedVersion: 2
+    m_Bits: 2048
   visibleTargets: []
+  visibleAgents: []
   observables: []
+  observedAgents: []
 --- !u!114 &114786861237682256
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -581,7 +589,7 @@ NavMeshAgent:
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 240
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1

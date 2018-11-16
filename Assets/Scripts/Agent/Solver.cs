@@ -25,6 +25,33 @@ public class Solver{
         candidate.locationClues.Add(clue);
     }
 
+    public Candidate GetLeastKnownCandidate()
+    {
+        Candidate leastKnown = candidates[0];
+        int clueCount = leastKnown.locationClues.Count;
+        foreach(List<LocationClue> clues in leastKnown.otherLocationClues)
+        {
+            clueCount += clues.Count;
+        }
+        List<Agent> agents = GameController.GetInstance().GetAgents();
+        for (int i = 1; i < candidates.Count; i++){
+            if(i == agent.agentId || !agents[i].isAlive)
+            {
+                continue;
+            }
+            int otherClueCount = candidates[i].locationClues.Count;
+            foreach (List<LocationClue> clues in candidates[i].otherLocationClues)
+            {
+                otherClueCount += clues.Count;
+            }
+            if (otherClueCount < clueCount)
+            {
+                leastKnown = candidates[i];
+                clueCount = otherClueCount;
+            }
+        }
+        return leastKnown;
+    }
 
     public void PrintAllCandidates(){
         string str = "Agent("+agent.agentId+"):";
@@ -47,7 +74,7 @@ public class Solver{
         List<Agent> agents = GameController.GetInstance().GetAgents();
 
         int numCandidates = candidates.Count;
-        int greatestScore = 0;
+        float greatestScore = 0;
         int mostLikelyCand = -1;
         Path bestPath = new Path();
 
@@ -73,32 +100,39 @@ public class Solver{
         }
         string result = string.Format("Agent {0} believes Agent {1} went through path {2}", agent.agentId, mostLikelyCand, bestPath.ToString());
         GameController.GetInstanceLevelController().AddResultText(result);
+        if (mostLikelyCand == 0)
+        {
+            GameController.GetInstanceLevelController().AddResultText("Game Over, you were caught committing murder");
+            GameController.GetInstanceLevelController().gameOver = true;
+            GameController.GetInstanceLevelController().gameWon = false;
+        }
     }
 
     private Path CalculateScore(Candidate candidate){
-        if (candidate.locationClues.Count < 2)
+        List<LocationClue> clues = candidate.IncorporateOtherClues();
+        if (clues.Count < 2)
         {
             return null; //if we do not have more than two location clues about this candidate
         }
-        int score = 0;
-        int murderTime = GameController.GetInstanceTimeController().GetMurderTime();
+        float score = 0;
+        float murderTime = GameController.GetInstanceTimeController().GetMurderTime();
         int murderZone = GameController.GetInstanceLevelController().GetMurderZone();
-        LocationClue origin = LocationClue.GetOriginClue(candidate.locationClues, murderTime);
-        LocationClue destination = LocationClue.GetDestinationClue(candidate.locationClues, murderTime); ;
+        LocationClue origin = LocationClue.GetOriginClue(clues, murderTime);
+        LocationClue destination = LocationClue.GetDestinationClue(clues, murderTime); ;
 
         List<ZoneInfo> zones = GameController.GetInstanceLevelController().GetZoneInfos();
 
         ZoneInfo start = zones[origin.zoneID]; //set the starting zone to origin
         int[] prev = findPath(start, zones.Count);
-        Path originToMurderZone = Path.CreatePath(prev, murderZone, origin.zoneID);
+        Path originToMurderZone = Path.CreatePath(prev, murderZone, origin.zoneID, murderTime, origin.timeInt);
 
         start = zones[murderZone]; //set the starting zone to murder zone
         prev = findPath(start, zones.Count); 
-        Path murderZoneToDest = Path.CreatePath(prev, destination.zoneID, murderZone);
+        Path murderZoneToDest = Path.CreatePath(prev, destination.zoneID, murderZone, destination.timeInt, murderTime);
 
         Path combinedPath = Path.CombinePaths(originToMurderZone, murderZoneToDest);
         //calculating actual time elapsed from origin to destination
-        int timeElapsed = destination.timeInt - origin.timeInt;
+        float timeElapsed = destination.timeInt - origin.timeInt;
         //how close is the score of the path compared to the actual time elapsed
         //will show us how likely the candidate took a path going through the murder zone
         score = 100 - (Mathf.Abs(combinedPath.GetScore() - timeElapsed));

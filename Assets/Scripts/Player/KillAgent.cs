@@ -11,6 +11,7 @@ public class KillAgent : MonoBehaviour
     public GameController gameController;
     public float radius;
     private bool equipped = false;
+    private Item equippedItem;
     
     // Use this for initialization
 
@@ -23,31 +24,56 @@ public class KillAgent : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && !equipped)
         {
+            if (gameController.GetTimeController().GetMurderTime() > -1)
+            {
+                GameController.GetInstanceLevelController().SetEventText("Only one kill per round", 3);
+                return;
+            }
             Collider[] targetsInRadius = Physics.OverlapSphere(transform.position, radius, weaponLayer);
 
             if(targetsInRadius.Length > 0)
             {
                 Destroy(targetsInRadius[0].transform.parent.gameObject);
-                equipped = true;
-                GameController.GetInstanceLevelController().setEventText("Knife Equipped", 2);
+                GameController.GetInstanceInventoryController().AddItem(new MurderWeaponItem("Knife"));
+                GameController.GetInstanceLevelController().SetEventText("Knife Added to Inventory (press i to see)", 0);
             }
         }
 
         if (equipped && Input.GetKeyDown(KeyCode.Space))
         {
+            if(gameController.GetTimeController().GetMurderTime() > -1)
+            {
+                GameController.GetInstanceLevelController().SetEventText("Only one kill per round", 3);
+                return;
+            }
             Collider[] targetsInRadius = Physics.OverlapSphere(transform.position, radius, targetLayer);
-
+            
             if (targetsInRadius.Length > 0)
             {
-                targetsInRadius[0].gameObject.GetComponent<Agent>().isAlive = false;
                 targetsInRadius[0].gameObject.SetActive(false);
-                equipped = false; //one kill per weapon only
-                int time = gameController.GetTimeController().GetTime();
+                Agent agent = targetsInRadius[0].gameObject.GetComponent<Agent>();
+                agent.isAlive = false;
+                unEquipPlayer(); //one kill per weapon only
+                float time = gameController.GetTimeController().GetTime();
                 gameController.GetTimeController().SetMurderTime(time);
                 gameController.GetLevelController().SetMurderZone(gameController.GetLevelController().GetZoneFromObj(gameObject));
+                GameController.GetInstanceLevelController().SetEventText(string.Format("Agent {0} was killed", agent.agentId), 3);
             }
         }
     }
+
+    public void equipPlayer(Item weapon)
+    {
+        equipped = true;
+        equippedItem = weapon;
+    }
+
+    public void unEquipPlayer()
+    {
+        equipped = false; //one kill per weapon only
+        equippedItem = null;
+    }
+    #region deprecated
     IEnumerator FindKillableAgents(float delay)
     {
         while (true)
@@ -79,4 +105,6 @@ public class KillAgent : MonoBehaviour
             }
         }
     }
+    #endregion
+    
 }

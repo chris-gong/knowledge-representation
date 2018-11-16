@@ -17,6 +17,7 @@ namespace NPC {
 
         [SerializeField]
         private long g_WaitTime;
+        private BEHAVIOR_STATUS status = BEHAVIOR_STATUS.RUNNING;
 
         public override void Initialize(object[] parameters) {
             g_WaitTime = Convert.ToInt64(parameters[0]);
@@ -26,6 +27,12 @@ namespace NPC {
             g_WaitTime = Milliseconds;
         }
 
+        public NPCWait(long Milliseconds, BEHAVIOR_STATUS status) : base()
+        {
+            g_WaitTime = Milliseconds;
+            this.status = status;
+        }
+
         protected override IEnumerable<BEHAVIOR_STATUS> Execute() {
             g_Status = BEHAVIOR_STATUS.RUNNING;
             long stop = NPCUtils.TimeMillis() + g_WaitTime;
@@ -33,6 +40,10 @@ namespace NPC {
                 yield return g_Status;
             }
             g_Status = BEHAVIOR_STATUS.SUCCESS;
+            if(status != BEHAVIOR_STATUS.RUNNING)
+            {
+                yield return status;
+            }
             yield return g_Status;
         }
     }

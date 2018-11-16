@@ -6,9 +6,9 @@ public class LocationClue {
 
     public int agentID;
     public int zoneID;
-    public int timeInt;
+    public float timeInt;
     
-    public LocationClue(int agent, int zone, int time)
+    public LocationClue(int agent, int zone, float time)
     {
         this.agentID = agent;
         this.zoneID = zone;
@@ -20,12 +20,13 @@ public class LocationClue {
         return string.Format("({0},{1},{2})",agentID,zoneID,timeInt);
     }
 
-    public static int CmpTime(LocationClue obj, LocationClue other)
+    public static float CmpTime(LocationClue obj, LocationClue other)
     {
         return obj.timeInt - other.timeInt;
     }
     
-    public static LocationClue GetOriginClue(List<LocationClue> clues, int murderTime)
+    //assumes that list of clues is sorted in ascending order by time
+    public static LocationClue GetOriginClue(List<LocationClue> clues, float murderTime)
     {
         int i = 0;
         LocationClue clue = null;
@@ -47,7 +48,8 @@ public class LocationClue {
         }
         return clue;
     }
-    public static LocationClue GetDestinationClue(List<LocationClue> clues, int murderTime)
+    //assumes that list of clues is sorted in ascending order by time
+    public static LocationClue GetDestinationClue(List<LocationClue> clues, float murderTime)
     {
         int i = 0;
         LocationClue clue = null;

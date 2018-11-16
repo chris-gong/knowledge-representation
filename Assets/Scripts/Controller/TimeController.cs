@@ -12,19 +12,20 @@ public class TimeController : MonoBehaviour {
 
     private GameController gameCtl;
 
-    public int currentTime = 0;
+    public float currentTime = 0;
     public string[] intervalNames = { "Morning", "Day", "Evening", "Night" };
     public int[] intervalLengths = { 15, 15, 15, 0 };
     public string currentInterval = "Morning";
-    public int timeSpeed;
-    public int murderTime = -1; //-1 if the murder has not happened yet
+    public float timeSpeed;
+    public float murderTime = -1; //-1 if the murder has not happened yet
 
-    private readonly float timeDelay = 1f;
+    private readonly float timeDelay = 0.2f;
     private int timeIntervalIndex = 0;
-    private int remainingIntervalTime;
+    private float remainingIntervalTime;
     private Text timer;
     public UnityEvent onDayEnd;
     public UnityEvent onTimeTick;
+    private IEnumerator clockCoroutine;
 
     #endregion
 
@@ -66,14 +67,33 @@ public class TimeController : MonoBehaviour {
     /// </summary>
     private void EndOfDay()
     {
+        Time.timeScale = 0;
+        StopCoroutine(clockCoroutine);
         timeIntervalIndex = 0;
         LevelController lc = GameController.GetInstanceLevelController();
-        lc.enableBackground();
-        lc.enableRestartButton();
-        lc.AddResultText("Game Over");
+        lc.ClearEventText();
+        lc.EnableBackground();
+        lc.EnableRestartButton();
+        lc.AddResultText("Round Over");
+        
+        //lc.AddResultText(string.Format("The murdered occurred in zone {0} at time {1}", lc.GetMurderZone(), murderTime));
         if(murderTime > -1)
         {
+            lc.AddResultText(string.Format("The murdered occurred in zone {0} at time {1}", lc.GetMurderZone(), murderTime));
             onDayEnd.Invoke();
+        }
+        else
+        {
+            GameController.GetInstanceLevelController().gameOver = true;
+            GameController.GetInstanceLevelController().gameWon = false;
+            lc.AddResultText(string.Format("Game Over, failed to commit murder", lc.GetMurderZone(), murderTime));
+        }
+
+        if (!lc.gameOver && GameController.GetInstance().GetAliveAgentCount() == 2)
+        {
+            lc.AddResultText("Game Won! You made it to the final two agents");
+            lc.gameOver = true;
+            lc.gameWon = true;
         }
         return;
     }
@@ -82,7 +102,7 @@ public class TimeController : MonoBehaviour {
 
     #region Public Methods
 
-    public int GetTime()
+    public float GetTime()
     {
         return currentTime;
     }
@@ -115,18 +135,25 @@ public class TimeController : MonoBehaviour {
                     string.Format("ERROR: Count of Names/Lengths array does not match: {0}/{1}",
                                    intervalLengths.Length, intervalNames.Length));
         UpdateInterval(0);
-        IEnumerator clockCoroutine = TimeClock();
+        clockCoroutine = TimeClock();
         StartCoroutine(clockCoroutine);
     }
 
-    public void SetMurderTime(int time)
+    public void SetMurderTime(float time)
     {
         murderTime = time;
     }
 
-    public int GetMurderTime()
+    public float GetMurderTime()
     {
         return murderTime;
+    }
+
+    public void ResetDay()
+    {
+        SetMurderTime(-1);
+        clockCoroutine = TimeClock();
+        StartCoroutine(clockCoroutine);
     }
     #endregion
 
