@@ -204,8 +204,8 @@ public class AgentBehavior : MonoBehaviour {
         GameObject otherAgent = knowledgeBase.agentToTalkTo;
         if (Vector3.Distance(otherAgent.transform.position, transform.position) < 2.5)
         {
-            Debug.Log("Caught up to Agent " + otherAgent.GetComponent<Agent>().agentId);
-            //once the agents are close enough, both of them stop moving
+            // Debug.Log("Caught up to Agent " + otherAgent.GetComponent<Agent>().agentId);
+            // once the agents are close enough, both of them stop moving
             if (isActiveAndEnabled)
             {
                 agent.isStopped = true;

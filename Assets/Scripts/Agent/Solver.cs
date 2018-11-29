@@ -64,7 +64,9 @@ public class Solver{
         }
         Debug.Log(str);
     }
+    
     #region Path finding algorithm
+
     public void TryAndSolve(){
         //if this agent is not alive, then it should not try to find the murderer
         if (!agent.isAlive)
@@ -118,7 +120,7 @@ public class Solver{
         float murderTime = GameController.GetInstanceTimeController().GetMurderTime();
         int murderZone = GameController.GetInstanceLevelController().GetMurderZone();
         LocationClue origin = LocationClue.GetOriginClue(clues, murderTime);
-        LocationClue destination = LocationClue.GetDestinationClue(clues, murderTime); ;
+        LocationClue destination = LocationClue.GetDestinationClue(clues, murderTime);
 
         List<ZoneInfo> zones = GameController.GetInstanceLevelController().GetZoneInfos();
 
