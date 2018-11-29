@@ -45,27 +45,6 @@ public class MurderWeaponItem:Item{
     }
 }
 
-public class SmokeScreenItem : Item
-{
-    public int radius;
-    public float duration;
-    public SmokeScreenItem(string argItemName = "SmokeScreen", int argRadius = 5, float argDuration = 5f)
-        :base(argItemName,1)
-    {
-        radius = argRadius;
-        duration = argDuration;
-    }
-
-    public override void OnUse()
-    {
-        GameObject blankSS = Resources.Load<GameObject>("SmokeScreen");
-        base.OnUse();
-        Vector3 pos = GameController.GetInstance().GetPlayer().transform.position;
-        GameObject ssobj = GameController.Instantiate(blankSS,pos, Quaternion.identity);
-        GameController.GetInstance().GetInvCtl().RemoveItem(this);
-    }
-}
-
 /*
 public class ConsumableItem:Item{
     
