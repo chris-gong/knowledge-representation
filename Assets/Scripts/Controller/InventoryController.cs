@@ -16,7 +16,8 @@ public class InventoryController : MonoBehaviour {
     private InventoryMenu invMenu;
 
 
-    public void InitInvCtl() {
+    public void InitInvCtl()
+    {
         itemList = new List<Item>();
         gameCtl = GameController.GetInstance();
         player = gameCtl.GetPlayer();
@@ -29,6 +30,13 @@ public class InventoryController : MonoBehaviour {
         invMenu = menu.GetComponent<InventoryMenu>();
         invMenu.InitMenu();
         invMenu.CloseMenu();
+
+#if UNITY_EDITOR
+        //Default inventory
+        AddSmokeScreen();
+        AddBlockade();
+#endif
+
     }
 
     public void AddItem(Item item)

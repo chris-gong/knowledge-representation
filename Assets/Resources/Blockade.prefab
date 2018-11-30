@@ -22,6 +22,8 @@ GameObject:
   - component: {fileID: 33901163447519962}
   - component: {fileID: 23193626503863240}
   - component: {fileID: 65282662909079526}
+  - component: {fileID: 114642080059727418}
+  - component: {fileID: 208798615110818768}
   m_Layer: 10
   m_Name: Blockade
   m_TagString: Untagged
@@ -96,3 +98,29 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114642080059727418
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1855142292784500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30451c5cb71f1405f8f9f07b5bf714fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!208 &208798615110818768
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1855142292784500}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
