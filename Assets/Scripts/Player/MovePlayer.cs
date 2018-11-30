@@ -14,6 +14,7 @@ public class MovePlayer : MonoBehaviour {
         levelController = GameObject.Find("GameController").GetComponent<LevelController>();
         agent = GetComponent<NavMeshAgent>();
         agent.speed = moveSpeed;
+        agent.updateRotation = false;
 	}
 	
 	// Update is called once per frame
@@ -33,4 +34,12 @@ public class MovePlayer : MonoBehaviour {
 
         }
 	}
+
+    void LateUpdate()
+    {
+        if(agent.velocity.sqrMagnitude > Mathf.Epsilon)
+        {
+            transform.rotation = Quaternion.LookRotation(agent.velocity.normalized);
+        }
+    }
 }

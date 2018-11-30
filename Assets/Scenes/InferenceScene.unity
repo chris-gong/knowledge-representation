@@ -4595,12 +4595,12 @@ Prefab:
     - target: {fileID: 195333041437718728, guid: 139bd25b4775dda44b78cf5d66365733,
         type: 2}
       propertyPath: m_Acceleration
-      value: 8
+      value: 36
       objectReference: {fileID: 0}
     - target: {fileID: 195333041437718728, guid: 139bd25b4775dda44b78cf5d66365733,
         type: 2}
       propertyPath: m_AngularSpeed
-      value: 240
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 114003025373313286, guid: 139bd25b4775dda44b78cf5d66365733,
         type: 2}
