@@ -10,8 +10,9 @@ public class InventoryButton : MonoBehaviour {
     private Image image;
     private Text text;
     private Button button;
-    public void InitButton()
+    public void InitButton(int indexArg)
     {
+        index = indexArg;
         image = gameObject.GetComponent<Image>();
         text = transform.GetChild(0).gameObject.GetComponent<Text>();
         button = gameObject.GetComponent<Button>();
@@ -22,6 +23,9 @@ public class InventoryButton : MonoBehaviour {
     {
         Debug.Log("UseItem() invoked!");
         item.OnUse();
+        if(item.consumable){
+            GameController.GetInstanceInventoryController().RemoveItem(item);
+        }
     }
 
     public void UpdateItem(Item newItem)

@@ -20,7 +20,7 @@ public class SmokeScreenItem : Item
         Vector3 pos = GameController.GetInstance().GetPlayer().transform.position;
         GameObject ssobj = GameController.Instantiate(blankSS, pos, Quaternion.identity);
         GameController.GetInstance().GetInvCtl().RemoveItem(this);
-        # TODO remove this item from the inventory after use
+        // TODO remove this item from the inventory after use
     }
 }
 

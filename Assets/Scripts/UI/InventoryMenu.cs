@@ -38,9 +38,9 @@ public class InventoryMenu : MonoBehaviour
             for (int j = 0; j < 6; j++) {
                 GameObject buttonObj = colPanel.GetChild(j).gameObject;
                 InventoryButton button = buttonObj.GetComponent<InventoryButton>();
-                button.index = (6 * i) + j;
+                int index = (6 * i) + j;
                 buttons.Add(button);
-                button.InitButton();
+                button.InitButton(index);
             }
         }
         UpdateMenu();

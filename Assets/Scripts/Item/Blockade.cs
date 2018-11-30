@@ -5,15 +5,19 @@ using UnityEngine;
 public class BlockadeItem : Item
 {
     public float duration;
-    public BlockadeItem(string argItemName = "Blockade", float argDuration = 5f)
+    public float length;
+    public float width;
+    public BlockadeItem(string argItemName = "Blockade", float argWidth = 1f,
+                       float argLength = 1f)
                         : base(argItemName, 1){
+        length = argLength;
+        width = argWidth;
     }
 
 }
 
 public class Blockade : MonoBehaviour
 {
-
     private static float time = 10f;
 
     void Start()

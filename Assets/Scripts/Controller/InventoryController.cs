@@ -5,6 +5,7 @@ using UnityEngine;
 public class InventoryController : MonoBehaviour {
 
     private static int menuCdMax = 10;
+    private static int MenuSize = 12;
 
     public List<Item> itemList;
 
@@ -53,6 +54,13 @@ public class InventoryController : MonoBehaviour {
     {
         this.AddItem(new SmokeScreenItem());
     }
+
+    [ContextMenu("Add Blockade Item")]
+    void AddBlockade()
+    {
+        this.AddItem(new BlockadeItem(argWidth: 4, argLength: 2));
+    }
+
     void Update(){
         if(menuCd <= 0 && Input.GetKeyDown("i"))
         {
@@ -75,5 +83,4 @@ public class InventoryController : MonoBehaviour {
         }
 
     }
-	
 }

@@ -5,11 +5,13 @@ public class Item
 {
     public string name;
     public int count;
+    public bool consumable;
 
-    public Item(string argItemName, int itemCount = 1)
+    public Item(string argItemName, int itemCount = 1, bool consumableArg = true)
     {
         name = argItemName;
         count = itemCount;
+        consumable = consumableArg;
     }
 
     public virtual void OnUse()
