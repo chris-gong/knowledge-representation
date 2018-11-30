@@ -9,6 +9,7 @@ public class Candidate
     public int trust;
     public int suspicion;
     public List<LocationClue> locationClues;
+    public List<MurderClue> murderClues;
     public List<List<LocationClue>> otherLocationClues; //clues from other agents
 
 
@@ -18,6 +19,7 @@ public class Candidate
         trust = 100;
         suspicion = 0;
         locationClues = new List<LocationClue>();
+        murderClues = new List<MurderClue>();
         otherLocationClues = new List<List<LocationClue>>();
         for(int i = 0; i < GameController.GetInstance().GetAgentCount(); i++)
         {

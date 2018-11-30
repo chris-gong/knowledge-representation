@@ -24,7 +24,12 @@ public class Solver{
         Candidate candidate = candidates[candidateID];
         candidate.locationClues.Add(clue);
     }
-
+    public void AddMurderClue(MurderClue clue)
+    {
+        int candidateID = clue.agentID;
+        Candidate candidate = candidates[candidateID];
+        candidate.murderClues.Add(clue);
+    }
     public Candidate GetLeastKnownCandidate()
     {
         Candidate leastKnown = candidates[0];
@@ -86,6 +91,17 @@ public class Solver{
             if (!agents[candidateId].isAlive)
             {
                 continue;
+            }
+            if(candidates[i].murderClues.Count > 0)
+            {
+                greatestScore = 100;
+                mostLikelyCand = candidates[i].agentID;
+                bestPath = new Path();
+                bestPath.PrependToPath(GameController.GetInstanceLevelController().GetMurderZone());
+                bestPath.SetScore(100);
+                bestPath.SetBeginningTime(GameController.GetInstanceTimeController().GetMurderTime());
+                bestPath.SetEndingTime(GameController.GetInstanceTimeController().GetMurderTime());
+                break;
             }
             Path p = CalculateScore(candidates[i]);
             if (p == null)

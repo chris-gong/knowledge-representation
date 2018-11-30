@@ -18,6 +18,7 @@ public class KillAgent : MonoBehaviour
     private void Start()
     {
         gameController = GameObject.Find("GameController").GetComponent<GameController>();
+        obs = Resources.Load<GameObject>("Observable");
     }
 
     private void Update()
@@ -58,6 +59,7 @@ public class KillAgent : MonoBehaviour
                 gameController.GetTimeController().SetMurderTime(time);
                 gameController.GetLevelController().SetMurderZone(gameController.GetLevelController().GetZoneFromObj(gameObject));
                 GameController.GetInstanceLevelController().SetEventText(string.Format("Agent {0} was killed", agent.agentId), 5);
+                createMurderObs();
             }
         }
     }
@@ -72,6 +74,18 @@ public class KillAgent : MonoBehaviour
     {
         equipped = false; //one kill per weapon only
         equippedItem = null;
+    }
+
+    private void createMurderObs()
+    {
+        GameObject newobs = Instantiate(obs, transform.position, transform.rotation);
+        Observable obsInfo = newobs.GetComponent<Observable>();
+
+        float time = GameController.GetTime();
+        int zoneID = GameController.GetInstanceLevelController().GetZoneFromObj(gameObject);
+
+        obsInfo.AddMurderClue(new MurderClue(0, zoneID, time));
+        Destroy(newobs, 3);
     }
     #region deprecated
     IEnumerator FindKillableAgents(float delay)

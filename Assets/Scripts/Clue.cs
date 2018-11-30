@@ -80,6 +80,18 @@ public class LocationClue {
     }
 }
 
+public class MurderClue {
+    public int agentID;
+    public int zoneID;
+    public float timeInt;
+
+    public MurderClue(int agent, int zone, float time)
+    {
+        this.agentID = agent;
+        this.zoneID = zone;
+        this.timeInt = time;
+    }
+}
 public class MurderItemClue
 {
     private int agentID;

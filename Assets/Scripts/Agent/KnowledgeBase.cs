@@ -58,6 +58,11 @@ public class KnowledgeBase : MonoBehaviour {
                 //head.GetComponent<Renderer>().material.SetColor("_Color", Color.green); //for debugging/showcase purposes
                 agent.solver.AddLocationClue(clue);
             }
+            foreach (MurderClue clue in obs.murderClues)
+            {
+                transform.Find("Head").GetComponent<Renderer>().material.SetColor("_Color", Color.green);
+                agent.solver.AddMurderClue(clue);
+            }
         }
         //StartCoroutine(stopProcessingFacts(head, original, 0.5f)); //for debugging/showcase purposes
         fow.observables.Clear();
