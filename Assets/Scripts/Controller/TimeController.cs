@@ -152,6 +152,8 @@ public class TimeController : MonoBehaviour {
     public void ResetDay()
     {
         SetMurderTime(-1);
+        GameController.GetInstance().ResetTalkingCooldowns();
+        GameController.GetInstance().ResetLightFlicker();
         clockCoroutine = TimeClock();
         StartCoroutine(clockCoroutine);
     }

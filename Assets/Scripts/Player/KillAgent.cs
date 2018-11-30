@@ -57,7 +57,7 @@ public class KillAgent : MonoBehaviour
                 float time = gameController.GetTimeController().GetTime();
                 gameController.GetTimeController().SetMurderTime(time);
                 gameController.GetLevelController().SetMurderZone(gameController.GetLevelController().GetZoneFromObj(gameObject));
-                GameController.GetInstanceLevelController().SetEventText(string.Format("Agent {0} was killed", agent.agentId), 3);
+                GameController.GetInstanceLevelController().SetEventText(string.Format("Agent {0} was killed", agent.agentId), 5);
             }
         }
     }

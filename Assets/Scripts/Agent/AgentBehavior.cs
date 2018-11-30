@@ -56,6 +56,12 @@ public class AgentBehavior : MonoBehaviour {
         behaviorController.AI.StartBehavior();
     }
 
+    public void ResetCooldown()
+    {
+        numOfExchanges = 0;
+        talkingCooldown = 0;
+    }
+
     #region deprecated
     void StartNewBehavior(string newBehavior)
     {

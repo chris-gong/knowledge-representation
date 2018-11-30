@@ -173,5 +173,23 @@ public class GameController : MonoBehaviour {
         }
         return count;
     }
+
+    public void ResetTalkingCooldowns()
+    {
+        foreach(Agent agent in agents)
+        {
+            //set the talking cooldown back to zero, this should be called after a round just ended
+            if (agent.agentId != 0 && agent.isAlive)
+            {
+                agent.gameObject.GetComponent<AgentBehavior>().ResetCooldown();
+            }
+        }
+    }
+
+    public void ResetLightFlicker()
+    {
+        LightController lightCtl = GameObject.Find("Directional Light").GetComponent<LightController>();
+        lightCtl.ResetFlickered();
+    }
     #endregion
 }

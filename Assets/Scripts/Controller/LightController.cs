@@ -25,6 +25,11 @@ public class LightController : MonoBehaviour {
         }
 	}
 
+    public void ResetFlickered()
+    {
+        flickered = false;
+    }
+
     IEnumerator FlickerLights()
     {
         lights.color = dangerColor;
