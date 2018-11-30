@@ -9,6 +9,7 @@ public class KnowledgeBase : MonoBehaviour {
     private Agent agent;
     public Agent info;
     public GameObject agentToTalkTo;
+    public GameObject lastAgentSpokenTo;
 
 	// Use this for initialization
 	public void InitKnowledgeBase() {
@@ -106,6 +107,9 @@ public class KnowledgeBase : MonoBehaviour {
         c1.AddOtherClues(otherAgent.solver.candidates[c1.agentID].locationClues, otherAgent.agentId);
         c2.AddOtherClues(agent.solver.candidates[c2.agentID].locationClues, agent.agentId);
         Debug.Log("Facts Exchanged");
+
+        agentToTalkTo.GetComponent<KnowledgeBase>().lastAgentSpokenTo = gameObject;
+        lastAgentSpokenTo = agentToTalkTo;
     }
 }
 

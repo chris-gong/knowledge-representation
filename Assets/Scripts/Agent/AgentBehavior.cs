@@ -232,6 +232,14 @@ public class AgentBehavior : MonoBehaviour {
     {
         if(knowledgeBase.agentToTalkTo != null)
         {
+            //if the agent just spoke to the agent, make it a little less likely it will talk to that agent again
+            if(knowledgeBase.lastAgentSpokenTo != null && knowledgeBase.lastAgentSpokenTo == knowledgeBase.agentToTalkTo)
+            {
+                knowledgeBase.ResetAgentFollowing();
+                knowledgeBase.agentToTalkTo = null;
+                knowledgeBase.lastAgentSpokenTo = null;
+                return BEHAVIOR_STATUS.SUCCESS;
+            }
             float talkToAgent = Random.Range(0f, 1f);
             //there is a chance that the agent will go after the agent in its knowledge base, will not always do it
             if(talkToAgent > 0.02)
