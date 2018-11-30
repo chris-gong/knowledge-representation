@@ -121,6 +121,10 @@ public class Solver{
         int murderZone = GameController.GetInstanceLevelController().GetMurderZone();
         LocationClue origin = LocationClue.GetOriginClue(clues, murderTime);
         LocationClue destination = LocationClue.GetDestinationClue(clues, murderTime);
+        if(origin == null || destination == null)
+        {
+            return null; //not enough information about the agent either before or after the murder
+        }
 
         List<ZoneInfo> zones = GameController.GetInstanceLevelController().GetZoneInfos();
 
@@ -129,7 +133,7 @@ public class Solver{
         Path originToMurderZone = Path.CreatePath(prev, murderZone, origin.zoneID, murderTime, origin.timeInt);
 
         start = zones[murderZone]; //set the starting zone to murder zone
-        prev = findPath(start, zones.Count); 
+        prev = findPath(start, zones.Count);
         Path murderZoneToDest = Path.CreatePath(prev, destination.zoneID, murderZone, destination.timeInt, murderTime);
 
         Path combinedPath = Path.CombinePaths(originToMurderZone, murderZoneToDest);

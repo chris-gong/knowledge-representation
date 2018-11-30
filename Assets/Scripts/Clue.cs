@@ -30,10 +30,17 @@ public class LocationClue {
     {
         int i = 0;
         LocationClue clue = null;
+        // Case 1: Empty clue list
         if(clues.Count < 1)
         {
             return null;
         }
+        // Case 2: No clues before the murder
+        if(clues[i].timeInt > murderTime)
+        {
+            return null;
+        }
+        // Case 3: Return the closest clue before the murder
         while (i < clues.Count && clues[i].timeInt < murderTime)
         {
             i++;
