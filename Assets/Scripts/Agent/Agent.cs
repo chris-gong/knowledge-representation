@@ -8,6 +8,8 @@ public class Agent : MonoBehaviour {
     public string agentName = null;
     public GameObject currentObs = null;
     public GameObject blankObs;
+    public GameObject blankHoverText;
+    public GameObject talkingState;
     public Solver solver;
     private bool isPlayer = false;
     private KnowledgeBase kb;
@@ -16,6 +18,7 @@ public class Agent : MonoBehaviour {
     public void InitAgentInfo(int newID){
         Debug.Log("Initiating agent:" + agentName + "/"+agentId);
         blankObs = Resources.Load<GameObject>("Observable");
+        blankHoverText = Resources.Load<GameObject>("Text");
         if (agentName == null)
         {
             agentName = string.Format("Agent#{0}", newID);
@@ -28,6 +31,7 @@ public class Agent : MonoBehaviour {
 
     public void InitPlayerAgentInfo(int newID){
         blankObs = Resources.Load<GameObject>("Observable");
+        blankHoverText = Resources.Load<GameObject>("Text");
         agentName = "Player";
         agentId = newID;
         UpdateAgentObs();

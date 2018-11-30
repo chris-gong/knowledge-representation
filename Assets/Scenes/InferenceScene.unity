@@ -352,6 +352,8 @@ MonoBehaviour:
   agentName: 
   currentObs: {fileID: 0}
   blankObs: {fileID: 0}
+  blankHoverText: {fileID: 0}
+  talkingState: {fileID: 0}
   isAlive: 1
 --- !u!1001 &139138461
 Prefab:
@@ -3223,7 +3225,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   offset: {x: 0, y: 50, z: 0}
   orthoCamera: {fileID: 0}
-  cameraMovementSpeed: 0
+  cameraMovementSpeed: 10
 --- !u!1 &1164774763
 GameObject:
   m_ObjectHideFlags: 0

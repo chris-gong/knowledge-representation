@@ -19,12 +19,15 @@ public class AgentBehavior : MonoBehaviour {
     public float speed;
     public GameObject targetMarker;
     public GameObject curMarker;
+    private int talkingCooldown;
+    private int numOfExchanges;
 
     private NavMeshAgent agent;
     // Use this for initialization
     void Start()
     {
         lastZone = 0;
+        talkingCooldown = 0;
         agent = gameObject.GetComponent<NavMeshAgent>();
         knowledgeBase = gameObject.GetComponent<KnowledgeBase>();
         agent.speed = speed;
@@ -216,6 +219,9 @@ public class AgentBehavior : MonoBehaviour {
             }
 
             knowledgeBase.ExchangeClues();
+
+            numOfExchanges++;
+            talkingCooldown = numOfExchanges;
             return BEHAVIOR_STATUS.FAILURE;
         }
         return BEHAVIOR_STATUS.SUCCESS;
@@ -230,6 +236,12 @@ public class AgentBehavior : MonoBehaviour {
             //there is a chance that the agent will go after the agent in its knowledge base, will not always do it
             if(talkToAgent > 0.02)
             {
+                return BEHAVIOR_STATUS.SUCCESS;
+            }
+            //if the agent has already talked with an agent recently, it is less likely it will talk again
+            if(talkingCooldown > 0)
+            {
+                talkingCooldown--;
                 return BEHAVIOR_STATUS.SUCCESS;
             }
             return BEHAVIOR_STATUS.FAILURE;
@@ -249,8 +261,9 @@ public class AgentBehavior : MonoBehaviour {
         {
             knowledgeBase.agentToTalkTo.GetComponent<NavMeshAgent>().isStopped = false;
         }
-        knowledgeBase.agentToTalkTo = null;
+        
         knowledgeBase.ResetAgentFollowing();
+        knowledgeBase.agentToTalkTo = null;
         return BEHAVIOR_STATUS.SUCCESS;
     }
 }

@@ -27,7 +27,11 @@ public class KnowledgeBase : MonoBehaviour {
         {
             yield return new WaitForSeconds(delay);
             RetrieveFacts();
-            RetrieveAgents();
+            //retrieve agents to talk to only if there was a murder
+            if(GameController.GetInstanceTimeController().GetMurderTime() > -1)
+            {
+                RetrieveAgents();
+            }
         }
     }
 
@@ -74,6 +78,9 @@ public class KnowledgeBase : MonoBehaviour {
     public void ResetAgentFollowing()
     {
         fow.ClearSeenAgents();
+        Agent otherAgent = agentToTalkTo.GetComponent<Agent>();
+        Destroy(agent.talkingState);
+        Destroy(otherAgent.talkingState);
     }
     //for debugging/showcase purposes
     IEnumerator StopProcessingFacts(Transform head, Color original, float delay)
@@ -88,7 +95,14 @@ public class KnowledgeBase : MonoBehaviour {
         Agent otherAgent = agentToTalkTo.GetComponent<Agent>();
         Candidate c1 = agent.solver.GetLeastKnownCandidate();
         Candidate c2 = otherAgent.solver.GetLeastKnownCandidate();
-
+        //destroy old hovering texts to prevent duplicate hovertext gameobjects from spawning
+        Destroy(agent.talkingState);
+        Destroy(otherAgent.talkingState);
+        //add a hovertext to denote exchange of information
+        agent.talkingState = Instantiate(agent.blankHoverText, gameObject.transform);
+        agent.talkingState.GetComponent<TextMesh>().text = string.Format("{0}", c1.agentID);
+        otherAgent.talkingState = Instantiate(otherAgent.blankHoverText, otherAgent.gameObject.transform);
+        otherAgent.talkingState.GetComponent<TextMesh>().text = string.Format("{0}", c2.agentID);
         c1.AddOtherClues(otherAgent.solver.candidates[c1.agentID].locationClues, otherAgent.agentId);
         c2.AddOtherClues(agent.solver.candidates[c2.agentID].locationClues, agent.agentId);
         Debug.Log("Facts Exchanged");
