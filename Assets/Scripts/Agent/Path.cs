@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +9,7 @@ public class Path {
     private List<int> zonesInOrder;
     private float beginningTime;
     private float endingTime;
+    private int candidateId;
 
     public Path()
     {
@@ -110,7 +112,7 @@ public class Path {
             pathStr += string.Format("{0}->", zonesInOrder[i]);
         }
         pathStr = pathStr.Substring(0, pathStr.Length - 2);
-        pathStr += string.Format(" from time {0} to time {1} with a score of {2}", beginningTime, endingTime, score);
+        pathStr += string.Format(" from time {0} to time {1} with a score of {2}", Math.Round(beginningTime,1), Math.Round(endingTime,1), Math.Round(score,1));
         return pathStr;
     }
    

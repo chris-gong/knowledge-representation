@@ -40,7 +40,7 @@ public class MurderWeaponItem:Item{
 
         if(name.ToLower() == "knife")
         {
-            player.GetComponent<KillAgent>().equipPlayer(this);
+            player.GetComponent<KillAgent>().EquipPlayer(this);
             GameController.GetInstanceInventoryController().getMenu().CloseMenu();
             GameController.GetInstanceLevelController().SetEventText("Knife Equipped (press space to use)", 0);
         }

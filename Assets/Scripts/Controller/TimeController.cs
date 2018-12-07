@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -37,7 +38,7 @@ public class TimeController : MonoBehaviour {
         {
             yield return new WaitForSeconds(this.timeDelay);
             currentTime += timeSpeed;
-            timer.text = string.Format("{0}",currentTime);
+            timer.text = string.Format("{0}",Math.Round(currentTime, 1));
             remainingIntervalTime -= timeSpeed;
             if (remainingIntervalTime <= 0)
             {
@@ -79,14 +80,14 @@ public class TimeController : MonoBehaviour {
         //lc.AddResultText(string.Format("The murdered occurred in zone {0} at time {1}", lc.GetMurderZone(), murderTime));
         if(murderTime > -1)
         {
-            lc.AddResultText(string.Format("The murdered occurred in zone {0} at time {1}", lc.GetMurderZone(), murderTime));
+            lc.AddResultText(string.Format("The murdered occurred in zone {0} at time {1}", lc.GetMurderZone(), Math.Round(murderTime, 1)));
             onDayEnd.Invoke();
         }
         else
         {
             GameController.GetInstanceLevelController().gameOver = true;
             GameController.GetInstanceLevelController().gameWon = false;
-            lc.AddResultText(string.Format("Game Over, failed to commit murder", lc.GetMurderZone(), murderTime));
+            lc.AddResultText(string.Format("Game Over, failed to commit murder"));
         }
 
         if (!lc.gameOver && GameController.GetInstance().GetAliveAgentCount() == 2)
@@ -126,7 +127,7 @@ public class TimeController : MonoBehaviour {
             TimeController.instance = this;
         }
         else {
-            Object.Destroy(gameObject);
+            Destroy(gameObject);
             return;
         }
         gameCtl = GameController.GetInstance();
