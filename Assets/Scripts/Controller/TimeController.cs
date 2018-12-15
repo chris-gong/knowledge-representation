@@ -75,8 +75,10 @@ public class TimeController : MonoBehaviour {
         lc.ClearEventText();
         lc.EnableBackground();
         lc.EnableRestartButton();
+        lc.EnablePathButton();
+        lc.EnableAgentIdInput();
         lc.AddResultText("Round Over");
-        
+
         //lc.AddResultText(string.Format("The murdered occurred in zone {0} at time {1}", lc.GetMurderZone(), murderTime));
         if(murderTime > -1)
         {
@@ -155,6 +157,7 @@ public class TimeController : MonoBehaviour {
         SetMurderTime(-1);
         GameController.GetInstance().ResetTalkingCooldowns();
         GameController.GetInstance().ResetLightFlicker();
+        GameController.GetInstance().ResetMostLikelyCandidates();
         clockCoroutine = TimeClock();
         StartCoroutine(clockCoroutine);
     }

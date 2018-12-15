@@ -9,6 +9,7 @@ TagManager:
   - Wandering Spot
   - ZoneMarker
   - HoverText
+  - Floor
   layers:
   - Default
   - TransparentFX

@@ -18,6 +18,7 @@ public class KnowledgeBase : MonoBehaviour {
         agent = gameObject.GetComponent<Agent>();
         StartCoroutine("RetrieveFactsWithDelay", .2f);
         info = gameObject.GetComponent<Agent>();
+ 
     }
 
 
@@ -109,6 +110,16 @@ public class KnowledgeBase : MonoBehaviour {
         agent.talkingState.GetComponent<TextMesh>().text = string.Format("{0}", c1.agentID);
         otherAgent.talkingState = Instantiate(otherAgent.blankHoverText, otherAgent.gameObject.transform);
         otherAgent.talkingState.GetComponent<TextMesh>().text = string.Format("{0}", c2.agentID);
+        //store old knowledge base somewhere for visual purposes
+        Solver thisAgentSolver = agent.solver;
+        Solver otherAgentSolver = otherAgent.solver;
+        Candidate oldC1 = new Candidate(c1.agentID);
+        oldC1.locationClues = oldC1.IncorporateOtherClues();
+        thisAgentSolver.oldCandidateInfo[(c1.agentID)].Add(oldC1);
+        Candidate oldC2 = new Candidate(c2.agentID);
+        oldC2.locationClues = oldC2.IncorporateOtherClues();
+        otherAgentSolver.oldCandidateInfo[(c2.agentID)].Add(oldC2);
+        //add new clues
         c1.AddOtherClues(otherAgent.solver.candidates[c1.agentID].locationClues, otherAgent.agentId);
         c2.AddOtherClues(agent.solver.candidates[c2.agentID].locationClues, agent.agentId);
         Debug.Log("Facts Exchanged");

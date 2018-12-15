@@ -5,16 +5,22 @@ using UnityEngine;
 
 public class Solver{
     public List<Candidate> candidates;
+    public List<List<Candidate>> oldCandidateInfo; //solely used for drawing graphs
     public Agent agent;
+    public int mostLikelyCand;
+    public Path mostLikelyPath;
 
     public Solver(Agent myAgent)
     {
         candidates = new List<Candidate>();
+        oldCandidateInfo = new List<List<Candidate>>();
         agent = myAgent;
+        mostLikelyCand = -1;
         int agentCount = GameController.GetInstance().GetAgentCount();
         for (int i = 0; i < agentCount; i++)
         {
             candidates.Add(new Candidate(i));
+            oldCandidateInfo.Add(new List<Candidate>());
         }
         GameController.GetInstanceTimeController().onDayEnd.AddListener(TryAndSolve); //should also make all the npc's stop moving
     }
@@ -71,7 +77,7 @@ public class Solver{
     }
     
     #region Path finding algorithm
-
+    //solve for all the agents at the end of the game
     public void TryAndSolve(){
         //if this agent is not alive, then it should not try to find the murderer
         if (!agent.isAlive)
@@ -82,7 +88,6 @@ public class Solver{
 
         int numCandidates = candidates.Count;
         float greatestScore = 0;
-        int mostLikelyCand = -1;
         Path bestPath = new Path();
 
         for (int i = 0; i < numCandidates; i++){
@@ -124,6 +129,7 @@ public class Solver{
             GameController.GetInstanceLevelController().gameOver = true;
             GameController.GetInstanceLevelController().gameWon = false;
         }
+        mostLikelyPath = bestPath;
     }
 
     private Path CalculateScore(Candidate candidate){
@@ -145,11 +151,11 @@ public class Solver{
         List<ZoneInfo> zones = GameController.GetInstanceLevelController().GetZoneInfos();
 
         ZoneInfo start = zones[origin.zoneID]; //set the starting zone to origin
-        int[] prev = findPath(start, zones.Count);
+        int[] prev = FindPath(start, zones.Count);
         Path originToMurderZone = Path.CreatePath(prev, murderZone, origin.zoneID, murderTime, origin.timeInt);
 
         start = zones[murderZone]; //set the starting zone to murder zone
-        prev = findPath(start, zones.Count);
+        prev = FindPath(start, zones.Count);
         Path murderZoneToDest = Path.CreatePath(prev, destination.zoneID, murderZone, destination.timeInt, murderTime);
 
         Path combinedPath = Path.CombinePaths(originToMurderZone, murderZoneToDest);
@@ -162,7 +168,7 @@ public class Solver{
         return combinedPath;
     }
 
-    private int[] findPath(ZoneInfo start, int numberOfZones)
+    private int[] FindPath(ZoneInfo start, int numberOfZones)
     {
         //BFS
         int[] weights = new int[numberOfZones]; //cost of shortest path to the zone 

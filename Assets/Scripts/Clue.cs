@@ -75,7 +75,7 @@ public class LocationClue {
             i--;
         }
         clue = i == 0? clues[i]:clues[i + 1];
-        Debug.Log("Destination clue chosen: "+clue.ToString());
+        //Debug.Log("Destination clue chosen: "+clue.ToString());
         return clue;
     }
 }

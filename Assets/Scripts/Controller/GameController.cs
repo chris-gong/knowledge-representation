@@ -191,5 +191,18 @@ public class GameController : MonoBehaviour {
         LightController lightCtl = GameObject.Find("Directional Light").GetComponent<LightController>();
         lightCtl.ResetFlickered();
     }
+
+    public void ResetMostLikelyCandidates()
+    {
+        foreach (Agent agent in agents)
+        {
+            //set the most likely candidate back to -1 after the round ended
+            if (agent.agentId != 0 && agent.isAlive)
+            {
+                agent.solver.mostLikelyCand = -1; //TODO: does this really need to be done? may not be needed, added just in case
+                agent.solver.mostLikelyPath = null;
+            }
+        }
+    }
     #endregion
 }
