@@ -52,5 +52,10 @@ public class CameraController : MonoBehaviour {
             mounted = true;
             transform.position = player.transform.position + offset;
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
 	}
 }
