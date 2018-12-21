@@ -5,13 +5,19 @@ Our game is based on the well-known “accusation and deception” games such as
 
 ## Rules of the Game
 The rules go as follows:
-The game starts off with you, the player, and 4 agents in 60 second rounds.
-The player’s movement can be controlled with the click of the mouse. The player’s view can be controlled using the mouse’s scroll wheel and the arrow keys. If the camera needs to be refocused on the center of the player, one can do so by pressing M.
-In each round, you have to pick up a knife by going up to one and press E to equip it. Then, you must press I and press the Knife button to equip it. Then you can press SpaceBar at any time to kill a nearby agent.
-At the end of each round, you only lose either if:
-You failed to kill an agent, or
-You were discovered by the remaining agents as the murderer
-The player wins the game officially once he/she wins the final round that starts off with only the player and 2 agents.
+
+1) The game starts off with you, the player, and 4 agents in 60 second rounds.
+
+2) The player’s movement can be controlled with the click of the mouse. The player’s view can be controlled using the mouse’s scroll wheel and the arrow keys. If the camera needs to be refocused on the center of the player, one can do so by pressing M.
+
+3) In each round, you have to pick up a knife by going up to one and press E to equip it. Then, you must press I and press the Knife button to equip it. Then you can press SpaceBar at any time to kill a nearby agent.
+4) At the end of each round, you only lose either if:
+
+    i) You failed to kill an agent, or
+  
+    ii) You were discovered by the remaining agents as the murderer
+  
+5) The player wins the game officially once he/she wins the final round that starts off with only the player and 2 agents.
 
 ## Game Mechanics
 Our game focused primarily on two major game mechanics: knowledge representation and behavior trees. The knowledge representation system consisted of an observable system, a clue-based representation system, and a solving algorithm. The observable system consisted of every agent, including the player, dropping an observable object that represents a fact/atom of where they were at what time. This observable was created fives times a second. Each agent, not including the player, had a knowledge base configured to pick up observables in their field of view. The result was that these facts were converted to Clue objects that were stored in the agent’s knowledge base. As the agent acquired more clues, its knowledge base grew. Lastly, the solving algorithm consisted of retrieving the clues at the times right before and right after the time of the murder. Then, using the location at these clues, a breadth-first search algorithm was run to create the most likely path between the locations and a score was assigned based on the distance of the path and how long the path took. Each agent, excluding the player, ran this algorithm for every other agent, including the player.
