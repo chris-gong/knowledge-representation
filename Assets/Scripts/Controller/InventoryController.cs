@@ -33,8 +33,8 @@ public class InventoryController : MonoBehaviour {
 
 #if UNITY_EDITOR
         //Default inventory
-        AddSmokeScreen();
-        AddBlockade();
+        //AddSmokeScreen();
+        //AddBlockade();
 #endif
 
     }
